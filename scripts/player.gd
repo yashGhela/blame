@@ -1,0 +1,159 @@
+extends CharacterBody3D
+
+
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+
+var is_attacking:=false
+
+var hitcount=1
+@onready var body: MeshInstance3D = $body
+
+
+var floor_slam_cooldown = 0.0
+const FLOOR_SLAM_COOLDOWN_TIME = 2.0  # Adjust this value as needed
+const DASH_SPEED = 10.0
+const DASH_DURATION = 0.3
+var is_dashing = false
+var dash_timer = 0.0
+@onready var dash: AudioStreamPlayer3D = $dash
+
+var health = 100
+
+#func _process(delta: float) -> void:
+	#health_bar.value=health
+	#cooldownbar.value=1-(floor_slam_cooldown/FLOOR_SLAM_COOLDOWN_TIME)
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	
+	#if Input.is_action_just_pressed("hit"):
+		#is_attacking=true
+		#if hitcount>3:
+			#hitcount=0
+			#hitball.shape.radius=0.5
+		#
+		#match hitcount:
+			#1: hitball.shape.radius = 0.5
+			#2: hitball.shape.radius = 0.75
+			#3: hitball.shape.radius = 1.0
+		#hitcount+=1
+		#pap.play("rig|hit")
+		#pap.play("")
+		#var input_dir := Input.get_vector("left", "right", "forward", "back")
+		#var iso_forward = Vector3(1, 0, 1).normalized()
+		#var iso_right   = Vector3(1, 0, -1).normalized()
+#
+		#var direction = (iso_right * input_dir.x + iso_forward * input_dir.y).normalized()
+		#velocity.x += direction.x * 1
+		#velocity.z += direction.z * 1
+		#
+	#
+
+	movement(delta)
+	move_and_slide()
+
+func movement(delta):
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		
+
+	# Handle jump.
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+	
+	
+		# Handle dash
+	if Input.is_action_just_pressed("dash") and not is_dashing:
+		is_dashing = true
+		dash_timer = DASH_DURATION
+		var input_dir := Input.get_vector("left", "right", "forward", "back")
+		var iso_forward = Vector3(1, 0, 1).normalized()
+		var iso_right   = Vector3(1, 0, -1).normalized()
+		var direction = (iso_right * input_dir.x + iso_forward * input_dir.y).normalized()
+		
+		# If no input, dash backward
+		if direction == Vector3.ZERO:
+			direction = basis.z.normalized()
+		#else:
+			#direction = -direction  # Dash opposite of movement
+		
+		velocity.x = direction.x * DASH_SPEED
+		velocity.z = direction.z * DASH_SPEED
+		
+	
+	if is_dashing:
+		dash_timer -= delta
+		if dash_timer <= 0:
+			is_dashing = false
+			# Reset velocity or keep current speed
+			velocity.x = 0
+			velocity.z = 0
+	
+	if is_dashing:
+		return
+	
+	if floor_slam_cooldown > 0:
+		floor_slam_cooldown -= delta
+
+	var input_dir := Input.get_vector("left", "right", "forward", "back")
+	var iso_forward = Vector3(1, 0, 1).normalized()
+	var iso_right   = Vector3(1, 0, -1).normalized()
+
+	var direction = (iso_right * input_dir.x + iso_forward * input_dir.y).normalized()
+	
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+		
+		
+	
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	
+	
+		# Don't allow normal movement during dash
+	
+		
+	if direction!=Vector3.ZERO:
+			var target_y = atan2(direction.x, direction.z)
+			body.rotation.y = lerp_angle(
+				body.rotation.y,
+				target_y - deg_to_rad(90),
+				12.0*delta
+			)
+#func _on_hitarea_body_entered(body: Node3D) -> void:
+	#if body.is_in_group("Pincer") or body.is_in_group("Roamer") or body.is_in_group("Striker") and is_attacking:
+		##Freezemanager.hit_stop_short()
+		#var kd = global_position.direction_to(body.global_position)
+		#kd.y=0;
+		#var kv = 25
+		#if body.is_in_group("Striker"):
+			#kv=5
+		#body.get_knockback(kd,kv,25)
+	#
+	#if body.is_in_group("BreakWall"):
+		#body.hit()
+#
+#
+#func _on_floorslamarea_body_entered(body: Node3D) -> void:
+	#print("entering area code")
+	#print(body)
+	#if body.is_in_group("Pincer") or body.is_in_group("Striker") or body.is_in_group("Roamer"):
+		#var kd = global_position.direction_to(body.global_position)
+		#kd.y=0
+		#print("floorslam hitting body")
+		#body.get_knockback(kd,7,25)
+	#
+	#if body.is_in_group("BreakFloor"):
+		#body.hit()
+#
+#
+#func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	#if anim_name == "rig|hit" || anim_name == "rig|stomp" :
+		#is_attacking = false # Replace with function body.
+	#
+	#if anim_name=="rig|stomp":
+		#floor_slam_cooldown = FLOOR_SLAM_COOLDOWN_TIME 

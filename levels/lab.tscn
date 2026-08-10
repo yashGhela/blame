@@ -1,3 +1,47 @@
 [gd_scene format=3 uid="uid://cqtt1y4qc4rak"]
 
+[ext_resource type="Texture2D" uid="uid://b7emtawiuyv63" path="res://addons/proto-csgs/textures/dark/texture_03.png" id="1_s7fyc"]
+[ext_resource type="PackedScene" uid="uid://bna6v4o3ed0gr" path="res://gameplay-elements/player.tscn" id="2_kk6di"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h8r6w"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_s7fyc"]
+sky_material = SubResource("ProceduralSkyMaterial_h8r6w")
+
+[sub_resource type="Environment" id="Environment_kk6di"]
+background_mode = 2
+sky = SubResource("Sky_s7fyc")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kk6di"]
+albedo_texture = ExtResource("1_s7fyc")
+
+[sub_resource type="BoxMesh" id="BoxMesh_h8r6w"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s7fyc"]
+points = PackedVector3Array(-20, -0.5, -20, -20, 0.5, -20, 20, -0.5, -20, -20, -0.5, 20, -20, 0.5, 20, 20, 0.5, -20, 20, -0.5, 20, 20, 0.5, 20)
+
 [node name="lab" type="Node3D" unique_id=1874987844]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1507294475]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=637460417]
+environment = SubResource("Environment_kk6di")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1741927835]
+material_override = SubResource("StandardMaterial3D_kk6di")
+mesh = SubResource("BoxMesh_h8r6w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=186351245]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1912483422]
+shape = SubResource("ConvexPolygonShape3D_s7fyc")
+
+[node name="Player" parent="." unique_id=1172021385 instance=ExtResource("2_kk6di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.910486, 1.4999981, -1.276288)
