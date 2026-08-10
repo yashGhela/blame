@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c6xmcc5jut7oa"]
+
+[ext_resource type="PackedScene" uid="uid://d34rek61mteax" path="res://assets/fbx/railing.fbx" id="1_qwhns"]
+[ext_resource type="Shader" uid="uid://505mpqnvv57c" path="res://game-elements/shaders/outline.gdshader" id="2_pr8c4"]
+[ext_resource type="Shader" uid="uid://cjo3oo6xq6ppo" path="res://game-elements/shaders/celshader.gdshader" id="3_3eypk"]
+[ext_resource type="Texture2D" uid="uid://cxkahe6u325xi" path="res://game-elements/shaders/colorgradient.tres" id="4_na0es"]
+[ext_resource type="Texture2D" uid="uid://dmfydmdgl0paw" path="res://game-elements/shaders/fresnelgradient.tres" id="5_ftx8o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l0ubv"]
+render_priority = 0
+shader = ExtResource("2_pr8c4")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xnmbp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_l0ubv")
+shader = ExtResource("3_3eypk")
+shader_parameter/albedo = Color(0.4509804, 0.44313726, 0.5254902, 1)
+shader_parameter/color_gradient = ExtResource("4_na0es")
+shader_parameter/fresnel_gradient = ExtResource("5_ftx8o")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pr8c4"]
+points = PackedVector3Array(-0.3033807, -0.01, -0.13244833, -0.3758493, -0.01, -0.010009132, -0.3033807, 0.01, -0.13244833, 0.31003016, -0.01, -0.13244833, -0.3758493, 0.01, -0.010009132, -0.3758493, -0.01, 0.010000005, 0.31003016, 0.01, -0.13244833, 0.37500203, -0.01, -0.010009132, -0.3758493, 0.01, 0.010000005, 0.37500203, -0.01, 0.010000005, 0.37500203, 0.01, -0.010009132, 0.37500203, 0.01, 0.010000005)
+
+[node name="railing" unique_id=454326787 instance=ExtResource("1_qwhns")]
+
+[node name="railing" parent="." index="0" unique_id=1175610365]
+transform = Transform3D(5.3166842, 0, 0, 0, -6.3379815e-07, 5.316684, 0, -5.316684, -6.3379815e-07, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_xnmbp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="railing" index="0" unique_id=1268904200]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="railing/StaticBody3D" index="0" unique_id=1461822557]
+shape = SubResource("ConvexPolygonShape3D_pr8c4")

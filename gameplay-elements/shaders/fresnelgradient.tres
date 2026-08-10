@@ -1,0 +1,6 @@
+[gd_resource type="GradientTexture1D" format=3 uid="uid://dmfydmdgl0paw"]
+
+[ext_resource type="Gradient" uid="uid://d1n4uxdhc3rf1" path="res://game-elements/shaders/defaultfresnel.tres" id="1_m3e2c"]
+
+[resource]
+gradient = ExtResource("1_m3e2c")
