@@ -10,6 +10,8 @@ var is_attacking:=false
 var hitcount=1
 @onready var body: MeshInstance3D = $body
 
+@onready var camera_3d: Camera3D = $CameraPivot/Camera3D
+
 
 const DASH_SPEED = 15.0
 const DASH_DURATION = 0.3
@@ -18,6 +20,23 @@ var dash_timer = 0.0
 
 
 var health = 100
+
+
+func _ready() -> void:
+	Signalbus.connect("talking",Callable(self,"on_talking_activated"))
+	Signalbus.connect("talkingended",Callable(self,"on_talking_ended"))
+
+func on_talking_ended():
+	var tween = create_tween()
+	
+	tween.tween_property(camera_3d,"size",8.0,0.7 ).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+#Logic to zoom in when talking
+func on_talking_activated():
+	var tween = create_tween()
+	
+	tween.tween_property(camera_3d,"size",4.0,0.7 ).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
 
 func _process(delta: float) -> void:
 	health_bar.value=health

@@ -21,6 +21,7 @@ func _ready():
 
 func _input(event):
 	if active_area and event.is_action_pressed("interact"):
+		Signalbus.emit_signal("talking")
 		if in_progress:
 			next_line()
 		else:
@@ -87,6 +88,7 @@ func next_line():
 
 
 func finish():
+	Signalbus.emit_signal("talkingended")
 	chat.text = ""
 	speaker.text = ""
 	background.visible = false
