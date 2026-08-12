@@ -1,4 +1,4 @@
 extends Node
 
-signal display_texts(text_key)
-signal textingover()
+signal display_chat(text_key)
+signal talkingover()
