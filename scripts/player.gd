@@ -6,6 +6,9 @@ const JUMP_VELOCITY = 4.5
 
 var is_attacking:=false
 
+@export var hit_pull_distance := 1.0
+@export var hit_pull_speed := 8.0
+
 
 @onready var health_bar: ProgressBar = $"CanvasLayer/health bar"
 @onready var body: MeshInstance3D = $body
@@ -19,9 +22,13 @@ var is_attacking:=false
 const DASH_SPEED = 15.0
 const DASH_DURATION = 0.3
 
+const SNAP_COOLDOWN=1.5
+var snap_cooldown = false
+
 
 var is_dashing = false
 var is_snapping= false
+
 var snap_target: Node3D = null
 const SNAP_DISTANCE = 1.5
 const SNAP_DURATION = 0.25
@@ -53,9 +60,10 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	if is_snapping:
+	if is_snapping or snap_cooldown:
 		velocity = Vector3.ZERO
 		return
+	
 	
 	if Input.is_action_just_pressed("hit"):
 		hitcounter+=1
@@ -155,6 +163,8 @@ func movement(delta):
 				12.0*delta
 			)
 
+
+
 func snap():
 	snap_target = enemy_detector.get_closest_enemy()
 	
@@ -162,6 +172,7 @@ func snap():
 		return
 	
 	is_snapping=true
+	snap_cooldown=true
 	
 	var direction = snap_target.global_position - global_position
 	direction.y = 0
@@ -199,6 +210,9 @@ func snap():
 	# Play attack
 	basicanims.play("hit_one")
 	
+	await get_tree().create_timer(SNAP_COOLDOWN).timeout
+	snap_cooldown = false
+	
 	
 
 
@@ -216,6 +230,8 @@ func enable_hand_2():
 
 func disable_hand_2():
 	hand_2_col.disabled = true
+	
+
 
 func _on_basicanims_animation_finished(anim_name: StringName) -> void:
 	if anim_name=="hit_one" or anim_name=="hit_two" or anim_name=="hit_three":
