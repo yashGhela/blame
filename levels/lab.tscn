@@ -61,3 +61,12 @@ speaker_key = "Alan"
 
 [node name="enemydummy" parent="MeshInstance3D2" unique_id=1676875816 instance=ExtResource("4_78pcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.459692, 0.06453371, -0.42143726)
+
+[node name="enemydummy" parent="." unique_id=780828099 instance=ExtResource("4_78pcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023248196, 1.5, -6.8847237)
+
+[node name="enemydummy2" parent="." unique_id=1798628262 instance=ExtResource("4_78pcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.028976, 1.5, -4.732465)
+
+[node name="enemydummy3" parent="." unique_id=1662489217 instance=ExtResource("4_78pcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2631207, 1.5, -10.455828)

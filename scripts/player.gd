@@ -13,11 +13,18 @@ var is_attacking:=false
 @onready var basicanims: AnimationPlayer = $basicanims
 @onready var hand_1_col: CollisionShape3D = $body/hand1/hand1area/hand1col
 @onready var hand_2_col: CollisionShape3D = $body/hand2/hand2area/hand2col
+@onready var enemy_detector: Node = $EnemyDetector
 
 
 const DASH_SPEED = 15.0
 const DASH_DURATION = 0.3
+
+
 var is_dashing = false
+var is_snapping= false
+var snap_target: Node3D = null
+const SNAP_DISTANCE = 1.5
+const SNAP_DURATION = 0.25
 var dash_timer = 0.0
 var hitcounter = 0
 
@@ -46,6 +53,10 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	if is_snapping:
+		velocity = Vector3.ZERO
+		return
+	
 	if Input.is_action_just_pressed("hit"):
 		hitcounter+=1
 		match hitcounter:
@@ -64,6 +75,12 @@ func _physics_process(delta: float) -> void:
 		
 		if hitcounter>3:
 			hitcounter=0
+	
+	if Input.is_action_just_pressed("snap"):
+		if is_snapping:
+			return
+		
+		snap()
 	
 	movement(delta)
 	move_and_slide()
@@ -138,11 +155,77 @@ func movement(delta):
 				12.0*delta
 			)
 
+func snap():
+	snap_target = enemy_detector.get_closest_enemy()
+	
+	if snap_target==null:
+		return
+	
+	is_snapping=true
+	
+	var direction = snap_target.global_position - global_position
+	direction.y = 0
+	direction = direction.normalized()
+
+	var target_position = snap_target.global_position - direction * SNAP_DISTANCE
+	target_position.y = global_position.y
+
+	# Face the enemy
+	body.rotation.y = atan2(
+		direction.x,
+		direction.z
+	) - deg_to_rad(90)
+
+	# Move player toward enemy
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
+
+	tween.tween_property(
+		self,
+		"global_position",
+		target_position,
+		SNAP_DURATION
+	)
+
+	await tween.finished
+
+	# Make sure we don't continue if something interrupted the snap
+	if not is_snapping:
+		return
+
+	velocity = Vector3.ZERO
+
+	# Play attack
+	basicanims.play("hit_one")
+	
+	
+
+
+func enable_hand_1():
+	hand_1_col.disabled = false
+
+
+func disable_hand_1():
+	hand_1_col.disabled = true
+
+
+func enable_hand_2():
+	hand_2_col.disabled = false
+
+
+func disable_hand_2():
+	hand_2_col.disabled = true
 
 func _on_basicanims_animation_finished(anim_name: StringName) -> void:
 	if anim_name=="hit_one" or anim_name=="hit_two" or anim_name=="hit_three":
 		hand_1_col.disabled=true
 		hand_2_col.disabled=true
+		
+		if is_snapping:
+			is_snapping = false
+			snap_target = null
+			
 
 
 func _on_hand_2_area_body_entered(body: Node3D) -> void:
