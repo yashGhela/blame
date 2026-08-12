@@ -11,6 +11,7 @@ script = ExtResource("1_80puj")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2100995481]
 
 [node name="bg" type="ColorRect" parent="CanvasLayer" unique_id=1911106533]
+visible = false
 offset_left = 181.0
 offset_top = 479.0
 offset_right = 920.0

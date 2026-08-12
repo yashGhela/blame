@@ -2,7 +2,7 @@ extends Area3D
 
 @export_file("*.json") var scene_text_file: String
 @export var dialog_key := ""
-@export var speaker_key:=""
+@export var speaker_key := ""
 
 var scene_text: Dictionary = {}
 var selected_text: Array = []
@@ -13,9 +13,11 @@ var active_area := false
 @onready var speaker = $CanvasLayer/bg/speaker
 @onready var chat = $CanvasLayer/bg/chat
 
+
 func _ready():
 	background.visible = false
 	scene_text = load_scene_text()
+
 
 func _input(event):
 	if active_area and event.is_action_pressed("interact"):
@@ -24,13 +26,16 @@ func _input(event):
 		else:
 			start_dialog(dialog_key)
 
+
 func load_scene_text() -> Dictionary:
 	if FileAccess.file_exists(scene_text_file):
 		var file = FileAccess.open(scene_text_file, FileAccess.READ)
 		var json = JSON.new()
 		json.parse(file.get_as_text())
 		return json.get_data()
+
 	return {}
+
 
 func start_dialog(text_key: String):
 	if !scene_text.has(text_key):
@@ -39,16 +44,22 @@ func start_dialog(text_key: String):
 
 	background.visible = true
 	in_progress = true
+
+	# Get all dialogue for this key
 	var dialogue = scene_text[text_key]
 
 	# Only keep dialogue from the selected speaker
 	selected_text.clear()
 
-	for line in dialogue:
-		if line.has("Speaker") and line["Speaker"] == speaker_key:
-			selected_text.append(line)
+	for entry in dialogue:
+		if entry.has("speaker") and entry["speaker"] == speaker_key:
+			
+			# Add every chat line from that speaker
+			for line in entry["chat"]:
+				selected_text.append(line)
 
-	# If there are no lines for this speaker
+			break
+
 	if selected_text.is_empty():
 		push_warning("No dialogue found for speaker '%s'." % speaker_key)
 		finish()
@@ -58,9 +69,15 @@ func start_dialog(text_key: String):
 
 
 func show_text():
+	if selected_text.is_empty():
+		finish()
+		return
+
 	var text = selected_text.pop_front()
-	chat.text= text.chat
-	speaker.text = text.speaker
+
+	chat.text = text
+	speaker.text = speaker_key
+
 
 func next_line():
 	if selected_text.size() > 0:
@@ -68,15 +85,18 @@ func next_line():
 	else:
 		finish()
 
+
 func finish():
-	chat.text= ""
+	chat.text = ""
 	speaker.text = ""
 	background.visible = false
 	in_progress = false
 
+
 func _on_area_entered(area: Area3D):
 	if area.is_in_group("Player"):
 		active_area = true
+
 
 func _on_area_exited(area: Area3D):
 	if area.is_in_group("Player"):
