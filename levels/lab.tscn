@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b7emtawiuyv63" path="res://addons/proto-csgs/textures/dark/texture_03.png" id="1_s7fyc"]
 [ext_resource type="PackedScene" uid="uid://bna6v4o3ed0gr" path="res://gameplay-elements/player.tscn" id="2_kk6di"]
+[ext_resource type="PackedScene" uid="uid://6k3dmrgn7nen" path="res://gameplay-elements/dialog_area.tscn" id="3_f2qrd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h8r6w"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -25,6 +26,8 @@ size = Vector3(40, 1, 40)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s7fyc"]
 points = PackedVector3Array(-20, -0.5, -20, -20, 0.5, -20, 20, -0.5, -20, -20, -0.5, 20, -20, 0.5, 20, 20, 0.5, -20, 20, -0.5, 20, 20, 0.5, 20)
 
+[sub_resource type="SphereMesh" id="SphereMesh_kk6di"]
+
 [node name="lab" type="Node3D" unique_id=1874987844]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1507294475]
@@ -45,3 +48,12 @@ shape = SubResource("ConvexPolygonShape3D_s7fyc")
 
 [node name="Player" parent="." unique_id=1172021385 instance=ExtResource("2_kk6di")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.910486, 1.4999981, -1.276288)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1760894691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.040857, 1.4354663, 0)
+mesh = SubResource("SphereMesh_kk6di")
+
+[node name="DialogArea" parent="MeshInstance3D2" unique_id=1050050756 instance=ExtResource("3_f2qrd")]
+scene_text_file = "res://json/test.json"
+dialog_key = "T1"
+speaker_key = "Alan"

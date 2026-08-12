@@ -5,6 +5,7 @@ const SPEED = 9.0
 const JUMP_VELOCITY = 4.5
 
 var is_attacking:=false
+@onready var health_bar: ProgressBar = $"CanvasLayer/health bar"
 
 var hitcount=1
 @onready var body: MeshInstance3D = $body
@@ -18,9 +19,9 @@ var dash_timer = 0.0
 
 var health = 100
 
-#func _process(delta: float) -> void:
-	#health_bar.value=health
-	#cooldownbar.value=1-(floor_slam_cooldown/FLOOR_SLAM_COOLDOWN_TIME)
+func _process(delta: float) -> void:
+	health_bar.value=health
+
 
 func _physics_process(delta: float) -> void:
 	

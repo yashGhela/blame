@@ -25,7 +25,7 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_7xu6t"]
 radius = 1.9401652
 
-[node name="Player" type="CharacterBody3D" unique_id=1172021385]
+[node name="Player" type="CharacterBody3D" unique_id=1172021385 groups=["Player"]]
 script = ExtResource("1_7xu6t")
 
 [node name="body" type="MeshInstance3D" parent="." unique_id=1924451069]
@@ -40,7 +40,7 @@ script = ExtResource("1_1qg6e")
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1915076007]
 transform = Transform3D(0.70710677, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.70710677, -0.4055798, 0.579228, 8, 8, 8)
 projection = 1
-size = 6.0
+size = 8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1869511890]
 
@@ -54,7 +54,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_kuag1")
 value = 50.0
 show_percentage = false
 
-[node name="InteractionZone" type="Area3D" parent="." unique_id=1056080400]
+[node name="InteractionZone" type="Area3D" parent="." unique_id=1056080400 groups=["Player"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionZone" unique_id=2059397340]
 shape = SubResource("SphereShape3D_7xu6t")

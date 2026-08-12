@@ -1,80 +1,84 @@
-extends CanvasLayer
+extends Area3D
 
-@export_file("*json") var scene_text_file: String
+@export_file("*.json") var scene_text_file: String
+@export var dialog_key := ""
+@export var speaker_key:=""
 
 var scene_text: Dictionary = {}
 var selected_text: Array = []
-@onready var textspopup: CanvasLayer = $"."
-@onready var textmsgportal: ColorRect = $textmsgportal
-@onready var scroll_container: ScrollContainer = $textmsgportal/MarginContainer/ScrollContainer
-var in_progress: bool = false
+var in_progress := false
+var active_area := false
 
-@onready var message_container: VBoxContainer = $textmsgportal/MarginContainer/ScrollContainer/message_container
-var pending_transition: String = ""
-#we are testing changes here
+@onready var background = $CanvasLayer/bg
+@onready var speaker = $CanvasLayer/bg/speaker
+@onready var chat = $CanvasLayer/bg/chat
+
 func _ready():
-	textmsgportal.visible=false
-	scene_text= load_scene_text()
-	Signalbus.connect("display_chat",Callable(self, "on_display_chats"))
+	background.visible = false
+	scene_text = load_scene_text()
 
+func _input(event):
+	if active_area and event.is_action_pressed("interact"):
+		if in_progress:
+			next_line()
+		else:
+			start_dialog(dialog_key)
 
-func load_scene_text():
+func load_scene_text() -> Dictionary:
 	if FileAccess.file_exists(scene_text_file):
 		var file = FileAccess.open(scene_text_file, FileAccess.READ)
-		var test_json_conv = JSON.new()
-		test_json_conv.parse(file.get_as_text())
-		return test_json_conv.get_data()
-		
+		var json = JSON.new()
+		json.parse(file.get_as_text())
+		return json.get_data()
+	return {}
+
+func start_dialog(text_key: String):
+	if !scene_text.has(text_key):
+		push_warning("Dialog key '%s' not found." % text_key)
+		return
+
+	background.visible = true
+	in_progress = true
+	var dialogue = scene_text[text_key]
+
+	# Only keep dialogue from the selected speaker
+	selected_text.clear()
+
+	for line in dialogue:
+		if line.has("Speaker") and line["Speaker"] == speaker_key:
+			selected_text.append(line)
+
+	# If there are no lines for this speaker
+	if selected_text.is_empty():
+		push_warning("No dialogue found for speaker '%s'." % speaker_key)
+		finish()
+		return
+
+	show_text()
+
+
 func show_text():
-	var current_text = selected_text.pop_front()
-	
-	
-	
-	
+	var text = selected_text.pop_front()
+	chat.text= text.chat
+	speaker.text = text.speaker
+
 func next_line():
 	if selected_text.size() > 0:
 		show_text()
-		scroll_container.get_v_scroll_bar().value = scroll_container.get_v_scroll_bar().max_value
-	
-
 	else:
 		finish()
 
 func finish():
-	Signalbus.emit_signal("talkingover")
-	for child in message_container.get_children():
-		child.queue_free()
-
-	textmsgportal.visible = false
+	chat.text= ""
+	speaker.text = ""
+	background.visible = false
 	in_progress = false
-	
-	if pending_transition:
-			match pending_transition:
-				"level_1":
-					get_tree().change_scene_to_file("res://levels/level_1.tscn")
-				"main_menu":
-					get_tree().change_scene_to_file("res://levels/main_menu.tscn")
-				
-	
-	
-	
-	
-	
-		
-func on_display_chats(text_key):
-	if in_progress:
-		next_line()
-	else:
-		print("This is the text key: ", text_key)
-		
-		for child in message_container.get_children():
-			child.queue_free()
 
-		
-		
-		textmsgportal.visible = true
-		in_progress = true
-		selected_text = scene_text[text_key].duplicate()
-		show_text()
-		
-		
+func _on_area_entered(area: Area3D):
+	if area.is_in_group("Player"):
+		active_area = true
+
+func _on_area_exited(area: Area3D):
+	if area.is_in_group("Player"):
+		active_area = false
+		finish()
