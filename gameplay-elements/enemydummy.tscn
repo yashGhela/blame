@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://x4ckhy6l1561"]
+
+[ext_resource type="Shader" uid="uid://505mpqnvv57c" path="res://gameplay-elements/shaders/outline.gdshader" id="1_6mrxm"]
+[ext_resource type="Script" uid="uid://1jby1ydjmpor" path="res://scripts/enemydummy.gd" id="1_08eie"]
+[ext_resource type="Shader" uid="uid://cjo3oo6xq6ppo" path="res://gameplay-elements/shaders/celshader.gdshader" id="2_08eie"]
+[ext_resource type="Texture2D" uid="uid://cxkahe6u325xi" path="res://gameplay-elements/shaders/colorgradient.tres" id="3_rpiyj"]
+[ext_resource type="Texture2D" uid="uid://dmfydmdgl0paw" path="res://gameplay-elements/shaders/fresnelgradient.tres" id="4_5i5pv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcknr"]
+render_priority = 0
+shader = ExtResource("1_6mrxm")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xj7wh"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_vcknr")
+shader = ExtResource("2_08eie")
+shader_parameter/albedo = Color(0.79438055, 0.20339543, 0.3048529, 1)
+shader_parameter/color_gradient = ExtResource("3_rpiyj")
+shader_parameter/fresnel_gradient = ExtResource("4_5i5pv")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kp6qb"]
+material = SubResource("ShaderMaterial_xj7wh")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6mrxm"]
+points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
+
+[sub_resource type="Animation" id="Animation_08eie"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:mesh:material:shader_parameter/albedo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.79438055, 0.20339543, 0.3048529, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rpiyj"]
+resource_name = "flash"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:mesh:material:shader_parameter/albedo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.79438055, 0.20339543, 0.3048529, 1), Color(0.4174295, 0.07428769, 0.13873672, 1), Color(0.79438055, 0.20339543, 0.3048529, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5i5pv"]
+_data = {
+&"RESET": SubResource("Animation_08eie"),
+&"flash": SubResource("Animation_rpiyj")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08eie"]
+bg_color = Color(0.118602924, 0.12422668, 0.11810652, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpiyj"]
+bg_color = Color(0.58045745, 0.15661797, 0.1927754, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_08eie"]
+viewport_path = NodePath("SubViewport")
+
+[node name="enemydummy" type="CharacterBody3D" unique_id=1676875816 groups=["Enemy"]]
+script = ExtResource("1_08eie")
+
+[node name="body" type="MeshInstance3D" parent="." unique_id=1087318313]
+mesh = SubResource("CapsuleMesh_kp6qb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=662995733]
+shape = SubResource("ConvexPolygonShape3D_6mrxm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=813590262]
+libraries/ = SubResource("AnimationLibrary_5i5pv")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=410466426]
+size = Vector2i(158, 27)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=14843163]
+offset_right = 158.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_08eie")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rpiyj")
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=530192055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4127567, 0)
+texture = SubResource("ViewportTexture_08eie")

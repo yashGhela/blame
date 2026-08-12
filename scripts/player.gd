@@ -1,23 +1,25 @@
 extends CharacterBody3D
 
 
-const SPEED = 9.0
+var SPEED = 9.0
 const JUMP_VELOCITY = 4.5
 
 var is_attacking:=false
+
+
 @onready var health_bar: ProgressBar = $"CanvasLayer/health bar"
-
-var hitcount=1
 @onready var body: MeshInstance3D = $body
-
 @onready var camera_3d: Camera3D = $CameraPivot/Camera3D
+@onready var basicanims: AnimationPlayer = $basicanims
+@onready var hand_1_col: CollisionShape3D = $body/hand1/hand1area/hand1col
+@onready var hand_2_col: CollisionShape3D = $body/hand2/hand2area/hand2col
 
 
 const DASH_SPEED = 15.0
 const DASH_DURATION = 0.3
 var is_dashing = false
 var dash_timer = 0.0
-
+var hitcounter = 0
 
 var health = 100
 
@@ -43,6 +45,25 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("hit"):
+		hitcounter+=1
+		match hitcounter:
+			1:
+				basicanims.play("hit_one")
+				SPEED=10.0
+			2:
+				basicanims.play("hit_two")
+				SPEED=11.0
+			3:
+				basicanims.play("hit_three")
+				SPEED= 12.0
+			
+		hand_1_col.disabled=false
+		hand_2_col.disabled=false
+		
+		if hitcounter>3:
+			hitcounter=0
 	
 	movement(delta)
 	move_and_slide()
@@ -116,3 +137,25 @@ func movement(delta):
 				target_y - deg_to_rad(90),
 				12.0*delta
 			)
+
+
+func _on_basicanims_animation_finished(anim_name: StringName) -> void:
+	if anim_name=="hit_one" or anim_name=="hit_two" or anim_name=="hit_three":
+		hand_1_col.disabled=true
+		hand_2_col.disabled=true
+
+
+func _on_hand_2_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Enemy"):
+		var kd = global_position.direction_to(body.global_position)
+		kd.y=0;
+		var kv = 25
+		body.get_knockback(kd,kv,20)
+
+
+func _on_hand_1_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Enemy"):
+		var kd = global_position.direction_to(body.global_position)
+		kd.y=0;
+		var kv = 10
+		body.get_knockback(kd,kv,20)

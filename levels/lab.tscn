@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b7emtawiuyv63" path="res://addons/proto-csgs/textures/dark/texture_03.png" id="1_s7fyc"]
 [ext_resource type="PackedScene" uid="uid://bna6v4o3ed0gr" path="res://gameplay-elements/player.tscn" id="2_kk6di"]
 [ext_resource type="PackedScene" uid="uid://6k3dmrgn7nen" path="res://gameplay-elements/dialog_area.tscn" id="3_f2qrd"]
+[ext_resource type="PackedScene" uid="uid://x4ckhy6l1561" path="res://gameplay-elements/enemydummy.tscn" id="4_78pcp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h8r6w"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -57,3 +58,6 @@ mesh = SubResource("SphereMesh_kk6di")
 scene_text_file = "res://json/test.json"
 dialog_key = "T1"
 speaker_key = "Alan"
+
+[node name="enemydummy" parent="MeshInstance3D2" unique_id=1676875816 instance=ExtResource("4_78pcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.459692, 0.06453371, -0.42143726)
