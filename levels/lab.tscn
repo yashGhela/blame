@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bna6v4o3ed0gr" path="res://gameplay-elements/player.tscn" id="2_kk6di"]
 [ext_resource type="PackedScene" uid="uid://6k3dmrgn7nen" path="res://gameplay-elements/dialog_area.tscn" id="3_f2qrd"]
 [ext_resource type="PackedScene" uid="uid://x4ckhy6l1561" path="res://gameplay-elements/enemydummy.tscn" id="4_78pcp"]
+[ext_resource type="PackedScene" uid="uid://jabqc3dt5u03" path="res://gameplay-elements/deathzone.tscn" id="5_ihxt7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h8r6w"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -70,3 +71,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.028976, 1.5, -4.732465)
 
 [node name="enemydummy3" parent="." unique_id=1662489217 instance=ExtResource("4_78pcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2631207, 1.5, -10.455828)
+
+[node name="deathzone" parent="." unique_id=1751392379 instance=ExtResource("5_ihxt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.108017, 0)

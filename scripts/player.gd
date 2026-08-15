@@ -18,9 +18,12 @@ var is_attacking:=false
 @onready var hand_2_col: CollisionShape3D = $body/hand2/hand2area/hand2col
 @onready var enemy_detector: Node = $EnemyDetector
 
+const FIRE_RELOAD=1.5
+var fire_shots:=6
+var is_reloading=false
 
 const DASH_SPEED = 18.0
-const DASH_DURATION = 0.5
+const DASH_DURATION = 0.3
 
 const SNAP_COOLDOWN=1.5
 var snap_cooldown = false
@@ -165,7 +168,18 @@ func movement(delta):
 				12.0*delta
 			)
 
-
+func fire():
+	if fire_shots<=0 and not is_reloading:
+		return
+	
+	
+	if fire_shots<=0:
+		is_reloading=true
+		get_tree().create_timer(FIRE_RELOAD).timeout.connect(
+			func():
+				is_reloading=false
+				fire_shots=6
+		)
 
 func snap():
 	snap_target = enemy_detector.get_furthest_enemy()
