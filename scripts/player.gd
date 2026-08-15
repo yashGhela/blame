@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	if is_snapping or snap_cooldown:
+	if is_snapping:
 		velocity = Vector3.ZERO
 		return
 	
@@ -168,7 +168,7 @@ func movement(delta):
 
 
 func snap():
-	snap_target = enemy_detector.get_closest_enemy()
+	snap_target = enemy_detector.get_furthest_enemy()
 	
 	if snap_target==null:
 		return
@@ -214,6 +214,7 @@ func snap():
 	
 	await get_tree().create_timer(SNAP_COOLDOWN).timeout
 	snap_cooldown = false
+	
 	
 	
 
