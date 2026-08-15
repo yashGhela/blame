@@ -8,7 +8,7 @@ var is_attacking:=false
 
 @export var hit_pull_distance := 1.0
 @export var hit_pull_speed := 8.0
-
+@export var is_phasing:=false
 
 @onready var health_bar: ProgressBar = $"CanvasLayer/health bar"
 @onready var body: MeshInstance3D = $body
@@ -19,8 +19,8 @@ var is_attacking:=false
 @onready var enemy_detector: Node = $EnemyDetector
 
 
-const DASH_SPEED = 15.0
-const DASH_DURATION = 0.3
+const DASH_SPEED = 18.0
+const DASH_DURATION = 0.5
 
 const SNAP_COOLDOWN=1.5
 var snap_cooldown = false
@@ -106,6 +106,7 @@ func movement(delta):
 		# Handle dash
 	if Input.is_action_just_pressed("dash") and not is_dashing:
 		is_dashing = true
+		is_phasing=true
 		dash_timer = DASH_DURATION
 		var input_dir := Input.get_vector("left", "right", "forward", "back")
 		var iso_forward = Vector3(1, 0, 1).normalized()
@@ -126,6 +127,7 @@ func movement(delta):
 		dash_timer -= delta
 		if dash_timer <= 0:
 			is_dashing = false
+			is_phasing=false
 			# Reset velocity or keep current speed
 			velocity.x = 0
 			velocity.z = 0
