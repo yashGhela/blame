@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 var SPEED = 9.0
 const JUMP_VELOCITY = 4.5
+const PHASE_JUMP_FORCE = 8.0
 
 var is_attacking:=false
 
@@ -30,6 +31,8 @@ const DASH_DURATION = 0.3
 
 const SNAP_COOLDOWN=1.5
 var snap_cooldown = false
+
+var jumpnum=1
 
 
 var is_dashing = false
@@ -109,9 +112,13 @@ func movement(delta):
 		velocity += get_gravity() * delta
 		
 
+
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+
+
+	
 	
 	
 		# Handle dash
