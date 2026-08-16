@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c4kjijnttjoi8"]
+
+[ext_resource type="Script" uid="uid://m2xkycfsvosa" path="res://scripts/playershot.gd" id="1_ff3vq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0r8tn"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ff3vq"]
+sky_material = SubResource("ProceduralSkyMaterial_0r8tn")
+
+[sub_resource type="Environment" id="Environment_md5mn"]
+background_mode = 2
+sky = SubResource("Sky_ff3vq")
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0r8tn"]
+radius = 0.64123863
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ff3vq"]
+cull_mode = 1
+shading_mode = 0
+grow = true
+grow_amount = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0r8tn"]
+next_pass = SubResource("StandardMaterial3D_ff3vq")
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ff3vq"]
+material = SubResource("StandardMaterial3D_0r8tn")
+
+[node name="playershot" type="Area3D" unique_id=264403298]
+script = ExtResource("1_ff3vq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1958844165]
+environment = SubResource("Environment_md5mn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1861447203]
+shape = SubResource("SphereShape3D_0r8tn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1716782322]
+mesh = SubResource("SphereMesh_ff3vq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

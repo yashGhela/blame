@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxoaks62tgj6h" path="res://scripts/camera_pivot.gd" id="1_1qg6e"]
 [ext_resource type="Script" uid="uid://jm5fl2d8qbk1" path="res://scripts/player.gd" id="1_7xu6t"]
+[ext_resource type="PackedScene" uid="uid://c4kjijnttjoi8" path="res://gameplay-elements/playershot.tscn" id="2_05j85"]
 [ext_resource type="Script" uid="uid://b7e63djr4gt5y" path="res://scripts/enemy_detector.gd" id="3_kuag1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5rg3e"]
@@ -260,6 +261,7 @@ _data = {
 
 [node name="Player" type="CharacterBody3D" unique_id=1172021385 groups=["Player"]]
 script = ExtResource("1_7xu6t")
+bullet = ExtResource("2_05j85")
 
 [node name="body" type="MeshInstance3D" parent="." unique_id=1924451069]
 mesh = SubResource("CapsuleMesh_5rg3e")
@@ -306,6 +308,20 @@ theme_override_styles/background = SubResource("StyleBoxFlat_7xu6t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_kuag1")
 value = 50.0
 show_percentage = false
+
+[node name="shotnumberslabel" type="Label" parent="CanvasLayer" unique_id=2008028537]
+offset_left = 14.0
+offset_top = 80.0
+offset_right = 54.0
+offset_bottom = 103.0
+text = "Shot Number: "
+
+[node name="shotamount" type="Label" parent="CanvasLayer" unique_id=1846336593]
+offset_left = 131.0
+offset_top = 81.0
+offset_right = 171.0
+offset_bottom = 104.0
+text = "6"
 
 [node name="InteractionZone" type="Area3D" parent="." unique_id=1056080400 groups=["Player"]]
 

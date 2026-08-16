@@ -9,6 +9,8 @@ var is_attacking:=false
 @export var hit_pull_distance := 1.0
 @export var hit_pull_speed := 8.0
 @export var is_phasing:=false
+@export var bullet:PackedScene
+var bulletinst
 
 @onready var health_bar: ProgressBar = $"CanvasLayer/health bar"
 @onready var body: MeshInstance3D = $body
@@ -17,6 +19,7 @@ var is_attacking:=false
 @onready var hand_1_col: CollisionShape3D = $body/hand1/hand1area/hand1col
 @onready var hand_2_col: CollisionShape3D = $body/hand2/hand2area/hand2col
 @onready var enemy_detector: Node = $EnemyDetector
+@onready var shotamount: Label = $CanvasLayer/shotamount
 
 const FIRE_RELOAD=1.5
 var fire_shots:=6
@@ -59,6 +62,7 @@ func on_talking_activated():
 
 func _process(delta: float) -> void:
 	health_bar.value=health
+	shotamount.text= str(fire_shots)
 
 
 func _physics_process(delta: float) -> void:
@@ -92,6 +96,10 @@ func _physics_process(delta: float) -> void:
 			return
 		
 		snap()
+		
+	
+	if Input.is_action_just_pressed("fire"):
+		fire()
 	
 	movement(delta)
 	move_and_slide()
@@ -169,8 +177,38 @@ func movement(delta):
 			)
 
 func fire():
-	if fire_shots<=0 and not is_reloading:
+	if fire_shots<=0 or is_reloading:
 		return
+	
+	
+	fire_shots-=1
+	
+	bulletinst = bullet.instantiate()
+	
+	get_tree().current_scene.add_child(bulletinst)
+	
+	bulletinst.global_position = global_position
+	
+	var target= enemy_detector.get_closest_enemy()
+	
+	var tween = create_tween()
+	
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
+
+	tween.tween_property(
+		bulletinst,
+		"global_position",
+		target.global_position,
+		SNAP_DURATION
+	)
+	
+	await tween.finished
+	
+	if bulletinst:
+		bulletinst.queue_free()
+	
+	
 	
 	
 	if fire_shots<=0:
