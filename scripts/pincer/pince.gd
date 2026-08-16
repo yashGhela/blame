@@ -1,11 +1,10 @@
 extends State
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
-@onready var ap: AnimationPlayer = $"../../pincer/AnimationPlayer"
+
 
 
 func enter():
-	print("Entered Pince")
-	ap.play("Cube|shake")
+	print("Pincing")
 	animation_player.play("pince")
 
 

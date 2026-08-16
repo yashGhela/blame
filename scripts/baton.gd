@@ -45,18 +45,12 @@ func _physics_process(delta: float) -> void:
 	if playerdist<1:
 		is_attacking = true 
 		
-	if !is_attacking and !is_knocked:
-		map.play("rig|walk")
-	elif !is_knocked:
-		map.play("rig|whack")
+	#if !is_attacking and !is_knocked:
+		#map.play("rig|walk")
+	#elif !is_knocked:
+		#map.play("rig|whack")
 	
-	if direction != Vector3.ZERO:
-		var target_y = atan2(direction.x, direction.z)
-		enemymodel.rotation.y = lerp_angle(
-		enemymodel.rotation.y,
-		target_y,
-		8.0 * delta
-	)
+
 	if kv:
 		velocity=kv
 		

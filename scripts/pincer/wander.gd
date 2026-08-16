@@ -7,7 +7,6 @@ var move_direction:Vector3
 var wander_time:float
 var player:CharacterBody3D
 @export var move_speed:=0.2
-@onready var ap: AnimationPlayer = $"../../pincer/AnimationPlayer"
 
 
 func randomize_wander():
@@ -24,7 +23,7 @@ func enter():
 func physics_update(_delta:float):
 	if enemy:
 		enemy.mv = move_direction* move_speed
-	ap.play("Cube|move")
+	
 	var playerdist = enemy.global_position.distance_to(player.global_position)
 	if playerdist<3.0:
 		Transitioned.emit(self,"Pince")

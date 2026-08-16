@@ -13,14 +13,14 @@ func _process(delta: float) -> void:
 		bulletinst.queue_free()
 func enter():
 	print("Entered Shoot")
-	ap.play("Cylinder|shoot")
+	
 	bulletinst = bullet.instantiate()
 	get_tree().current_scene.add_child(bulletinst)
 	player = get_tree().get_first_node_in_group("Player")
 	bulletinst.global_position= enemy.global_position
 	var tween = create_tween()
-	shoot.play()
+	
 	
 	tween.tween_property(bulletinst,"global_position", player.global_position,1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.finished.connect(func():ap.play("Cylinder|unshoot"); bulletinst.queue_free())
+
 	get_tree().create_timer(2.0).timeout.connect(func():Transitioned.emit(self,"Idle"))

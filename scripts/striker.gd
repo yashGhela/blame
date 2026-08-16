@@ -43,13 +43,7 @@ func _physics_process(delta: float) -> void:
 		
 	
 	
-	if direction != Vector3.ZERO:
-		var target_y = atan2(direction.x, direction.z)
-		striker.rotation.y = lerp_angle(
-		striker.rotation.y,
-		target_y,
-		8.0 * delta
-	)
+
 
 		
 	move_and_slide()

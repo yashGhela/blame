@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://6k3dmrgn7nen" path="res://gameplay-elements/dialog_area.tscn" id="3_f2qrd"]
 [ext_resource type="PackedScene" uid="uid://x4ckhy6l1561" path="res://gameplay-elements/enemydummy.tscn" id="4_78pcp"]
 [ext_resource type="PackedScene" uid="uid://jabqc3dt5u03" path="res://gameplay-elements/deathzone.tscn" id="5_ihxt7"]
+[ext_resource type="PackedScene" uid="uid://ddgmqofrqjq3u" path="res://gameplay-elements/baton.tscn" id="6_m7mwk"]
+[ext_resource type="PackedScene" uid="uid://dqaq2e4ndjg72" path="res://gameplay-elements/pincer.tscn" id="7_nyxwp"]
+[ext_resource type="PackedScene" uid="uid://d4n1saad2w120" path="res://gameplay-elements/striker.tscn" id="8_iqmmm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h8r6w"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -74,3 +77,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2631207, 1.5, -10.455828)
 
 [node name="deathzone" parent="." unique_id=1751392379 instance=ExtResource("5_ihxt7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.108017, 0)
+
+[node name="Roamer" parent="." unique_id=723997313 instance=ExtResource("6_m7mwk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8105831, 1.5, 11.684631)
+
+[node name="pincer" parent="." unique_id=2139333681 instance=ExtResource("7_nyxwp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.70042, 1.5117279, 12.570645)
+
+[node name="Striker" parent="." unique_id=1843178445 instance=ExtResource("8_iqmmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.662665, 1.5, 7.3804927)
