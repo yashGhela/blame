@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cxkahe6u325xi" path="res://gameplay-elements/shaders/colorgradient.tres" id="2_lrgld"]
 [ext_resource type="Texture2D" uid="uid://dmfydmdgl0paw" path="res://gameplay-elements/shaders/fresnelgradient.tres" id="3_lrgld"]
 [ext_resource type="Script" uid="uid://bcw8lgq8vjksu" path="res://scripts/statemachine.gd" id="6_cxlqj"]
-[ext_resource type="Script" uid="uid://b67xj6wef2lop" path="res://scripts/state.gd" id="7_ivgk6"]
+[ext_resource type="Script" uid="uid://bttyrcrumr5ys" path="res://scripts/baton/wander.gd" id="7_6kj7b"]
+[ext_resource type="Script" uid="uid://brocd75xslbww" path="res://scripts/baton/chase.gd" id="8_mglrk"]
+[ext_resource type="Script" uid="uid://djrar07ronud6" path="res://scripts/baton/attack.gd" id="9_mglrk"]
+[ext_resource type="Script" uid="uid://fsg3qerj1jjk" path="res://scripts/stun.gd" id="10_j8vx4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_csglw"]
 render_priority = 0
@@ -79,7 +82,7 @@ bg_color = Color(0.20885223, 0.21486989, 0.24036837, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25bhr"]
 bg_color = Color(0.71084154, 0.2374247, 0.23473942, 1)
 
-[node name="Roamer" type="CharacterBody3D" unique_id=723997313 groups=["Enemy", "Roamer"]]
+[node name="Baton" type="CharacterBody3D" unique_id=723997313 groups=["Enemy", "Roamer"]]
 script = ExtResource("1_erxl1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=400187661]
@@ -114,14 +117,16 @@ show_percentage = false
 script = ExtResource("6_cxlqj")
 
 [node name="Wander" type="Node" parent="StateMachine" unique_id=1675788882]
-script = ExtResource("7_ivgk6")
+script = ExtResource("7_6kj7b")
 
 [node name="Chase" type="Node" parent="StateMachine" unique_id=1468216925]
-script = ExtResource("7_ivgk6")
+script = ExtResource("8_mglrk")
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=139587114]
-script = ExtResource("7_ivgk6")
+script = ExtResource("9_mglrk")
 
 [node name="Stun" type="Node" parent="StateMachine" unique_id=68336411]
-script = ExtResource("7_ivgk6")
+script = ExtResource("10_j8vx4")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1728999800]
