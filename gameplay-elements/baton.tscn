@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxkahe6u325xi" path="res://gameplay-elements/shaders/colorgradient.tres" id="2_lrgld"]
 [ext_resource type="Texture2D" uid="uid://dmfydmdgl0paw" path="res://gameplay-elements/shaders/fresnelgradient.tres" id="3_lrgld"]
 [ext_resource type="Script" uid="uid://bcw8lgq8vjksu" path="res://scripts/statemachine.gd" id="6_cxlqj"]
-[ext_resource type="Script" uid="uid://bttyrcrumr5ys" path="res://scripts/baton/wander.gd" id="7_6kj7b"]
+[ext_resource type="Script" uid="uid://bttyrcrumr5ys" path="res://scripts/baton/idle.gd" id="7_6kj7b"]
 [ext_resource type="Script" uid="uid://brocd75xslbww" path="res://scripts/baton/chase.gd" id="8_mglrk"]
 [ext_resource type="Script" uid="uid://djrar07ronud6" path="res://scripts/baton/attack.gd" id="9_mglrk"]
 [ext_resource type="Script" uid="uid://fsg3qerj1jjk" path="res://scripts/stun.gd" id="10_j8vx4"]
@@ -115,9 +115,9 @@ show_percentage = false
 
 [node name="StateMachine" type="Node" parent="." unique_id=1794563664 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_cxlqj")
-initial_state = NodePath("Wander")
+initial_state = NodePath("Idle")
 
-[node name="Wander" type="Node" parent="StateMachine" unique_id=1675788882 node_paths=PackedStringArray("enemy")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1675788882 node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_6kj7b")
 enemy = NodePath("../..")
 
