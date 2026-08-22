@@ -76,7 +76,9 @@ func pick_new_target():
 	) * rand_dist
 
 	var target = enemy.global_position + offset
-
+	target.y=1.0
+	
+	
 	var closest_point = NavigationServer3D.map_get_closest_point(
 		map,
 		target
@@ -85,7 +87,9 @@ func pick_new_target():
 	print("RANDOM TARGET: ", target)
 	print("NAV TARGET: ", closest_point)
 
-	navagent.target_position = closest_point
+
+	if closest_point!=Vector3.ZERO:
+		navagent.target_position= target.global_position
 
 
 func _on_timer_timeout():
