@@ -5,12 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://6k3dmrgn7nen" path="res://gameplay-elements/dialog_area.tscn" id="3_f2qrd"]
 [ext_resource type="PackedScene" uid="uid://x4ckhy6l1561" path="res://gameplay-elements/enemydummy.tscn" id="4_78pcp"]
 [ext_resource type="PackedScene" uid="uid://jabqc3dt5u03" path="res://gameplay-elements/deathzone.tscn" id="5_ihxt7"]
-[ext_resource type="PackedScene" uid="uid://ddgmqofrqjq3u" path="res://gameplay-elements/baton.tscn" id="6_m7mwk"]
 [ext_resource type="PackedScene" uid="uid://dqaq2e4ndjg72" path="res://gameplay-elements/pincer.tscn" id="7_nyxwp"]
 [ext_resource type="PackedScene" uid="uid://d4n1saad2w120" path="res://gameplay-elements/striker.tscn" id="8_iqmmm"]
 [ext_resource type="ArrayMesh" uid="uid://dkh6jptjdt5co" path="res://addons/kaykit_prototype_bits/Assets/obj/Pallet_Small.obj" id="9_b3q8b"]
 [ext_resource type="ArrayMesh" uid="uid://cjrtrudxblp36" path="res://addons/kaykit_prototype_bits/Assets/obj/Primitive_Cube_Small.obj" id="10_wjq2d"]
+[ext_resource type="Script" uid="uid://ygwdyn0rru1y" path="res://scripts/baton.gd" id="11_kjann"]
 [ext_resource type="ArrayMesh" uid="uid://b4bccuglmqb8k" path="res://addons/kaykit_prototype_bits/Assets/obj/Primitive_Pillar.obj" id="11_m7mk3"]
+[ext_resource type="Shader" uid="uid://505mpqnvv57c" path="res://gameplay-elements/shaders/outline.gdshader" id="12_ymjt8"]
+[ext_resource type="Shader" uid="uid://cjo3oo6xq6ppo" path="res://gameplay-elements/shaders/celshader.gdshader" id="13_tkh5e"]
+[ext_resource type="Texture2D" uid="uid://cxkahe6u325xi" path="res://gameplay-elements/shaders/colorgradient.tres" id="14_hwqyu"]
+[ext_resource type="Texture2D" uid="uid://dmfydmdgl0paw" path="res://gameplay-elements/shaders/fresnelgradient.tres" id="15_7eqko"]
+[ext_resource type="Script" uid="uid://bcw8lgq8vjksu" path="res://scripts/statemachine.gd" id="16_kgcfc"]
+[ext_resource type="Script" uid="uid://bttyrcrumr5ys" path="res://scripts/baton/wander.gd" id="17_evq4b"]
+[ext_resource type="Script" uid="uid://brocd75xslbww" path="res://scripts/baton/chase.gd" id="18_72j0j"]
+[ext_resource type="Script" uid="uid://djrar07ronud6" path="res://scripts/baton/attack.gd" id="19_q6lx8"]
+[ext_resource type="Script" uid="uid://fsg3qerj1jjk" path="res://scripts/stun.gd" id="20_fpedt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h8r6w"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -39,6 +48,77 @@ size = Vector3(40, 1, 40)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s7fyc"]
 points = PackedVector3Array(-20, -0.5, -20, -20, 0.5, -20, 20, -0.5, -20, -20, -0.5, 20, -20, 0.5, 20, 20, 0.5, -20, 20, -0.5, 20, 20, 0.5, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_csglw"]
+render_priority = 0
+shader = ExtResource("12_ymjt8")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kals3"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_csglw")
+shader = ExtResource("13_tkh5e")
+shader_parameter/albedo = Color(0.3730778, 0.17846334, 0.21392998, 1)
+shader_parameter/color_gradient = ExtResource("14_hwqyu")
+shader_parameter/fresnel_gradient = ExtResource("15_7eqko")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_oh6i2"]
+material = SubResource("ShaderMaterial_kals3")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ivgk6"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.5
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kals3"]
+points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
+
+[sub_resource type="Animation" id="Animation_kjh3y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/albedo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.3730778, 0.17846334, 0.21392998, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_25bhr"]
+resource_name = "flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/albedo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.099999994, 0.13333334, 0.16666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.3730778, 0.17846334, 0.21392998, 1), Color(0.3730778, 0.17846334, 0.21392998, 1), Color(0.62782705, 0, 0.123623066, 1), Color(0.62782705, 0, 0.123623066, 1), Color(0.3730778, 0.17846334, 0.21392998, 1), Color(0.3730778, 0.17846334, 0.21392998, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wlegl"]
+_data = {
+&"RESET": SubResource("Animation_kjh3y"),
+&"flash": SubResource("Animation_25bhr")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sho70"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjh3y"]
+bg_color = Color(0.20885223, 0.21486989, 0.24036837, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25bhr"]
+bg_color = Color(0.71084154, 0.2374247, 0.23473942, 1)
 
 [node name="lab" type="Node3D" unique_id=1874987844]
 
@@ -76,9 +156,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2631207, 1.5, -10.455828)
 [node name="deathzone" parent="." unique_id=1751392379 instance=ExtResource("5_ihxt7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.108017, 0)
 
-[node name="Roamer" parent="." unique_id=723997313 instance=ExtResource("6_m7mwk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8105831, 1.5, 11.684631)
-
 [node name="pincer" parent="." unique_id=2139333681 instance=ExtResource("7_nyxwp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.70042, 1.5117279, 12.570645)
 
@@ -109,3 +186,58 @@ mesh = ExtResource("11_m7mk3")
 [node name="PrimitiveCubeSmall" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=730632370]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9480476, 0.5, 2.6460946)
 mesh = ExtResource("10_wjq2d")
+
+[node name="Baton" type="CharacterBody3D" parent="." unique_id=723997313 groups=["Enemy", "Roamer"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7859855, 2.5, 8.24271)
+script = ExtResource("11_kjann")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Baton" unique_id=400187661]
+mesh = SubResource("CapsuleMesh_oh6i2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Baton/MeshInstance3D" unique_id=26752221]
+transform = Transform3D(1, 0, 0, 0, 0.62586904, -0.77992815, 0, 0.77992815, 0.62586904, 0.64409184, 0.27124262, 0.50101)
+mesh = SubResource("CylinderMesh_ivgk6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baton" unique_id=203886457]
+shape = SubResource("ConvexPolygonShape3D_kals3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Baton" unique_id=1408798050]
+libraries/ = SubResource("AnimationLibrary_wlegl")
+
+[node name="Sprite3D" type="Sprite3D" parent="Baton" unique_id=1611662443 groups=["Enemy", "Roamer"]]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 1.1932182, 0)
+texture = SubResource("ViewportTexture_sho70")
+
+[node name="SubViewport" type="SubViewport" parent="Baton" unique_id=1737096586 groups=["Enemy", "Roamer"]]
+size = Vector2i(180, 20)
+
+[node name="ProgressBar" type="ProgressBar" parent="Baton/SubViewport" unique_id=2112610491]
+offset_right = 183.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_kjh3y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_25bhr")
+rounded = true
+show_percentage = false
+
+[node name="StateMachine" type="Node" parent="Baton" unique_id=1794563664 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("16_kgcfc")
+initial_state = NodePath("Wander")
+
+[node name="Wander" type="Node" parent="Baton/StateMachine" unique_id=1675788882 node_paths=PackedStringArray("enemy")]
+script = ExtResource("17_evq4b")
+enemy = NodePath("../..")
+
+[node name="Chase" type="Node" parent="Baton/StateMachine" unique_id=1468216925]
+script = ExtResource("18_72j0j")
+
+[node name="Attack" type="Node" parent="Baton/StateMachine" unique_id=139587114]
+script = ExtResource("19_q6lx8")
+
+[node name="Stun" type="Node" parent="Baton/StateMachine" unique_id=68336411]
+script = ExtResource("20_fpedt")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Baton" unique_id=1728999800]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="Baton" unique_id=2128350028]

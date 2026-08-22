@@ -76,8 +76,7 @@ func pick_new_target():
 	) * rand_dist
 
 	var target = enemy.global_position + offset
-	target.y=1.0
-	
+
 	
 	var closest_point = NavigationServer3D.map_get_closest_point(
 		map,
