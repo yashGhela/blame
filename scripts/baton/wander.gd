@@ -66,29 +66,18 @@ func pick_new_target():
 		print("NO NAVIGATION MAP!")
 		return
 
-	var random_angle = randf() * TAU
-	var rand_dist = randf_range(2.0, 5.0)
-
-	var offset = Vector3(
-		cos(random_angle),
-		0,
-		sin(random_angle)
-	) * rand_dist
-
-	var target = enemy.global_position + offset
-
 	
-	var closest_point = NavigationServer3D.map_get_closest_point(
-		map,
-		target
-	)
-
-	print("RANDOM TARGET: ", target)
-	print("NAV TARGET: ", closest_point)
-
-
-	if closest_point!=Vector3.ZERO:
-		navagent.target_position= target.global_position
+	var point = NavigationServer3D.map_get_random_point(map,1,false)
+	
+	var map_bounds = 50.0  # Example: 50 units from center
+	point.x = clamp(point.x, -map_bounds, map_bounds)
+	point.z = clamp(point.z, -map_bounds, map_bounds)
+	
+	print(point)
+	# Optionally, project the point back onto the navigation mesh
+	point = NavigationServer3D.map_get_closest_point(map, point)
+	
+	navagent.target_position = point
 
 
 func _on_timer_timeout():
