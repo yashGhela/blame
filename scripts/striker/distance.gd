@@ -29,7 +29,7 @@ func physics_update(_delta:float):
 
 	
 	
-	if distance >= 10.0:
+	if distance >= 15.0:
 		Transitioned.emit(self, "Idle")
 		return
 	

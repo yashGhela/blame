@@ -76,7 +76,7 @@ func get_knockback(direction, force, damage):
 
 
 func _on_hitzone_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and !body.is_phasing:
 		body.health -= 10
 		print(body.health)
 

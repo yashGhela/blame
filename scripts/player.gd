@@ -22,6 +22,8 @@ var bulletinst
 @onready var enemy_detector: Node = $EnemyDetector
 @onready var shotamount: Label = $CanvasLayer/shotamount
 
+
+
 const FIRE_RELOAD=1.5
 var fire_shots:=6
 var is_reloading=false

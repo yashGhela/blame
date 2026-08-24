@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://buqjkvt2atjpn"]
 
-[ext_resource type="Script" uid="uid://8rwstppkjpre" path="res://scripts/striker_shot.gd" id="1_p2ccd"]
+[ext_resource type="Script" uid="uid://cunqj4kci8o1g" path="res://scripts/striker_shot.gd" id="1_p2ccd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6q1e"]
 albedo_color = Color(0.3406356, 0.11132685, 0.054640375, 1)

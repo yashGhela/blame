@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and !body.is_phasing:
 		print("hitting player")
 		body.health-=10
 		

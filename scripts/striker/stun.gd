@@ -20,5 +20,5 @@ func wait():
 		Transitioned.emit(self,"Shoot")
 	elif dist<=5.0:
 		Transitioned.emit(self, "Distance")
-	elif dist>=10.0:
+	elif dist>=15.0:
 		Transitioned.emit(self,"Idle")

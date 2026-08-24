@@ -15,7 +15,7 @@ func enter():
 func _physics_process(delta: float) -> void:
 	var dist = enemy.global_position.distance_to(player.global_position)
 	
-	if dist<10.0 and dist>5.0:
+	if dist<15.0 and dist>5.0:
 		Transitioned.emit(self,"Shoot")
 	elif dist<5.0:
 		Transitioned.emit(self,"Distance")
