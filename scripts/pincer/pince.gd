@@ -9,14 +9,11 @@ func enter():
 	print("Pincing")
 	enemy.mv = Vector3.ZERO
 	player= get_tree().get_first_node_in_group("Player")
-	
+	has_shot = false
+	wait_done = false
+	hit()
 	
 
-func _process(delta: float) -> void:
-	if !has_shot:
-		hit()
-	else:
-		wait()
 
 func hit():
 	animation_player.play("pince")
@@ -37,6 +34,9 @@ func physics_update(_delta:float):
 	if wait_done:
 		if playerdist<3.0:
 			has_shot=false
+			wait_done=false
+			
+			hit()
 		elif playerdist<7.0 and playerdist>3.0:
 			Transitioned.emit(self,"Chase")
 		elif playerdist>7.0:

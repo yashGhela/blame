@@ -11,16 +11,23 @@ var has_shot = false
 var wait_done= false
 
 var bulletinst
+
+
 func _process(delta: float) -> void:
 	if enemy.health<=0:
 		if bulletinst:
 			bulletinst.queue_free()
+	
 
 
 func enter():
 	print("Entered Shoot")
 	enemy.mv = Vector3.ZERO
 	player = get_tree().get_first_node_in_group("Player")
+	
+	has_shot = false
+	wait_done = false
+	hit()
 	
 
 func hit():
@@ -55,3 +62,6 @@ func physics_update(_delta:float):
 			Transitioned.emit(self,"Distance")
 		elif dist>5.0 and dist<10.0:
 			has_shot=false
+			wait_done=false
+			
+			hit()

@@ -35,7 +35,8 @@ func physics_update(_delta:float):
 	
 	if distance<3.0:
 		Transitioned.emit(self,"Pince")
+		enemy.mv=Vector3.ZERO
 		return
 		
-	enemy.mv =direction*5.0
+	enemy.mv =direction*move_speed
 	
