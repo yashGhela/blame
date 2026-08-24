@@ -60,16 +60,16 @@ func _ready() -> void:
 	Signalbus.connect("talking",Callable(self,"on_talking_activated"))
 	Signalbus.connect("talkingended",Callable(self,"on_talking_ended"))
 
-func on_talking_ended():
-	var tween = create_tween()
-	
-	tween.tween_property(camera_3d,"size",8.0,0.7 ).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	
-#Logic to zoom in when talking
-func on_talking_activated():
-	var tween = create_tween()
-	
-	tween.tween_property(camera_3d,"size",4.0,0.7 ).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+#func on_talking_ended():
+	#var tween = create_tween()
+	#
+	#tween.tween_property(camera_3d,"size",8.0,0.7 ).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	#
+##Logic to zoom in when talking
+#func on_talking_activated():
+	#var tween = create_tween()
+	#
+	#tween.tween_property(camera_3d,"size",4.0,0.7 ).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 
 func _process(delta: float) -> void:
@@ -182,13 +182,7 @@ func movement(delta):
 		# Don't allow normal movement during dash
 	
 		
-	if direction!=Vector3.ZERO:
-			var target_y = atan2(direction.x, direction.z)
-			body.rotation.y = lerp_angle(
-				body.rotation.y,
-				target_y - deg_to_rad(90),
-				12.0*delta
-			)
+
 
 func fire():
 	if fire_shots<=0 or is_reloading:
@@ -250,7 +244,7 @@ func snap():
 	target_position.y = global_position.y
 
 	# Face the enemy
-	body.rotation.y = atan2(
+	rotation.y = atan2(
 		direction.x,
 		direction.z
 	) - deg_to_rad(90)
