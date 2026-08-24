@@ -215,8 +215,9 @@ enemy = NodePath("../..")
 script = ExtResource("9_mglrk")
 enemy = NodePath("../..")
 
-[node name="Stun" type="Node" parent="StateMachine" unique_id=68336411]
+[node name="Stun" type="Node" parent="StateMachine" unique_id=68336411 node_paths=PackedStringArray("enemy")]
 script = ExtResource("10_j8vx4")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1728999800]

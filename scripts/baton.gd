@@ -10,6 +10,9 @@ var health = 100
 @onready var enemymodel: Node3D = $enemymodel
 
 @export var kd = 25.0
+var timeshit= 0
+@onready var state_machine: Node = $StateMachine
+@onready var stun: Node = $StateMachine/Stun
 
 var player
 var kv: Vector3 = Vector3.ZERO
@@ -30,6 +33,10 @@ func _process(_delta: float) -> void:
 
 	if health <= 0:
 		queue_free()
+	
+	if timeshit>=3 and state_machine.current_state!="Stun":
+		state_machine.current_state = stun
+		timeshit=0
 
 
 func _physics_process(delta: float) -> void:
@@ -60,7 +67,7 @@ func get_knockback(direction, force, damage):
 
 	is_knocked = true
 
-	
+	timeshit+=1
 
 	await get_tree().create_timer(0.2).timeout
 
