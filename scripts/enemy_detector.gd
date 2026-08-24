@@ -17,11 +17,12 @@ func get_closest_enemy() -> CharacterBody3D:
 		if enemy == null:
 			continue
 		
-		var distance := player_combat_system.global_position.distance_squared_to(enemy.global_position)
+		if enemy is CharacterBody3D:
+			var distance := player_combat_system.global_position.distance_squared_to(enemy.global_position)
 		
-		if distance < closest_distance:
-			closest_distance = distance
-			closest = enemy
+			if distance < closest_distance:
+				closest_distance = distance
+				closest = enemy
 	
 	return closest
 
