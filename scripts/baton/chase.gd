@@ -18,13 +18,16 @@ func physics_update(_delta:float):
 	
 	print("chasing")
 	
-	var current_location = enemy.global_transform.origin
-	var next_location = enemy.navagent.get_next_path_position()
-	print(next_location)
-	var new_velocity = (next_location-current_location).normalized() * move_speed	
-	enemy.mv= new_velocity.move_toward(new_velocity,.25)
+
 	
+	
+	var direction = enemy.global_position.direction_to(player.global_position)
 	var distance = enemy.global_position.distance_to(player.global_position)
+	
+	direction.y = 0
+	
+	print(distance)
+	
 	
 	if distance > 7.0:
 		Transitioned.emit(self, "Idle")
@@ -33,9 +36,8 @@ func physics_update(_delta:float):
 	if distance<1.0:
 		Transitioned.emit(self,"Attack")
 		return
-	
-	var direction = (player.global_position - enemy.global_position).normalized()
-	direction.y = 0
+		
+	enemy.mv =direction*5.0
 	
 
 
