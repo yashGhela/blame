@@ -24,16 +24,16 @@ func physics_update(_delta:float):
 	var direction = enemy.global_position.direction_to(player.global_position)
 	var distance = enemy.global_position.distance_to(player.global_position)
 	
-	enemy.look_at(-player.global_position,Vector3.UP)
+	enemy.look_at(enemy.global_position + -direction, Vector3.UP)
 	direction.y = 0
 
 	
 	
-	if distance > 10.0:
+	if distance >= 10.0:
 		Transitioned.emit(self, "Idle")
 		return
 	
-	if distance<10.0 and distance>5.0:
+	if distance>5.0:
 		Transitioned.emit(self,"Shoot")
 		return
 		

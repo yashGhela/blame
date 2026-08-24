@@ -56,7 +56,7 @@ func physics_update(_delta:float):
 	var dist = enemy.global_position.distance_to(player.global_position)
 	
 	if wait_done:
-		if dist>10.0:
+		if dist>=10.0:
 			Transitioned.emit(self,"Idle")
 		elif dist<5.0:
 			Transitioned.emit(self,"Distance")
