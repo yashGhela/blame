@@ -13,16 +13,20 @@ var wait_done= false
 var bulletinst
 func _process(delta: float) -> void:
 	if enemy.health<=0:
-		bulletinst.queue_free()
+		if bulletinst:
+			bulletinst.queue_free()
+
+
 func enter():
 	print("Entered Shoot")
-	
+	enemy.mv = Vector3.ZERO
+	player = get_tree().get_first_node_in_group("Player")
 	
 
 func hit():
 	bulletinst = bullet.instantiate()
 	get_tree().current_scene.add_child(bulletinst)
-	player = get_tree().get_first_node_in_group("Player")
+	
 	bulletinst.global_position= enemy.global_position
 	var tween = create_tween()
 	

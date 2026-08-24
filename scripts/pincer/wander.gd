@@ -6,7 +6,7 @@ extends State
 var move_direction:Vector3
 var wander_time:float
 var player:CharacterBody3D
-@export var move_speed:=0.2
+@export var move_speed:=4.0
 
 
 func randomize_wander():
@@ -21,8 +21,6 @@ func enter():
 
 
 func physics_update(_delta:float):
-	if enemy:
-		enemy.mv = move_direction* move_speed
 	
 	var playerdist = enemy.global_position.distance_to(player.global_position)
 	if playerdist<3.0:

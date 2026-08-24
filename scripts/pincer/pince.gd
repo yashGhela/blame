@@ -7,6 +7,7 @@ var has_shot =false
 
 func enter():
 	print("Pincing")
+	enemy.mv = Vector3.ZERO
 	player= get_tree().get_first_node_in_group("Player")
 	
 	

@@ -182,18 +182,20 @@ disabled = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=882864398 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_olgdf")
-initial_state = NodePath("Wander")
+initial_state = NodePath("Idle")
 
-[node name="Wander" type="Node" parent="StateMachine" unique_id=1467590520 node_paths=PackedStringArray("enemy")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1467590520 node_paths=PackedStringArray("enemy")]
 script = ExtResource("3_yirjq")
 enemy = NodePath("../..")
 
-[node name="Pince" type="Node" parent="StateMachine" unique_id=1924428502]
+[node name="Pince" type="Node" parent="StateMachine" unique_id=1924428502 node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_j2d5f")
+enemy = NodePath("../..")
 
 [node name="Chase" type="Node" parent="StateMachine" unique_id=163687252 node_paths=PackedStringArray("enemy")]
 script = ExtResource("9_hruex")
 enemy = NodePath("../..")
+move_speed = 4.0
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="Stun" type="Node" parent="StateMachine" unique_id=1770414590 node_paths=PackedStringArray("enemy")]

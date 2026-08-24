@@ -57,12 +57,14 @@ enemy = NodePath("../..")
 bullet = ExtResource("4_1f3hm")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
-[node name="Stun" type="Node" parent="StateMachine" unique_id=1585772465]
+[node name="Stun" type="Node" parent="StateMachine" unique_id=1585772465 node_paths=PackedStringArray("enemy")]
 script = ExtResource("6_gonhq")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
-[node name="Distance" type="Node" parent="StateMachine" unique_id=2100746044]
+[node name="Distance" type="Node" parent="StateMachine" unique_id=2100746044 node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_j3lue")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1830354926]
