@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://cenkxpuxgi78i" path="res://scripts/striker/shoot.gd" id="3_fphcr"]
 [ext_resource type="PackedScene" uid="uid://buqjkvt2atjpn" path="res://gameplay-elements/striker_shot.tscn" id="4_1f3hm"]
 [ext_resource type="Shader" uid="uid://505mpqnvv57c" path="res://gameplay-elements/shaders/outline.gdshader" id="6_4bfoy"]
+[ext_resource type="Script" uid="uid://wcf13puvq17d" path="res://scripts/striker/stun.gd" id="6_gonhq"]
 [ext_resource type="Shader" uid="uid://cjo3oo6xq6ppo" path="res://gameplay-elements/shaders/celshader.gdshader" id="7_6y0ib"]
+[ext_resource type="Script" uid="uid://cq68vig007axp" path="res://scripts/striker/distance.gd" id="7_j3lue"]
 [ext_resource type="Texture2D" uid="uid://cxkahe6u325xi" path="res://gameplay-elements/shaders/colorgradient.tres" id="8_xdig5"]
 [ext_resource type="Texture2D" uid="uid://dmfydmdgl0paw" path="res://gameplay-elements/shaders/fresnelgradient.tres" id="9_8dcc2"]
 
@@ -53,6 +55,14 @@ enemy = NodePath("../..")
 script = ExtResource("3_fphcr")
 enemy = NodePath("../..")
 bullet = ExtResource("4_1f3hm")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Stun" type="Node" parent="StateMachine" unique_id=1585772465]
+script = ExtResource("6_gonhq")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Distance" type="Node" parent="StateMachine" unique_id=2100746044]
+script = ExtResource("7_j3lue")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1830354926]

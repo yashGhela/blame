@@ -4,11 +4,12 @@
 [ext_resource type="Script" uid="uid://bcw8lgq8vjksu" path="res://scripts/statemachine.gd" id="2_olgdf"]
 [ext_resource type="Script" uid="uid://ck2rq01115ewo" path="res://scripts/pincer/wander.gd" id="3_yirjq"]
 [ext_resource type="Script" uid="uid://d3ami3gevc26v" path="res://scripts/pincer/pince.gd" id="4_j2d5f"]
-[ext_resource type="Script" uid="uid://b67xj6wef2lop" path="res://scripts/state.gd" id="5_hvi3n"]
 [ext_resource type="Shader" uid="uid://cjo3oo6xq6ppo" path="res://gameplay-elements/shaders/celshader.gdshader" id="5_knxr8"]
 [ext_resource type="Shader" uid="uid://505mpqnvv57c" path="res://gameplay-elements/shaders/outline.gdshader" id="5_yus1n"]
 [ext_resource type="Texture2D" uid="uid://cxkahe6u325xi" path="res://gameplay-elements/shaders/colorgradient.tres" id="6_yus1n"]
 [ext_resource type="Texture2D" uid="uid://dmfydmdgl0paw" path="res://gameplay-elements/shaders/fresnelgradient.tres" id="7_fj51u"]
+[ext_resource type="Script" uid="uid://gmajokhsiawr" path="res://scripts/pincer/chase.gd" id="9_hruex"]
+[ext_resource type="Script" uid="uid://0f7m3dpej8hg" path="res://scripts/pincer/stun.gd" id="10_1bibk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6yjpq"]
 
@@ -164,7 +165,7 @@ bg_color = Color(0.71084154, 0.2374247, 0.23473942, 1)
 [node name="pincer" type="CharacterBody3D" unique_id=2139333681 groups=["Enemy", "Pincer"]]
 script = ExtResource("1_f6ek2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1902865765]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1902865765 groups=["Pincer"]]
 mesh = SubResource("CapsuleMesh_6yjpq")
 surface_material_override/0 = SubResource("ShaderMaterial_1bibk")
 
@@ -190,8 +191,14 @@ enemy = NodePath("../..")
 [node name="Pince" type="Node" parent="StateMachine" unique_id=1924428502]
 script = ExtResource("4_j2d5f")
 
-[node name="Chase" type="Node" parent="StateMachine" unique_id=163687252]
-script = ExtResource("5_hvi3n")
+[node name="Chase" type="Node" parent="StateMachine" unique_id=163687252 node_paths=PackedStringArray("enemy")]
+script = ExtResource("9_hruex")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Stun" type="Node" parent="StateMachine" unique_id=1770414590 node_paths=PackedStringArray("enemy")]
+script = ExtResource("10_1bibk")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="areamesh" type="MeshInstance3D" parent="." unique_id=435207918]
