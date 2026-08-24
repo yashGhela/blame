@@ -189,7 +189,7 @@ libraries/ = SubResource("AnimationLibrary_wlegl")
 transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 1.1932182, 0)
 texture = SubResource("ViewportTexture_kjh3y")
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=1737096586 groups=["Enemy", "Roamer"]]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1737096586]
 size = Vector2i(180, 20)
 
 [node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=2112610491]
@@ -224,3 +224,5 @@ metadata/_custom_type_script = "uid://b67xj6wef2lop"
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1728999800]
 
 [node name="Timer" type="Timer" parent="." unique_id=2128350028]
+
+[connection signal="body_entered" from="MeshInstance3D/MeshInstance3D/StaticBody3D" to="." method="_on_static_body_3d_body_entered"]
