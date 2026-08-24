@@ -3,6 +3,7 @@ extends State
 var player:CharacterBody3D
 @export var enemy: CharacterBody3D
 func enter():
+	print("stunned")
 	player = get_tree().get_first_node_in_group("Player")
 	
 	wait()

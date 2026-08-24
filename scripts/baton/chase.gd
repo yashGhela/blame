@@ -25,8 +25,7 @@ func physics_update(_delta:float):
 	var distance = enemy.global_position.distance_to(player.global_position)
 	
 	direction.y = 0
-	
-	print(distance)
+
 	
 	
 	if distance > 7.0:

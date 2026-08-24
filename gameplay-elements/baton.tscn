@@ -172,7 +172,7 @@ mesh = SubResource("CapsuleMesh_oh6i2")
 transform = Transform3D(1, 0, 0, 0, 0.625869, -0.7799281, 0, 0.7799281, 0.625869, 0.64409184, 0.27124262, 0.50101)
 mesh = SubResource("CylinderMesh_ivgk6")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D/MeshInstance3D" unique_id=209501005]
+[node name="StaticBody3D" type="Area3D" parent="MeshInstance3D/MeshInstance3D" unique_id=1164745333]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MeshInstance3D/StaticBody3D" unique_id=1215925006]
 shape = SubResource("ConvexPolygonShape3D_mglrk")
@@ -223,3 +223,5 @@ metadata/_custom_type_script = "uid://b67xj6wef2lop"
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1728999800]
 
 [node name="Timer" type="Timer" parent="." unique_id=2128350028]
+
+[connection signal="body_entered" from="MeshInstance3D/MeshInstance3D/StaticBody3D" to="." method="_on_static_body_3d_body_entered"]
