@@ -6,5 +6,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		print("hitting player")
 		body.health-=10
 		
-#func _ready() -> void:
-	#get_tree().create_timer(2.0).timeout.connect(func():queue_free())
+		queue_free()
+		
+func _ready() -> void:
+	get_tree().create_timer(2.0).timeout.connect(func():queue_free())
