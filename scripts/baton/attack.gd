@@ -29,6 +29,7 @@ func _process(delta: float) -> void:
 		hit()
 
 func physics_update(_delta:float):
+	enemy.look_at(player.global_position,Vector3.UP)
 	dist = enemy.global_position.distance_to(player.global_position)
 	
 	if wait_done:

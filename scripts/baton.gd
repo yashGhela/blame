@@ -34,7 +34,7 @@ func _process(_delta: float) -> void:
 	if health <= 0:
 		queue_free()
 	
-	if timeshit>=2 and state_machine.current_state!=stun:
+	if timeshit>=3 and state_machine.current_state!=stun:
 		state_machine.current_state = stun
 		timeshit=0
 
@@ -87,5 +87,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_static_body_3d_body_entered(body: Node3D) -> void:
+	print(body)
 	if body.is_in_group("Player"):
 		player.health-=10

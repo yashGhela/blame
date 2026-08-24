@@ -24,6 +24,7 @@ func physics_update(_delta:float):
 	var direction = enemy.global_position.direction_to(player.global_position)
 	var distance = enemy.global_position.distance_to(player.global_position)
 	
+	enemy.look_at(player.global_position,Vector3.UP)
 	direction.y = 0
 
 	

@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 func get_knockback(direction, force,damage):
 	health-=damage
 	kv =  direction.normalized() * force
-	ap.play("flash")
+	#ap.play("flash")
 	
 	await get_tree().create_timer(0.2).timeout
 	

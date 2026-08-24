@@ -131,7 +131,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.16666667, 0.33333334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.89455104, 0, 0), Vector3(1.8831055, 0, 0), Vector3(0.89455104, 0, 0)]
+"values": [Vector3(-0.96342176, 0, 0), Vector3(-1.8832103, 0, 0), Vector3(-0.8953539, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -143,7 +143,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.16666667, 0.33333334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.64409184, 0.27124262, 0.50101), Vector3(0.64409184, -0.13165313, 0.50101), Vector3(0.64409184, 0.27124262, 0.50101)]
+"values": [Vector3(0.644, 0.271, -0.501), Vector3(0.644, -0.132, -0.501), Vector3(0.644, 0.271, -0.501)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wlegl"]
@@ -169,12 +169,13 @@ script = ExtResource("1_erxl1")
 mesh = SubResource("CapsuleMesh_oh6i2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=26752221]
-transform = Transform3D(1, 0, 0, 0, 0.625869, -0.7799281, 0, 0.7799281, 0.625869, 0.64409184, 0.27124262, 0.50101)
+transform = Transform3D(1, 0, 0, 0, 0.625869, -0.779928, 0, 0.779928, 0.625869, 0.64409184, 0.27124262, 0.50101)
 mesh = SubResource("CylinderMesh_ivgk6")
 
 [node name="StaticBody3D" type="Area3D" parent="MeshInstance3D/MeshInstance3D" unique_id=1164745333]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MeshInstance3D/StaticBody3D" unique_id=1215925006]
+transform = Transform3D(1.185, 0, 0, 0, 1.185, 0, 0, 0, 1.185, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_mglrk")
 disabled = true
 
@@ -223,5 +224,3 @@ metadata/_custom_type_script = "uid://b67xj6wef2lop"
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1728999800]
 
 [node name="Timer" type="Timer" parent="." unique_id=2128350028]
-
-[connection signal="body_entered" from="MeshInstance3D/MeshInstance3D/StaticBody3D" to="." method="_on_static_body_3d_body_entered"]
