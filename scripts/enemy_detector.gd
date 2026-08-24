@@ -34,10 +34,11 @@ func get_furthest_enemy() -> CharacterBody3D:
 		if enemy == null:
 			continue
 		
-		var distance := player_combat_system.global_position.distance_squared_to(enemy.global_position)
+		if enemy is CharacterBody3D:
+			var distance := player_combat_system.global_position.distance_squared_to(enemy.global_position)
 		
-		if distance > furthest_distance:
-			furthest_distance = distance
-			furthest = enemy
+			if distance > furthest_distance:
+				furthest_distance = distance
+				furthest = enemy
 	
 	return furthest

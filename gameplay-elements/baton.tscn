@@ -98,7 +98,7 @@ shape = SubResource("ConvexPolygonShape3D_kals3")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1408798050]
 libraries/ = SubResource("AnimationLibrary_wlegl")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1611662443 groups=["Enemy", "Roamer"]]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1611662443]
 transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 1.1932182, 0)
 texture = SubResource("ViewportTexture_kjh3y")
 
@@ -121,8 +121,9 @@ initial_state = NodePath("Idle")
 script = ExtResource("7_6kj7b")
 enemy = NodePath("../..")
 
-[node name="Chase" type="Node" parent="StateMachine" unique_id=1468216925]
+[node name="Chase" type="Node" parent="StateMachine" unique_id=1468216925 node_paths=PackedStringArray("enemy")]
 script = ExtResource("8_mglrk")
+enemy = NodePath("../..")
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=139587114]
 script = ExtResource("9_mglrk")

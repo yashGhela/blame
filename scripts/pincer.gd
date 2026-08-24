@@ -41,7 +41,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func get_knockback(direction, force,damage):
 	health-=damage
 	kv =  direction.normalized() * force
-	ap.play("flash")
+	#ap.play("flash")
 	await get_tree().create_timer(0.5).timeout
 	kv = Vector3.ZERO
 	

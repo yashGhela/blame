@@ -164,7 +164,7 @@ bg_color = Color(0.71084154, 0.2374247, 0.23473942, 1)
 [node name="pincer" type="CharacterBody3D" unique_id=2139333681 groups=["Enemy", "Pincer"]]
 script = ExtResource("1_f6ek2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1902865765 groups=["Enemy", "Pincer"]]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1902865765]
 mesh = SubResource("CapsuleMesh_6yjpq")
 surface_material_override/0 = SubResource("ShaderMaterial_1bibk")
 
