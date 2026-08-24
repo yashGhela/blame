@@ -16,7 +16,7 @@ func enter():
 
 func physics_update(_delta:float):
 	
-	print("chasing")
+	print("pincer chasing")
 	
 
 	

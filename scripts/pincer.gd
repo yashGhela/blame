@@ -5,11 +5,19 @@ var kv:Vector3 = Vector3.ZERO
 var health:=75
 @onready var progress_bar: ProgressBar = $SubViewport/ProgressBar
 var mv:=Vector3.ZERO
+var timeshit= 0
+@onready var state_machine: Node = $StateMachine
+@onready var stun: Node = $StateMachine/Stun
 
 func _process(delta: float) -> void:
 	progress_bar.value=health
 	if health<=0:
 		queue_free()
+	
+	
+	if timeshit>=3 and state_machine.current_state!=stun:
+		state_machine.current_state = stun
+		timeshit=0
 
 
 func _physics_process(delta: float) -> void:

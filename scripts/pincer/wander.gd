@@ -27,3 +27,5 @@ func physics_update(_delta:float):
 	var playerdist = enemy.global_position.distance_to(player.global_position)
 	if playerdist<3.0:
 		Transitioned.emit(self,"Pince")
+	elif playerdist<7.0:
+		Transitioned.emit(self,"Chase")

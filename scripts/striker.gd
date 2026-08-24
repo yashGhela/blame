@@ -7,6 +7,9 @@ var health:=100
 @onready var ap: AnimationPlayer = $striker/AnimationPlayer
 var mv:=Vector3.ZERO
 @onready var progress_bar: ProgressBar = $SubViewport/ProgressBar
+var timeshit= 0
+@onready var state_machine: Node = $StateMachine
+@onready var stun: Node = $StateMachine/Stun
 
 func _process(delta: float) -> void:
 	progress_bar.value=health
@@ -16,6 +19,11 @@ func _process(delta: float) -> void:
 	if health<=0:
 		
 		queue_free()
+	
+	
+	if timeshit>=3 and state_machine.current_state!=stun:
+		state_machine.current_state = stun
+		timeshit=0
 
 func _physics_process(delta: float) -> void:
 	

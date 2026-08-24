@@ -24,3 +24,11 @@ func enter():
 	tween.tween_property(bulletinst,"global_position", player.global_position,1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 	get_tree().create_timer(2.0).timeout.connect(func():Transitioned.emit(self,"Idle"))
+
+func physics_update(_delta:float):
+	var dist = enemy.global_position.distance_to(player.global_position)
+	
+	if dist>10.0:
+		Transitioned.emit(self,"Idle")
+	elif dist<5.0:
+		Transitioned.emit(self,"Distance")
