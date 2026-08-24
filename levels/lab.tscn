@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cqtt1y4qc4rak"]
 
 [ext_resource type="Texture2D" uid="uid://b7emtawiuyv63" path="res://addons/proto-csgs/textures/dark/texture_03.png" id="1_s7fyc"]
-[ext_resource type="PackedScene" uid="uid://bna6v4o3ed0gr" path="res://gameplay-elements/player.tscn" id="2_kk6di"]
 [ext_resource type="PackedScene" uid="uid://6k3dmrgn7nen" path="res://gameplay-elements/dialog_area.tscn" id="3_f2qrd"]
 [ext_resource type="PackedScene" uid="uid://x4ckhy6l1561" path="res://gameplay-elements/enemydummy.tscn" id="4_78pcp"]
 [ext_resource type="PackedScene" uid="uid://jabqc3dt5u03" path="res://gameplay-elements/deathzone.tscn" id="5_ihxt7"]
@@ -11,6 +10,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cjrtrudxblp36" path="res://addons/kaykit_prototype_bits/Assets/obj/Primitive_Cube_Small.obj" id="10_wjq2d"]
 [ext_resource type="PackedScene" uid="uid://ddgmqofrqjq3u" path="res://gameplay-elements/baton.tscn" id="11_b3q8b"]
 [ext_resource type="ArrayMesh" uid="uid://b4bccuglmqb8k" path="res://addons/kaykit_prototype_bits/Assets/obj/Primitive_Pillar.obj" id="11_m7mk3"]
+[ext_resource type="PackedScene" uid="uid://jnvqihnyne4h" path="res://gameplay-elements/playerthirdpers.tscn" id="12_m7mk3"]
 [ext_resource type="PackedScene" uid="uid://c6xmcc5jut7oa" path="res://gameplay-elements/modelfiles/railing.tscn" id="12_wjq2d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h8r6w"]
@@ -49,9 +49,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=637460417]
 environment = SubResource("Environment_kk6di")
-
-[node name="Player" parent="." unique_id=1172021385 instance=ExtResource("2_kk6di")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.910486, 1.4999981, -1.276288)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1760894691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.040857, 1.4354663, 0)
@@ -243,3 +240,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.875927, 1.204186, 19.5087
 
 [node name="railing10" parent="railings4" unique_id=1066545605 instance=ExtResource("12_wjq2d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.771395, 1.204186, 19.50874)
+
+[node name="Playerthirdpers" parent="." unique_id=1172021385 instance=ExtResource("12_m7mk3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.765193, 1.5, -1.4834785)
