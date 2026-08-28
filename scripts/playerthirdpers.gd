@@ -301,9 +301,12 @@ func snap():
 	target_position.y = global_position.y
 
 	# Face the enemy
-	var target_rotation = atan2(-direction.x, direction.z) 
-
-	body.rotation.y = target_rotation
+	body.look_at(
+		snap_target.global_position,
+		Vector3.UP
+	)
+	
+	body.rotate_y(deg_to_rad(180))
 
 	# Move player toward enemy
 	var tween = create_tween()
