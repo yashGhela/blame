@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c0jpp3laepyid" path="res://scripts/playerthirdpers.gd" id="1_77iq7"]
 [ext_resource type="PackedScene" uid="uid://c4kjijnttjoi8" path="res://gameplay-elements/playershot.tscn" id="2_n7aa4"]
 [ext_resource type="Script" uid="uid://b7e63djr4gt5y" path="res://scripts/enemy_detector.gd" id="2_vuosb"]
+[ext_resource type="Script" uid="uid://pyapbxlj1le8" path="res://scripts/cam_origin.gd" id="4_n7aa4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5rg3e"]
 
@@ -49,7 +50,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 1.6107469)]
+"values": [Vector3(0, 1.5707964, 1.6109389)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -61,7 +62,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.45048404, 0.04930401, 0.57679266)]
+"values": [Vector3(-0.565, 0.039, 0.577)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -73,7 +74,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.3790152, 0.018219233, -0.5775828)]
+"values": [Vector3(0.539, 0.018, 0.552)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -85,7 +86,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 1.5373907)]
+"values": [Vector3(0, 1.5707964, 1.5376351)]
 }
 
 [sub_resource type="Animation" id="Animation_kuag1"]
@@ -98,10 +99,10 @@ tracks/0/path = NodePath("body/hand2:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.16666667),
+"times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 1.6107469), Vector3(1.190302e-09, 0.60154516, 1.6107469), Vector3(0, 0, 1.6107469)]
+"values": [Vector3(0, -1.5707964, 1.6109389), Vector3(0, -1.1082841, 1.6109389), Vector3(0, -1.5707964, 1.6109389)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -110,10 +111,10 @@ tracks/1/path = NodePath("body/hand2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.16666667),
+"times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.45048404, 0.04930401, 0.57679266), Vector3(0.7542248, 0.04930401, 0.14378512), Vector3(0.45048404, 0.04930401, 0.57679266)]
+"values": [Vector3(-0.57, 0.049, 0.577), Vector3(-0.295, 0.049, 0.669), Vector3(-0.57, 0.049, 0.577)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -146,7 +147,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.16666667, 0.23333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.45048404, 0.04930401, 0.57679266), Vector3(0.45048404, 0.43462288, 0.57679266), Vector3(0.45048404, -0.23250926, 0.57679266), Vector3(0.45048404, 0.04930401, 0.57679266)]
+"values": [Vector3(-0.57, 0.049, 0.577), Vector3(-0.57, 0.435, 0.577), Vector3(-0.57, -0.108, 0.577), Vector3(-0.57, 0.049, 0.577)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -158,7 +159,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.16666667, 0.23333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 1.6107469), Vector3(0, 0, 2.1670356), Vector3(0, 0, 1.0000386), Vector3(0, 0, 1.6107469)]
+"values": [Vector3(0, 1.5707964, 1.6109389), Vector3(0, 1.5707964, 0.96342176), Vector3(0, 1.5707964, 2.3701572), Vector3(0, 1.5707964, 1.6109389)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -167,10 +168,10 @@ tracks/2/path = NodePath("body/hand1:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.16666667, 0.23333333),
+"times": PackedFloat32Array(0, 0.1, 0.16666667, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.3790152, 0.018219233, -0.5775828), Vector3(0.3790152, 0.4217471, -0.5775828), Vector3(0.3790152, -0.23520991, -0.5775828), Vector3(0.3790152, 0.018219233, -0.5775828)]
+"values": [Vector3(0.544, 0.018, 0.557), Vector3(0.544, 0.422, 0.557), Vector3(0.504, -0.075, 0.642), Vector3(0.544, 0.018, 0.557)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -179,10 +180,10 @@ tracks/3/path = NodePath("body/hand1:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.16666667, 0.23333333),
+"times": PackedFloat32Array(0, 0.1, 0.16666667, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 1.5373907), Vector3(0, 0, 2.168048), Vector3(0, 0, 0.98895586), Vector3(0, 0, 1.5373907)]
+"values": [Vector3(0, 1.5707964, 1.5376351), Vector3(0, 1.5707964, 0.9616764), Vector3(0, 1.5707964, 2.3177972), Vector3(0, 1.5707964, 1.5376351)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -215,10 +216,10 @@ tracks/0/path = NodePath("body/hand1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.16666667),
+"times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.3790152, 0.018219233, -0.5775828), Vector3(0.66334355, 0.018219233, -0.2388277), Vector3(0.3790152, 0.018219233, -0.5775828)]
+"values": [Vector3(0.549, 0.018, 0.587), Vector3(0.234, 0.018, 0.657), Vector3(0.549, 0.018, 0.587)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -227,10 +228,10 @@ tracks/1/path = NodePath("body/hand1:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.16666667),
+"times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 1.5373907), Vector3(-9.953799e-10, -0.6778859, 1.5373907), Vector3(0, 0, 1.5373907)]
+"values": [Vector3(0, -1.5707964, 1.5376351), Vector3(0, -2.1170843, 1.5376351), Vector3(0, -1.5707964, 1.5376351)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -259,16 +260,14 @@ _data = {
 }
 
 [node name="Playerthirdpers" type="CharacterBody3D" unique_id=1172021385 groups=["Player"]]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_77iq7")
 bullet = ExtResource("2_n7aa4")
 
 [node name="body" type="MeshInstance3D" parent="." unique_id=1924451069]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_5rg3e")
 
 [node name="hand1" type="MeshInstance3D" parent="body" unique_id=444260183]
-transform = Transform3D(0.033399407, -0.9994421, 0, 0.9994421, 0.033399407, 0, 0, 0, 1, 0.3790152, 0.018219233, -0.5775828)
+transform = Transform3D(-1.4492582e-09, 4.3687358e-08, 1, 0.9994502, 0.033155162, 0, -0.033155162, 0.9994502, -4.371139e-08, 0.539, 0.018, 0.552)
 mesh = SubResource("CylinderMesh_7xu6t")
 
 [node name="hand1area" type="Area3D" parent="body/hand1" unique_id=1887609958]
@@ -278,7 +277,7 @@ shape = SubResource("ConvexPolygonShape3D_7xu6t")
 disabled = true
 
 [node name="hand2" type="MeshInstance3D" parent="body" unique_id=1677455965]
-transform = Transform3D(-0.039939903, -0.99920195, 0, 0.99920195, -0.039939903, 0, 0, 0, 1, 0.45048404, 0.04930401, 0.57679266)
+transform = Transform3D(1.7542164e-09, 4.3676174e-08, 1.0000001, 0.99919426, -0.0401318, 0, 0.040131796, 0.9991944, -4.3711392e-08, -0.565, 0.039, 0.577)
 mesh = SubResource("CylinderMesh_7xu6t")
 
 [node name="hand2area" type="Area3D" parent="body/hand2" unique_id=201412326]
@@ -332,14 +331,13 @@ libraries/ = SubResource("AnimationLibrary_05j85")
 [node name="EnemyDetector" type="Node" parent="." unique_id=656638712]
 script = ExtResource("2_vuosb")
 
-[node name="CamOrigin" type="Node3D" parent="." unique_id=307443930]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.9659257, 0.258819, 0, -0.258819, 0.96592575, 0, 1.234, 2.4)
+[node name="CamOrigin" type="Node3D" parent="." unique_id=307443930 node_paths=PackedStringArray("character")]
+transform = Transform3D(-0.99999994, 2.2626672e-08, -8.44439e-08, 0, 0.9659255, 0.25881898, 8.742277e-08, 0.25881895, -0.9659256, 0, 0.63212466, 0.12580776)
+script = ExtResource("4_n7aa4")
+character = NodePath("..")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CamOrigin" unique_id=1242209780]
-spring_length = 2.0
-margin = 0.5
-
-[node name="Camera3D" type="Camera3D" parent="CamOrigin/SpringArm3D" unique_id=957776855]
+[node name="Camera3D" type="Camera3D" parent="CamOrigin" unique_id=957776855]
+transform = Transform3D(1, 0, 0, 0, 0.9659261, 0.25881913, 0, -0.25881913, 0.9659261, 0, 0.7572352, 2.8260405)
 
 [connection signal="body_entered" from="body/hand1/hand1area" to="." method="_on_hand_1_area_body_entered"]
 [connection signal="body_entered" from="body/hand2/hand2area" to="." method="_on_hand_2_area_body_entered"]

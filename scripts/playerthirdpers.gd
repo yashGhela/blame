@@ -15,7 +15,7 @@ var bulletinst
 @export var sens =0.5
 @onready var health_bar: ProgressBar = $"CanvasLayer/health bar"
 @onready var body: MeshInstance3D = $body
-@onready var camera_3d: Camera3D = $CameraPivot/Camera3D
+@onready var camera_3d: Camera3D = $CamOrigin/SpringArm3D/Camera3D
 @onready var basicanims: AnimationPlayer = $basicanims
 @onready var hand_1_col: CollisionShape3D = $body/hand1/hand1area/hand1col
 @onready var hand_2_col: CollisionShape3D = $body/hand2/hand2area/hand2col
@@ -49,11 +49,6 @@ var hitcounter = 0
 
 var health = 100
 
-func _input(event):
-	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x * sens))
-		pivot.rotate_x(deg_to_rad(-event.relative.y * sens))
-		pivot.rotation.x=clamp(pivot.rotation.x, deg_to_rad(-90), deg_to_rad(45))
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -161,10 +156,9 @@ func movement(delta):
 		return
 	
 
-	var input_dir := Input.get_vector("left", "right", "forward", "back")
-	var iso_forward = Vector3(1, 0, 1).normalized()
-	var iso_right   = Vector3(1, 0, -1).normalized()
 
+	var input_dir := Input.get_vector("left", "right", "forward", "back")
+	
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if direction:
@@ -177,11 +171,6 @@ func movement(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	
-	
-		# Don't allow normal movement during dash
-	
-		
 
 
 func fire():
