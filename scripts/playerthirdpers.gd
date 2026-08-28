@@ -21,7 +21,7 @@ var bulletinst
 @onready var hand_2_col: CollisionShape3D = $body/hand2/hand2area/hand2col
 @onready var enemy_detector: Node = $EnemyDetector
 @onready var shotamount: Label = $CanvasLayer/shotamount
-@onready var pivot: Node3D = $CamOrigin
+@onready var pivot: Node3D = $CamOrigin/SpringArm3D
 
 
 
@@ -49,7 +49,12 @@ var hitcounter = 0
 
 var health = 100
 
-
+func _input(event):
+	if event is InputEventMouseMotion:
+		rotate_y(deg_to_rad(-event.relative.x * sens))
+		pivot.rotate_x(deg_to_rad(event.relative.y * sens))
+		pivot.rotation.x=clamp(pivot.rotation.x, deg_to_rad(-90), deg_to_rad(45))
+		
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Signalbus.connect("talking",Callable(self,"on_talking_activated"))
@@ -80,6 +85,21 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if Input.is_action_just_pressed("hit"):
+		
+		is_attacking=true
+		
+		var camera_forward = -camera_3d.global_transform.basis.z
+		camera_forward.y = 0
+		camera_forward = camera_forward.normalized()
+		
+		# Rotate body toward camera
+		var target_y = atan2(
+			camera_forward.x,
+			camera_forward.z
+		)+deg_to_rad(45)
+		
+		body.rotation.y = target_y
+		
 		hitcounter+=1
 		match hitcounter:
 			1:
@@ -156,21 +176,28 @@ func movement(delta):
 		return
 	
 
-
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
-	
+
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+
+	if direction != Vector3.ZERO:
+		velocity.x = -direction.x * SPEED
+		velocity.z = -direction.z * SPEED
 		
+		if not is_attacking:
+			var target_y = atan2(direction.x, direction.z) -deg_to_rad(90)
+
+			body.rotation.y = lerp_angle(
+				body.rotation.y,
+				target_y,
+				10.0 * delta
+			) 
+
 		
-	
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
 
 
 func fire():
@@ -233,10 +260,9 @@ func snap():
 	target_position.y = global_position.y
 
 	# Face the enemy
-	rotation.y = atan2(
-		direction.x,
-		direction.z
-	) - deg_to_rad(90)
+	var target_rotation = atan2(-direction.x, direction.z) 
+
+	body.rotation.y = target_rotation
 
 	# Move player toward enemy
 	var tween = create_tween()
@@ -290,10 +316,11 @@ func _on_basicanims_animation_finished(anim_name: StringName) -> void:
 		hand_1_col.disabled=true
 		hand_2_col.disabled=true
 		
+		is_attacking=false
 		if is_snapping:
 			is_snapping = false
 			snap_target = null
-			
+		
 
 
 func _on_hand_2_area_body_entered(body: Node3D) -> void:

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c0jpp3laepyid" path="res://scripts/playerthirdpers.gd" id="1_77iq7"]
 [ext_resource type="PackedScene" uid="uid://c4kjijnttjoi8" path="res://gameplay-elements/playershot.tscn" id="2_n7aa4"]
 [ext_resource type="Script" uid="uid://b7e63djr4gt5y" path="res://scripts/enemy_detector.gd" id="2_vuosb"]
-[ext_resource type="Script" uid="uid://pyapbxlj1le8" path="res://scripts/cam_origin.gd" id="4_n7aa4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5rg3e"]
 
@@ -331,13 +330,16 @@ libraries/ = SubResource("AnimationLibrary_05j85")
 [node name="EnemyDetector" type="Node" parent="." unique_id=656638712]
 script = ExtResource("2_vuosb")
 
-[node name="CamOrigin" type="Node3D" parent="." unique_id=307443930 node_paths=PackedStringArray("character")]
-transform = Transform3D(-0.99999994, 2.2626672e-08, -8.44439e-08, 0, 0.9659255, 0.25881898, 8.742277e-08, 0.25881895, -0.9659256, 0, 0.63212466, 0.12580776)
-script = ExtResource("4_n7aa4")
-character = NodePath("..")
+[node name="CamOrigin" type="Node3D" parent="." unique_id=307443930]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.9999997, 0, 0, 0, 0.99999976, 0, 0.78915143, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CamOrigin" unique_id=957776855]
-transform = Transform3D(1, 0, 0, 0, 0.9659261, 0.25881913, 0, -0.25881913, 0.9659261, 0, 0.7572352, 2.8260405)
+[node name="SpringArm3D" type="SpringArm3D" parent="CamOrigin" unique_id=1242209780]
+transform = Transform3D(-1, -2.262668e-08, 8.444392e-08, 0, 0.9659258, 0.25881904, -8.742278e-08, 0.25881904, -0.9659258, 0, 0, 0)
+spring_length = 3.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="CamOrigin/SpringArm3D" unique_id=957776855]
+transform = Transform3D(1, -1.7763568e-15, 2.1316282e-14, 1.7763567e-15, 1.0000002, 2.980232e-08, 1.4210855e-14, -2.980232e-08, 1.0000002, 9.22806e-08, 0.0069811344, 3.0474908)
 
 [connection signal="body_entered" from="body/hand1/hand1area" to="." method="_on_hand_1_area_body_entered"]
 [connection signal="body_entered" from="body/hand2/hand2area" to="." method="_on_hand_2_area_body_entered"]

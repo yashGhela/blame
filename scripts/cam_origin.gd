@@ -4,7 +4,7 @@ extends Node3D
 @export var character:CharacterBody3D
 
 var camera_rotation: Vector2 = Vector2.ZERO
-var sens: float = 0.001
+var sens: float = 5
 var maxy:float= 1.2
 @onready var camera: Camera3D = $Camera3D
 
