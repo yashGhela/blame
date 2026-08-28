@@ -1,0 +1,245 @@
+[gd_scene format=3 uid="uid://cqtt1y4qc4rak"]
+
+[ext_resource type="Texture2D" uid="uid://b7emtawiuyv63" path="res://addons/proto-csgs/textures/dark/texture_03.png" id="1_s7fyc"]
+[ext_resource type="PackedScene" uid="uid://6k3dmrgn7nen" path="res://gameplay-elements/dialog_area.tscn" id="3_f2qrd"]
+[ext_resource type="PackedScene" uid="uid://x4ckhy6l1561" path="res://gameplay-elements/enemydummy.tscn" id="4_78pcp"]
+[ext_resource type="PackedScene" uid="uid://jabqc3dt5u03" path="res://gameplay-elements/deathzone.tscn" id="5_ihxt7"]
+[ext_resource type="PackedScene" uid="uid://dqaq2e4ndjg72" path="res://gameplay-elements/pincer.tscn" id="7_nyxwp"]
+[ext_resource type="PackedScene" uid="uid://d4n1saad2w120" path="res://gameplay-elements/striker.tscn" id="8_iqmmm"]
+[ext_resource type="ArrayMesh" uid="uid://dkh6jptjdt5co" path="res://addons/kaykit_prototype_bits/Assets/obj/Pallet_Small.obj" id="9_b3q8b"]
+[ext_resource type="ArrayMesh" uid="uid://cjrtrudxblp36" path="res://addons/kaykit_prototype_bits/Assets/obj/Primitive_Cube_Small.obj" id="10_wjq2d"]
+[ext_resource type="PackedScene" uid="uid://ddgmqofrqjq3u" path="res://gameplay-elements/baton.tscn" id="11_b3q8b"]
+[ext_resource type="ArrayMesh" uid="uid://b4bccuglmqb8k" path="res://addons/kaykit_prototype_bits/Assets/obj/Primitive_Pillar.obj" id="11_m7mk3"]
+[ext_resource type="PackedScene" uid="uid://jnvqihnyne4h" path="res://gameplay-elements/playerthirdpers.tscn" id="12_m7mk3"]
+[ext_resource type="PackedScene" uid="uid://c6xmcc5jut7oa" path="res://gameplay-elements/modelfiles/railing.tscn" id="12_wjq2d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h8r6w"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_s7fyc"]
+sky_material = SubResource("ProceduralSkyMaterial_h8r6w")
+
+[sub_resource type="Environment" id="Environment_kk6di"]
+background_mode = 2
+sky = SubResource("Sky_s7fyc")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_kk6di"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_b3q8b"]
+vertices = PackedVector3Array(-19.5, 1, 3.25, -4.5, 1, 3.25, -4.5, 1, 2.25, -4.75, 1, -19.5, -19.5, 1, -19.5, -1.5, 1, 1.75, -1.25, 1, 3, 1.25, 1, 3, 1.25, 1, 1.25, -4.25, 1, 1.75, 3, 1, 1, 3, 1, -19.5, 4.5, 1, 3.5, 10.5, 1, 3.75, 10.75, 1, 3.25, 4.5, 1, 1.25, 12.5, 1, 3.25, 12.75, 1, 4.25, 19.5, 1, 4.25, 19.5, 1, -19.5, 2.25, 3, 2, 2.25, 3, 3.25, 3.5, 3, 3.25, 3.5, 3, 2, 2.5, 1, 2.25, 2.5, 1, 3, 3.25, 1, 3, 3.25, 1, 2.25, -3.5, 1.5, 2.75, -3.5, 1.5, 4, -2.25, 1.5, 4, -2.25, 1.5, 2.75, 1.5, 1, 4.25, -1.25, 1, 4.75, 4.75, 1, 19.5, 4.5, 1, 3.75, 4.25, 1, 4.25, -3, 1, 5, -3, 1, 19.5, -4.5, 1, 4.75, -19.5, 1, 19.5, 10.5, 1, 5.25, 11, 1, 5.5, 11, 1, 19.5, 12.5, 1, 5.5, 19.5, 1, 19.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 5, 8), PackedInt32Array(3, 9, 2), PackedInt32Array(8, 5, 9), PackedInt32Array(8, 9, 10), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 3), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(15, 10, 11), PackedInt32Array(18, 17, 16), PackedInt32Array(16, 14, 15), PackedInt32Array(16, 15, 18), PackedInt32Array(18, 15, 19), PackedInt32Array(19, 15, 11), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(7, 32, 6), PackedInt32Array(6, 32, 33), PackedInt32Array(36, 35, 34), PackedInt32Array(33, 32, 36), PackedInt32Array(33, 36, 37), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 34), PackedInt32Array(37, 38, 39), PackedInt32Array(39, 38, 40), PackedInt32Array(39, 40, 0), PackedInt32Array(0, 1, 39), PackedInt32Array(12, 13, 35), PackedInt32Array(35, 13, 41), PackedInt32Array(41, 42, 35), PackedInt32Array(35, 42, 43), PackedInt32Array(35, 43, 34), PackedInt32Array(17, 18, 44), PackedInt32Array(44, 18, 45), PackedInt32Array(44, 45, 43), PackedInt32Array(43, 42, 44)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kk6di"]
+albedo_texture = ExtResource("1_s7fyc")
+
+[sub_resource type="BoxMesh" id="BoxMesh_h8r6w"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s7fyc"]
+points = PackedVector3Array(-20, -0.5, -20, -20, 0.5, -20, 20, -0.5, -20, -20, -0.5, 20, -20, 0.5, 20, 20, 0.5, -20, 20, -0.5, 20, 20, 0.5, 20)
+
+[node name="lab" type="Node3D" unique_id=1874987844]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1507294475]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=637460417]
+environment = SubResource("Environment_kk6di")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1760894691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.040857, 1.4354663, 0)
+mesh = SubResource("SphereMesh_kk6di")
+
+[node name="DialogArea" parent="MeshInstance3D2" unique_id=1050050756 instance=ExtResource("3_f2qrd")]
+scene_text_file = "res://json/test.json"
+dialog_key = "T1"
+speaker_key = "Alan"
+
+[node name="enemydummy3" parent="." unique_id=1662489217 instance=ExtResource("4_78pcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2631207, 1.5, -10.455828)
+
+[node name="deathzone" parent="." unique_id=1751392379 instance=ExtResource("5_ihxt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.108017, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1846531072]
+navigation_mesh = SubResource("NavigationMesh_b3q8b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1741927835]
+material_override = SubResource("StandardMaterial3D_kk6di")
+mesh = SubResource("BoxMesh_h8r6w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D" unique_id=186351245]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D" unique_id=1912483422]
+shape = SubResource("ConvexPolygonShape3D_s7fyc")
+
+[node name="PalletSmall" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1749599359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.956401, 0.5, 3.4965563)
+mesh = ExtResource("9_b3q8b")
+
+[node name="PrimitivePillar" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=865051552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.649477, -0.5, 4.3348517)
+mesh = ExtResource("11_m7mk3")
+
+[node name="PrimitiveCubeSmall" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=730632370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9480476, 0.5, 2.6460946)
+mesh = ExtResource("10_wjq2d")
+
+[node name="Baton" parent="." unique_id=723997313 instance=ExtResource("11_b3q8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059504032, 1.5, 10.307118)
+
+[node name="Baton2" parent="." unique_id=962600677 instance=ExtResource("11_b3q8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2261205, 1.5, 9.720876)
+
+[node name="Baton3" parent="." unique_id=1141981738 instance=ExtResource("11_b3q8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3271713, 1.5, 10.418029)
+
+[node name="Striker" parent="." unique_id=1843178445 instance=ExtResource("8_iqmmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.068076, 1.5, -5.082764)
+
+[node name="pincer" parent="." unique_id=2139333681 instance=ExtResource("7_nyxwp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1853342, 1.5, -5.064709)
+
+[node name="Striker2" parent="." unique_id=41293128 instance=ExtResource("8_iqmmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7027922, 1.5, -9.911225)
+
+[node name="pincer2" parent="." unique_id=1126381719 instance=ExtResource("7_nyxwp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.217696, 1.5, -4.1714716)
+
+[node name="railings" type="Node3D" parent="." unique_id=1654274000]
+
+[node name="railing" parent="railings" unique_id=454326787 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.958601, 1.204186, 19.50874)
+
+[node name="railing2" parent="railings" unique_id=1081062988 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.933971, 1.204186, 19.50874)
+
+[node name="railing3" parent="railings" unique_id=1335128237 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.936888, 1.204186, 19.50874)
+
+[node name="railing4" parent="railings" unique_id=1455651536 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.029917, 1.204186, 19.50874)
+
+[node name="railing5" parent="railings" unique_id=1774927654 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0588713, 1.204186, 19.50874)
+
+[node name="railing6" parent="railings" unique_id=1937801656 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9730873, 1.204186, 19.50874)
+
+[node name="railing7" parent="railings" unique_id=1731489803 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0390053, 1.204186, 19.50874)
+
+[node name="railing8" parent="railings" unique_id=143374622 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.025789, 1.204186, 19.50874)
+
+[node name="railing9" parent="railings" unique_id=1598909802 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.875927, 1.204186, 19.50874)
+
+[node name="railing10" parent="railings" unique_id=1981168816 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.771395, 1.204186, 19.50874)
+
+[node name="railings2" type="Node3D" parent="." unique_id=317575539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.994328)
+
+[node name="railing" parent="railings2" unique_id=1611314660 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.958601, 1.204186, 19.50874)
+
+[node name="railing2" parent="railings2" unique_id=1634624660 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.933971, 1.204186, 19.50874)
+
+[node name="railing3" parent="railings2" unique_id=1058661816 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.936888, 1.204186, 19.50874)
+
+[node name="railing4" parent="railings2" unique_id=638106739 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.029917, 1.204186, 19.50874)
+
+[node name="railing5" parent="railings2" unique_id=855451723 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0588713, 1.204186, 19.50874)
+
+[node name="railing6" parent="railings2" unique_id=366490589 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9730873, 1.204186, 19.50874)
+
+[node name="railing7" parent="railings2" unique_id=2109720099 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0390053, 1.204186, 19.50874)
+
+[node name="railing8" parent="railings2" unique_id=2082544577 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.025789, 1.204186, 19.50874)
+
+[node name="railing9" parent="railings2" unique_id=1113404274 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.875927, 1.204186, 19.50874)
+
+[node name="railing10" parent="railings2" unique_id=487489887 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.771395, 1.204186, 19.50874)
+
+[node name="railings3" type="Node3D" parent="." unique_id=164902375]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.012073517)
+
+[node name="railing" parent="railings3" unique_id=1395185954 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.958601, 1.204186, 19.50874)
+
+[node name="railing2" parent="railings3" unique_id=562331532 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.933971, 1.204186, 19.50874)
+
+[node name="railing3" parent="railings3" unique_id=661124523 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.936888, 1.204186, 19.50874)
+
+[node name="railing4" parent="railings3" unique_id=461554427 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.029917, 1.204186, 19.50874)
+
+[node name="railing5" parent="railings3" unique_id=1359682394 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0588713, 1.204186, 19.50874)
+
+[node name="railing6" parent="railings3" unique_id=2128605633 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9730873, 1.204186, 19.50874)
+
+[node name="railing7" parent="railings3" unique_id=1768997065 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0390053, 1.204186, 19.50874)
+
+[node name="railing8" parent="railings3" unique_id=699572790 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.025789, 1.204186, 19.50874)
+
+[node name="railing9" parent="railings3" unique_id=66391036 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.875927, 1.204186, 19.50874)
+
+[node name="railing10" parent="railings3" unique_id=1296849914 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.771395, 1.204186, 19.50874)
+
+[node name="railings4" type="Node3D" parent="." unique_id=1626998161]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38.73678, 0, -0.012073517)
+
+[node name="railing" parent="railings4" unique_id=161975688 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.958601, 1.204186, 19.50874)
+
+[node name="railing2" parent="railings4" unique_id=858376152 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.933971, 1.204186, 19.50874)
+
+[node name="railing3" parent="railings4" unique_id=1114184312 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.936888, 1.204186, 19.50874)
+
+[node name="railing4" parent="railings4" unique_id=431256828 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.029917, 1.204186, 19.50874)
+
+[node name="railing5" parent="railings4" unique_id=28412325 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0588713, 1.204186, 19.50874)
+
+[node name="railing6" parent="railings4" unique_id=945816691 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9730873, 1.204186, 19.50874)
+
+[node name="railing7" parent="railings4" unique_id=299381722 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0390053, 1.204186, 19.50874)
+
+[node name="railing8" parent="railings4" unique_id=1117005251 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.025789, 1.204186, 19.50874)
+
+[node name="railing9" parent="railings4" unique_id=272592564 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.875927, 1.204186, 19.50874)
+
+[node name="railing10" parent="railings4" unique_id=1066545605 instance=ExtResource("12_wjq2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.771395, 1.204186, 19.50874)
+
+[node name="Playerthirdpers" parent="." unique_id=1172021385 instance=ExtResource("12_m7mk3")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 15.968806, 1.5, 1.5033674)

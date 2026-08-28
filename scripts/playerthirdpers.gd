@@ -166,16 +166,34 @@ func movement(delta):
 		is_phasing=true
 		dash_timer = DASH_DURATION
 		var input_dir := Input.get_vector("left", "right", "forward", "back")
-		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		
+		var cam_forward := -camera_3d.global_transform.basis.z
+		var cam_right := -camera_3d.global_transform.basis.x
+		
+		cam_forward.y = 0
+		cam_right.y = 0
+
+		var direction := (
+			cam_right * input_dir.x +
+			cam_forward * input_dir.y
+		).normalized()
+
 	
-		# If no input, dash backward
 		if direction == Vector3.ZERO:
 			direction = basis.z.normalized()
 		#else:
 			#direction = -direction  # Dash opposite of movement
 		
-		velocity.x = direction.x * DASH_SPEED
-		velocity.z = direction.z * DASH_SPEED
+		velocity.x = -direction.x * DASH_SPEED
+		velocity.z = -direction.z * DASH_SPEED
+		
+		var target_y = atan2(direction.x, direction.z) + deg_to_rad(270)
+
+		body.rotation.y = lerp_angle(
+			body.rotation.y,
+			target_y,
+			10.0 * delta
+			)
 		
 	
 	if is_dashing:
