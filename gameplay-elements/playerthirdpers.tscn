@@ -331,14 +331,17 @@ libraries/ = SubResource("AnimationLibrary_05j85")
 script = ExtResource("2_vuosb")
 
 [node name="CamOrigin" type="Node3D" parent="." unique_id=307443930]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.9999997, 0, 0, 0, 0.99999976, 0, 0.78915143, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.9999997, 0, 0, 0, 0.99999976, 0, 0.43252575, 0)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CamOrigin" unique_id=1242209780]
-transform = Transform3D(-1, -2.262668e-08, 8.444392e-08, 0, 0.9659258, 0.25881904, -8.742278e-08, 0.25881904, -0.9659258, 0, 0, 0)
+[node name="CamPitch" type="Node3D" parent="CamOrigin" unique_id=40782520]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.96592575, -0.25881904, 0, 0.258819, 0.9659258, 0, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CamOrigin/CamPitch" unique_id=1242209780]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742278e-08, 0, -0.99999994, 0, 0, 0)
 spring_length = 3.0
 margin = 0.5
 
-[node name="Camera3D" type="Camera3D" parent="CamOrigin/SpringArm3D" unique_id=957776855]
+[node name="Camera3D" type="Camera3D" parent="CamOrigin/CamPitch/SpringArm3D" unique_id=957776855]
 transform = Transform3D(1, -1.7763568e-15, 2.1316282e-14, 1.7763567e-15, 1.0000002, 2.980232e-08, 1.4210855e-14, -2.980232e-08, 1.0000002, 9.22806e-08, 0.0069811344, 3.0474908)
 
 [connection signal="body_entered" from="body/hand1/hand1area" to="." method="_on_hand_1_area_body_entered"]

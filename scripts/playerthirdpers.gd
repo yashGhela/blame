@@ -12,18 +12,24 @@ var is_attacking:=false
 @export var is_phasing:=false
 @export var bullet:PackedScene
 var bulletinst
-@export var sens =0.5
+@export var sens =0.003
 @onready var health_bar: ProgressBar = $"CanvasLayer/health bar"
 @onready var body: MeshInstance3D = $body
-@onready var camera_3d: Camera3D = $CamOrigin/SpringArm3D/Camera3D
+
 @onready var basicanims: AnimationPlayer = $basicanims
 @onready var hand_1_col: CollisionShape3D = $body/hand1/hand1area/hand1col
 @onready var hand_2_col: CollisionShape3D = $body/hand2/hand2area/hand2col
 @onready var enemy_detector: Node = $EnemyDetector
 @onready var shotamount: Label = $CanvasLayer/shotamount
-@onready var pivot: Node3D = $CamOrigin/SpringArm3D
 
 
+@onready var cam_origin = $CamOrigin
+@onready var cam_pitch = $CamOrigin/CamPitch
+@onready var pivot: Node3D = $CamOrigin/CamPitch/SpringArm3D
+@onready var camera_3d: Camera3D = $CamOrigin/CamPitch/SpringArm3D/Camera3D
+
+var yaw =0.0
+var pitch = deg_to_rad(15.0)
 
 const FIRE_RELOAD=1.5
 var fire_shots:=6
@@ -51,10 +57,19 @@ var health = 100
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x * sens))
-		pivot.rotate_x(deg_to_rad(event.relative.y * sens))
-		pivot.rotation.x=clamp(pivot.rotation.x, deg_to_rad(-90), deg_to_rad(45))
-		
+		yaw -= event.relative.x * sens
+		pitch += event.relative.y * sens
+
+		pitch = clamp(
+			pitch,
+			deg_to_rad(-60),
+			deg_to_rad(45)
+		)
+
+		cam_origin.rotation.y = yaw
+		cam_pitch.rotation.x = pitch
+
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Signalbus.connect("talking",Callable(self,"on_talking_activated"))
@@ -96,7 +111,7 @@ func _physics_process(delta: float) -> void:
 		var target_y = atan2(
 			camera_forward.x,
 			camera_forward.z
-		)+deg_to_rad(45)
+		)
 		
 		body.rotation.y = target_y
 		
@@ -177,22 +192,30 @@ func movement(delta):
 	
 
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
-
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
+	var cam_forward := -camera_3d.global_transform.basis.z
+	var cam_right := -camera_3d.global_transform.basis.x
+	
+	cam_forward.y = 0
+	cam_right.y = 0
+
+	var direction := (
+		cam_right * input_dir.x +
+		cam_forward * input_dir.y
+	).normalized()
 
 	if direction != Vector3.ZERO:
 		velocity.x = -direction.x * SPEED
 		velocity.z = -direction.z * SPEED
 		
-		if not is_attacking:
-			var target_y = atan2(direction.x, direction.z) -deg_to_rad(90)
+		
+		var target_y = atan2(direction.x, direction.z) + deg_to_rad(270)
 
-			body.rotation.y = lerp_angle(
+		body.rotation.y = lerp_angle(
 				body.rotation.y,
 				target_y,
 				10.0 * delta
-			) 
+			)
 
 		
 	else:
