@@ -103,17 +103,17 @@ func _physics_process(delta: float) -> void:
 		
 		is_attacking=true
 		
-		var camera_forward = -camera_3d.global_transform.basis.z
-		camera_forward.y = 0
-		camera_forward = camera_forward.normalized()
-		
-		# Rotate body toward camera
-		var target_y = atan2(
-			camera_forward.x,
-			camera_forward.z
-		)
-		
-		body.rotation.y = target_y
+		#var camera_forward = -camera_3d.global_transform.basis.z
+		#camera_forward.y = 0
+		#camera_forward = camera_forward.normalized()
+		#
+		## Rotate body toward camera
+		#var target_y = atan2(
+			#camera_forward.x,
+			#camera_forward.z
+		#)
+		#
+		#body.rotation.y = target_y
 		
 		hitcounter+=1
 		match hitcounter:
@@ -368,11 +368,16 @@ func _on_basicanims_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_hand_2_area_body_entered(body: Node3D) -> void:
+	
 	if body.is_in_group("Enemy"):
 		var kd = global_position.direction_to(body.global_position)
 		kd.y=0;
 		var kv = 25
 		body.get_knockback(kd,kv,20)
+	
+	if body.is_in_group("Battery"):
+		body.set_status()
+		print("setting status")
 
 
 func _on_hand_1_area_body_entered(body: Node3D) -> void:
@@ -381,3 +386,7 @@ func _on_hand_1_area_body_entered(body: Node3D) -> void:
 		kd.y=0;
 		var kv = 10
 		body.get_knockback(kd,kv,20)
+	
+	if body.is_in_group("Battery"):
+		body.set_status()
+		print("setting status")

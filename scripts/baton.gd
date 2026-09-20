@@ -4,10 +4,10 @@ extends CharacterBody3D
 var health = 100
 
 @onready var ap: AnimationPlayer = $AnimationPlayer
-@onready var map: AnimationPlayer = $enemymodel/AnimationPlayer
+
 @onready var progress_bar: ProgressBar = $SubViewport/ProgressBar
 @onready var navagent: NavigationAgent3D = $NavigationAgent3D
-@onready var enemymodel: Node3D = $enemymodel
+
 
 @export var kd = 25.0
 var timeshit= 0

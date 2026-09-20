@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
-@onready var striker: Node3D = $striker
+
 var kv:Vector3 = Vector3.ZERO
 var health:=100
 @export var kd = 25.0
-@onready var ap: AnimationPlayer = $striker/AnimationPlayer
+
 var mv:=Vector3.ZERO
 @onready var progress_bar: ProgressBar = $SubViewport/ProgressBar
 var timeshit= 0

@@ -9,15 +9,18 @@ var on = false
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+#
+## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if on:
+		return
+
 	var count:=0
-	while on==false:
-		for child in get_children():
-			if child.is_in_group("Battery"):
-				if child.status==true:
-					count+=1
+	
+	for child in get_children():
+		if child.is_in_group("Battery"):
+			if child.status==true:
+				count+=1
 	
 	if count>=required:
 		on=true

@@ -12,6 +12,9 @@ albedo_color = Color(0.35583344, 0.6382342, 0.4936756, 1)
 material = SubResource("StandardMaterial3D_6ecpo")
 size = Vector3(1, 1.5, 1)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mwl6s"]
+points = PackedVector3Array(0.5, 0.74404037, 0.5, -0.5, -0.74404037, -0.5, 0.5, -0.74404037, -0.5, -0.5, -0.74404037, 0.5, -0.5, 0.74404037, -0.5, 0.5, -0.74404037, 0.5, 0.5, 0.74404037, -0.5, -0.5, 0.74404037, 0.5)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5wmv"]
 albedo_color = Color(0.23031491, 0.23031494, 0.23031494, 1)
 
@@ -19,18 +22,48 @@ albedo_color = Color(0.23031491, 0.23031494, 0.23031494, 1)
 material = SubResource("StandardMaterial3D_q5wmv")
 size = Vector3(0.5, 0.5, 0.5)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q5wmv"]
+points = PackedVector3Array(-0.25, -0.25, -0.25, 0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, -0.25, -0.25, 0.25, -0.25, 0.25, -0.25)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q5wmv"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Battery" type="Area3D" unique_id=1977943796 groups=["Battery"]]
 script = ExtResource("1_q5wmv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1646363942]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1646363942 groups=["Battery"]]
 shape = SubResource("BoxShape3D_6ecpo")
 
-[node name="batterybase" type="MeshInstance3D" parent="." unique_id=1630518375]
+[node name="batterybase" type="MeshInstance3D" parent="." unique_id=1630518375 groups=["Battery"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23907304, 0)
 mesh = SubResource("BoxMesh_6ecpo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="batterybase" unique_id=1989352205]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="batterybase/StaticBody3D" unique_id=1199312326]
+shape = SubResource("ConvexPolygonShape3D_mwl6s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1395516964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4459424, 0)
 mesh = SubResource("BoxMesh_mwl6s")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1040934968]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1835005634]
+shape = SubResource("ConvexPolygonShape3D_q5wmv")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1731074739]
+size = Vector2i(37, 27)
+
+[node name="Label" type="Label" parent="SubViewport" unique_id=1204664986]
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 43.0
+offset_bottom = 24.0
+text = "OFF"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1259815034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1416278, 0)
+texture = SubResource("ViewportTexture_q5wmv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,5 +1,5 @@
 extends CharacterBody3D
-@onready var ap: AnimationPlayer = $pincer/AnimationPlayer
+
 var kv:Vector3 = Vector3.ZERO
 @export var kd = 25.0
 var health:=75

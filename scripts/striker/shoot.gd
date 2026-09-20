@@ -4,8 +4,8 @@ extends State
 var player:CharacterBody3D
 @export var enemy:CharacterBody3D
 @export var bullet:PackedScene
-@onready var ap: AnimationPlayer = $"../../striker/AnimationPlayer"
-@onready var shoot: AudioStreamPlayer3D = $"../../shoot"
+
+
 
 var has_shot = false
 var wait_done= false
