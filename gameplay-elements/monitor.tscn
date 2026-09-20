@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dcrjfth2dc3mh"]
+
+[ext_resource type="Script" uid="uid://ohjx4h6pwl28" path="res://scripts/monitor.gd" id="1_oyo2f"]
+
+[node name="Monitor" type="Area3D" unique_id=1779124990]
+script = ExtResource("1_oyo2f")

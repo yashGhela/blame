@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://hdtdcvfqal1f"]
+
+[ext_resource type="Script" uid="uid://c7ibwy0vpsbj7" path="res://scripts/battery.gd" id="1_q5wmv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ecpo"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ecpo"]
+albedo_color = Color(0.35583344, 0.6382342, 0.4936756, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ecpo"]
+material = SubResource("StandardMaterial3D_6ecpo")
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5wmv"]
+albedo_color = Color(0.23031491, 0.23031494, 0.23031494, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mwl6s"]
+material = SubResource("StandardMaterial3D_q5wmv")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Battery" type="Area3D" unique_id=1977943796 groups=["Battery"]]
+script = ExtResource("1_q5wmv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1646363942]
+shape = SubResource("BoxShape3D_6ecpo")
+
+[node name="batterybase" type="MeshInstance3D" parent="." unique_id=1630518375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23907304, 0)
+mesh = SubResource("BoxMesh_6ecpo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1395516964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4459424, 0)
+mesh = SubResource("BoxMesh_mwl6s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

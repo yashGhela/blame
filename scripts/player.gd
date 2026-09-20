@@ -314,6 +314,9 @@ func _on_hand_2_area_body_entered(body: Node3D) -> void:
 		kd.y=0;
 		var kv = 25
 		body.get_knockback(kd,kv,20)
+	
+	if body.is_in_group("Battery"):
+		body.set_status()
 
 
 func _on_hand_1_area_body_entered(body: Node3D) -> void:
@@ -322,3 +325,6 @@ func _on_hand_1_area_body_entered(body: Node3D) -> void:
 		kd.y=0;
 		var kv = 10
 		body.get_knockback(kd,kv,20)
+	
+	if body.is_in_group("Battery"):
+		body.set_status()
