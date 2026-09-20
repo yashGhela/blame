@@ -3,7 +3,7 @@ extends Area3D
 var on = false
 
 @export var required :=0
-@export var door=null
+@export var door:Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

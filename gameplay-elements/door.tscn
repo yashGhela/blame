@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://wd8ivhy2ed1"]
+
+[ext_resource type="ArrayMesh" uid="uid://d0wf6n5gyd7ls" path="res://addons/kaykit_prototype_bits/Assets/obj/Primitive_Doorway.obj" id="1_ky7q4"]
+[ext_resource type="Script" uid="uid://bptqmv8jjqa30" path="res://scripts/door.gd" id="1_n51mb"]
+[ext_resource type="ArrayMesh" uid="uid://bqees7ptugfxr" path="res://addons/kaykit_prototype_bits/Assets/obj/Primitive_Wall.obj" id="2_cpbbb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpbbb"]
+albedo_color = Color(0.39993465, 0.6232205, 0.8275123, 1)
+
+[node name="Door" type="Node3D" unique_id=2130594673]
+script = ExtResource("1_n51mb")
+
+[node name="PrimitiveDoorway" type="MeshInstance3D" parent="." unique_id=427116631]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
+mesh = ExtResource("1_ky7q4")
+
+[node name="PrimitiveWall" type="MeshInstance3D" parent="." unique_id=1777930491]
+transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0.060389042, 0, -0.24792957)
+mesh = ExtResource("2_cpbbb")
+surface_material_override/0 = SubResource("StandardMaterial3D_cpbbb")
