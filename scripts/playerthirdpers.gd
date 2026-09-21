@@ -369,6 +369,7 @@ func _on_basicanims_animation_finished(anim_name: StringName) -> void:
 
 func _on_hand_2_area_body_entered(body: Node3D) -> void:
 	
+	print(body.name)
 	if body.is_in_group("Enemy"):
 		var kd = global_position.direction_to(body.global_position)
 		kd.y=0;
@@ -381,6 +382,7 @@ func _on_hand_2_area_body_entered(body: Node3D) -> void:
 
 
 func _on_hand_1_area_body_entered(body: Node3D) -> void:
+	print(body.name)
 	if body.is_in_group("Enemy"):
 		var kd = global_position.direction_to(body.global_position)
 		kd.y=0;

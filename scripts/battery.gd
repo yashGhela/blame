@@ -1,8 +1,11 @@
-extends Area3D
+extends StaticBody3D
 
 var status = false
 
 @onready var label: Label = $SubViewport/Label
+
+func _ready() -> void:
+	print("Battery spawned")
 
 
 func set_status():
@@ -15,7 +18,7 @@ func set_status():
 
 
 func start_timer():
-	get_tree().create_timer(3.0).timeout.connect(func():
+	get_tree().create_timer(4.0).timeout.connect(func():
 		status=false
 		label.text="OFF"
-	)
+)
