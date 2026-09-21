@@ -15,15 +15,15 @@ var mv:=Vector3.ZERO
 var timeshit= 0
 @onready var state_machine: Node = $StateMachine
 @onready var stun: Node = $StateMachine/Stun
+@onready var death: State = $StateMachine/Death
 
 func _process(delta: float) -> void:
 	progress_bar.value=health
 	
-	if health>100:
-		health=100
+	if health>200:
+		health=200
 	if health<=0:
-		
-		queue_free()
+		state_machine.current_state = death
 	
 	
 	if timeshit>=3 and state_machine.current_state!=stun:

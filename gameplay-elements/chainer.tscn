@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dmfydmdgl0paw" path="res://gameplay-elements/shaders/fresnelgradient.tres" id="3_7fb71"]
 [ext_resource type="Script" uid="uid://bcw8lgq8vjksu" path="res://scripts/statemachine.gd" id="5_7fb71"]
 [ext_resource type="Script" uid="uid://b67xj6wef2lop" path="res://scripts/state.gd" id="6_xmm4t"]
+[ext_resource type="Script" uid="uid://1k04qfm3uxt7" path="res://scripts/chainer/idle.gd" id="7_fptho"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fb71"]
 render_priority = 0
@@ -51,11 +52,7 @@ shape = SubResource("ConvexPolygonShape3D_ryfvy")
 script = ExtResource("5_7fb71")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1495034847]
-script = ExtResource("6_xmm4t")
-metadata/_custom_type_script = "uid://b67xj6wef2lop"
-
-[node name="Roam" type="Node" parent="StateMachine" unique_id=1393364016]
-script = ExtResource("6_xmm4t")
+script = ExtResource("7_fptho")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="Whack" type="Node" parent="StateMachine" unique_id=1145615448]
@@ -95,6 +92,10 @@ script = ExtResource("6_xmm4t")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="Stun" type="Node" parent="StateMachine" unique_id=298400123]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Death" type="Node" parent="StateMachine" unique_id=258725426]
 script = ExtResource("6_xmm4t")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
