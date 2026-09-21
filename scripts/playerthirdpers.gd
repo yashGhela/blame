@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 var SPEED = 9.0
 const JUMP_VELOCITY = 4.5
-const PHASE_JUMP_FORCE = 8.0
+const PHASE_JUMP_FORCE = 12.0
 
 var is_attacking:=false
 
@@ -54,6 +54,8 @@ var dash_timer = 0.0
 var hitcounter = 0
 
 var health = 100
+
+var can_phase_jump:=true
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -149,12 +151,21 @@ func _physics_process(delta: float) -> void:
 func movement(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		velocity.x = velocity.x/2
+		velocity.z = velocity.z/2
 		
-
+		
+	if is_on_floor():
+		can_phase_jump=true
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("jump"): 
+		if is_on_floor():
+			velocity.y = JUMP_VELOCITY
+		elif can_phase_jump:
+			velocity.y = PHASE_JUMP_FORCE
+			can_phase_jump=false
+		
 
 
 	
@@ -286,6 +297,10 @@ func fire():
 
 func snap():
 	snap_target = enemy_detector.get_furthest_enemy()
+	
+	var distance = global_position.distance_to(snap_target.global_position)
+	
+	
 	
 	if snap_target==null:
 		return
