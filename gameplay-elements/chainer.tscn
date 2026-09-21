@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://diy51q743igli"]
+
+[ext_resource type="Script" uid="uid://cpysodp6p7jqg" path="res://scripts/chainer/chainer.gd" id="1_5tb2b"]
+[ext_resource type="Shader" uid="uid://cjo3oo6xq6ppo" path="res://gameplay-elements/shaders/celshader.gdshader" id="1_42yaw"]
+[ext_resource type="Shader" uid="uid://505mpqnvv57c" path="res://gameplay-elements/shaders/outline.gdshader" id="1_ryfvy"]
+[ext_resource type="Texture2D" uid="uid://cxkahe6u325xi" path="res://gameplay-elements/shaders/colorgradient.tres" id="2_ryfvy"]
+[ext_resource type="Texture2D" uid="uid://dmfydmdgl0paw" path="res://gameplay-elements/shaders/fresnelgradient.tres" id="3_7fb71"]
+[ext_resource type="Script" uid="uid://bcw8lgq8vjksu" path="res://scripts/statemachine.gd" id="5_7fb71"]
+[ext_resource type="Script" uid="uid://b67xj6wef2lop" path="res://scripts/state.gd" id="6_xmm4t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fb71"]
+render_priority = 0
+shader = ExtResource("1_ryfvy")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmm4t"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_7fb71")
+shader = ExtResource("1_42yaw")
+shader_parameter/albedo = Color(0.26955765, 0.39790228, 0.4003061, 1)
+shader_parameter/color_gradient = ExtResource("2_ryfvy")
+shader_parameter/fresnel_gradient = ExtResource("3_7fb71")
+
+[sub_resource type="BoxMesh" id="BoxMesh_5tb2b"]
+material = SubResource("ShaderMaterial_xmm4t")
+size = Vector3(1, 2, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ryfvy"]
+points = PackedVector3Array(-0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, 1, -0.5, 0.5, -1, -0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tb2b"]
+bg_color = Color(0.20885223, 0.21486989, 0.24036837, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fptho"]
+bg_color = Color(0.4334523, 0, 0.14273894, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5tb2b"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Chainer" type="CharacterBody3D" unique_id=322891115]
+script = ExtResource("1_5tb2b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1631175731]
+mesh = SubResource("BoxMesh_5tb2b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1123859073]
+shape = SubResource("ConvexPolygonShape3D_ryfvy")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1233649285]
+script = ExtResource("5_7fb71")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1495034847]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Roam" type="Node" parent="StateMachine" unique_id=1393364016]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Whack" type="Node" parent="StateMachine" unique_id=1145615448]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Grab" type="Node" parent="StateMachine" unique_id=861602592]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Squeeze" type="Node" parent="StateMachine" unique_id=609730936]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Slap" type="Node" parent="StateMachine" unique_id=328983151]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Snipe" type="Node" parent="StateMachine" unique_id=429723396]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Slam" type="Node" parent="StateMachine" unique_id=1758599141]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Skewer" type="Node" parent="StateMachine" unique_id=1135659329]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Cooldown" type="Node" parent="StateMachine" unique_id=1626986434]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Charge" type="Node" parent="StateMachine" unique_id=671722801]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Stun" type="Node" parent="StateMachine" unique_id=298400123]
+script = ExtResource("6_xmm4t")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1974118575]
+size = Vector2i(448, 31)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=1374252253]
+offset_right = 447.0
+offset_bottom = 60.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5tb2b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fptho")
+max_value = 200.0
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=338010292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1519842, 0)
+texture = SubResource("ViewportTexture_5tb2b")

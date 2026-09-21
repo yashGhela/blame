@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cxjcbs6gqr4hg"]
+
+[node name="Superhero" type="CharacterBody3D" unique_id=1274418802]
