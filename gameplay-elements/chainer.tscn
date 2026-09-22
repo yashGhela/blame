@@ -43,16 +43,19 @@ viewport_path = NodePath("SubViewport")
 script = ExtResource("1_5tb2b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1631175731]
+visible = false
 mesh = SubResource("BoxMesh_5tb2b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1123859073]
 shape = SubResource("ConvexPolygonShape3D_ryfvy")
 
-[node name="StateMachine" type="Node" parent="." unique_id=1233649285]
+[node name="StateMachine" type="Node" parent="." unique_id=1233649285 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_7fb71")
+initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=1495034847]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1495034847 node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_fptho")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="Whack" type="Node" parent="StateMachine" unique_id=1145615448]

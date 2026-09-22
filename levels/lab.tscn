@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dcrjfth2dc3mh" path="res://gameplay-elements/monitor.tscn" id="13_m7mk3"]
 [ext_resource type="PackedScene" uid="uid://hdtdcvfqal1f" path="res://gameplay-elements/battery.tscn" id="14_j7aef"]
 [ext_resource type="PackedScene" uid="uid://wd8ivhy2ed1" path="res://gameplay-elements/door.tscn" id="15_3qhpx"]
+[ext_resource type="PackedScene" uid="uid://diy51q743igli" path="res://gameplay-elements/chainer.tscn" id="16_sidck"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h8r6w"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -408,3 +409,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0547132, 0.98907304, -5.252
 
 [node name="Door" parent="Monitor" unique_id=2130594673 instance=ExtResource("15_3qhpx")]
 transform = Transform3D(3.36, 0, 0, 0, 3.36, 0, 0, 0, 3.36, -0.94292784, 0, -20.002571)
+
+[node name="Chainer" parent="." unique_id=322891115 instance=ExtResource("16_sidck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2571535, 1.8602717, 46.724598)
