@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bcw8lgq8vjksu" path="res://scripts/statemachine.gd" id="5_7fb71"]
 [ext_resource type="Script" uid="uid://b67xj6wef2lop" path="res://scripts/state.gd" id="6_xmm4t"]
 [ext_resource type="Script" uid="uid://1k04qfm3uxt7" path="res://scripts/chainer/idle.gd" id="7_fptho"]
+[ext_resource type="PackedScene" uid="uid://cyyrgmv2ibvwo" path="res://gameplay-elements/modelfiles/chainer.tscn" id="9_vibjk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fb71"]
 render_priority = 0
@@ -27,8 +28,7 @@ shader_parameter/fresnel_gradient = ExtResource("3_7fb71")
 material = SubResource("ShaderMaterial_xmm4t")
 size = Vector3(1, 2, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ryfvy"]
-points = PackedVector3Array(-0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, 1, -0.5, 0.5, -1, -0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vibjk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tb2b"]
 bg_color = Color(0.20885223, 0.21486989, 0.24036837, 1)
@@ -47,7 +47,7 @@ visible = false
 mesh = SubResource("BoxMesh_5tb2b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1123859073]
-shape = SubResource("ConvexPolygonShape3D_ryfvy")
+shape = SubResource("CapsuleShape3D_vibjk")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1233649285 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_7fb71")
@@ -118,3 +118,11 @@ show_percentage = false
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=338010292]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1519842, 0)
 texture = SubResource("ViewportTexture_5tb2b")
+
+[node name="chainer" parent="." unique_id=1246154780 instance=ExtResource("9_vibjk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0030815601, -0.9819255, -0.22344494)
+
+[node name="Cube_003" parent="chainer/rigman/Skeleton3D/eyes" parent_id_path=PackedInt32Array(1246154780, 1144877449) index="0" unique_id=1740875475]
+transform = Transform3D(0.0004824866, 0.018710062, 0.009917797, 0.0023024464, -0.014408351, 0.012551339, 0.01312937, 0.0018391666, -0.002565545, -0.04790879, 0.02580893, -0.23018798)
+
+[editable path="chainer"]

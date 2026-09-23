@@ -5,8 +5,7 @@ var health:=200
 
 @export var phase:=1
 
-@onready var ap: AnimationPlayer = $chainer/AnimationPlayer
-
+@onready var chainer: Node3D = $chainer
 
 var kv:Vector3 = Vector3.ZERO
 @export var kd = 25.0
@@ -17,9 +16,8 @@ var timeshit= 0
 @onready var state_machine: Node = $StateMachine
 @onready var stun: Node = $StateMachine/Stun
 @onready var death: State = $StateMachine/Death
+@onready var ap: AnimationPlayer = $chainer/AnimationPlayer
 
-func _ready() -> void:
-	ap.play("rigman|idle")
 
 func _process(delta: float) -> void:
 	progress_bar.value=health
@@ -33,6 +31,9 @@ func _process(delta: float) -> void:
 	if timeshit>=3 and state_machine.current_state!=stun:
 		state_machine.current_state = stun
 		timeshit=0
+	
+	if !ap.is_playing():
+		ap.play("idle")
 
 func _physics_process(delta: float) -> void:
 	

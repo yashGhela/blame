@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cyyrgmv2ibvwo"]
+
+[ext_resource type="PackedScene" uid="uid://di5imi40csp3u" path="res://assets/glb/chainer.glb" id="1_u5cba"]
+
+[node name="chainer" unique_id=1246154780 instance=ExtResource("1_u5cba")]
+
+[node name="rigman" parent="." index="0" unique_id=869683889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.042194366)
+
+[node name="Skeleton3D" parent="rigman" index="0" unique_id=1009250779]
+bones/9/rotation = Quaternion(0.20173779, 4.0910226e-09, -2.3196554e-08, 0.9794396)
+bones/10/rotation = Quaternion(-0.13373072, 0.002744348, 0.021394962, 0.990783)
+bones/31/rotation = Quaternion(0.10638686, 5.7369107e-08, 1.2176302e-08, 0.99432486)
+bones/46/rotation = Quaternion(-0.5106937, -0.29728767, -0.14171924, 0.7941837)
+bones/58/rotation = Quaternion(0.9853268, 0.04583032, 0.035513792, 0.16052873)
+bones/68/rotation = Quaternion(0.10638682, 6.047172e-08, 9.366382e-09, 0.99432486)
+bones/73/rotation = Quaternion(0.106386855, 1.6350191e-07, 1.45178936e-08, 0.99432486)
+bones/88/rotation = Quaternion(0.9299854, 0.024607608, 0.3284791, 0.16316657)
+bones/90/rotation = Quaternion(0.9299854, 0.024607586, 0.3284791, 0.16316657)
+bones/106/rotation = Quaternion(0.20173775, 4.0910275e-09, -2.3196547e-08, 0.9794396)
+bones/107/rotation = Quaternion(-0.1337307, 0.002744346, 0.021394962, 0.990783)
+bones/144/rotation = Quaternion(-0.0067881197, 0.70707434, 0.70707417, -0.0067881225)
+bones/148/rotation = Quaternion(0.6120469, -0.48417303, -0.43395013, -0.45018062)
+bones/149/rotation = Quaternion(0.6120469, -0.48417303, -0.43395013, -0.45018062)
+bones/155/rotation = Quaternion(0.5872863, 0.49337748, 0.53927416, -0.34764495)
+bones/156/rotation = Quaternion(-0.03587025, 0.7061965, 0.70619637, -0.035870258)
+bones/178/rotation = Quaternion(0.8224094, 0.52115583, 0.10692377, 0.20151114)
+bones/182/rotation = Quaternion(0.38708702, 0.37330446, 0.7710252, -0.3410687)
+bones/187/rotation = Quaternion(-8.5522174e-08, -0.44038525, -0.21701102, 0.8711872)
+bones/200/rotation = Quaternion(0.845992, 0.38589647, 0.27008665, -0.24986973)
+bones/201/rotation = Quaternion(0.845992, 0.38589647, 0.27008665, -0.24986973)
+bones/207/rotation = Quaternion(-0.0264396, 0.70661235, 0.7066122, -0.026439607)
+bones/215/rotation = Quaternion(-0.033221707, 0.70632595, 0.706326, -0.033221718)
+bones/225/rotation = Quaternion(0.40939227, -0.4336984, 0.7483446, -0.29031718)
+bones/229/rotation = Quaternion(0.32536978, -0.21825658, -0.7133549, 0.5810537)
+bones/387/rotation = Quaternion(0.9996404, -1.394535e-08, 6.1188096e-08, -0.026816461)
+bones/388/rotation = Quaternion(0.9996404, -1.394535e-08, 6.1188096e-08, -0.026816461)
+bones/413/rotation = Quaternion(0.15207124, -1.6819733e-07, 5.7479216e-08, 0.9883696)
+bones/431/rotation = Quaternion(0.060358167, -0.67380774, 0.6957719, -0.24133314)
+bones/433/rotation = Quaternion(0.15207128, -1.8032925e-07, 2.7326186e-08, 0.9883696)
+bones/438/rotation = Quaternion(0.15207115, -1.5465201e-07, -3.769129e-09, 0.9883696)
+bones/555/rotation = Quaternion(-0.023894947, 0.6995305, -0.6964477, -0.15826215)
+bones/562/rotation = Quaternion(0.13783056, -2.3789511e-07, 2.2143992e-07, 0.99045587)
+bones/602/rotation = Quaternion(0.21727161, -0.020558076, 0.010238539, 0.975841)
+bones/605/rotation = Quaternion(0.21727161, -0.020558076, 0.010238539, 0.975841)
+bones/608/rotation = Quaternion(0.21727163, -0.020558074, 0.01023854, 0.975841)
+bones/616/rotation = Quaternion(0.19561173, -1.04790026e-07, 0.9806815, -4.463444e-07)
+bones/619/rotation = Quaternion(0.21727161, -0.020558076, 0.010238539, 0.975841)
+bones/629/rotation = Quaternion(0.28076896, -0.0797018, -0.027808476, 0.95605606)
+bones/639/rotation = Quaternion(-0.07657561, -0.7614062, 0.055708095, 0.6413217)
+bones/658/rotation = Quaternion(-0.07657561, -0.7614062, 0.055708095, 0.6413217)
+
+[node name="Cube_003" parent="rigman/Skeleton3D/eyes" parent_id_path=PackedInt32Array(1144877449) index="0" unique_id=1740875475]
+transform = Transform3D(0.00048248653, 0.01871006, 0.009917797, 0.0023024462, -0.014408349, 0.012551339, 0.013129369, 0.0018391665, -0.002565545, -0.04790879, 0.02580893, -0.23018798)
