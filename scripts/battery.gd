@@ -4,8 +4,6 @@ var status = false
 
 @onready var label: Label = $SubViewport/Label
 
-func _ready() -> void:
-	print("Battery spawned")
 
 
 func set_status():

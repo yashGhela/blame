@@ -5,7 +5,6 @@ var player:CharacterBody3D
 
 
 func enter():
-	print("Entered Striker Idle")
 	player = get_tree().get_first_node_in_group("Player")
 	
 
