@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 var SPEED = 9.0
 const JUMP_VELOCITY = 4.5
-const PHASE_JUMP_FORCE = 12.0
+const PHASE_JUMP_FORCE = 15.0
 
 var is_attacking:=false
 
@@ -139,7 +139,10 @@ func _physics_process(delta: float) -> void:
 		if is_snapping:
 			return
 		
-		snap()
+		if is_on_floor():
+			snap()
+		elif not is_on_floor():
+			airsnap()
 		
 	
 	if Input.is_action_just_pressed("fire"):
@@ -147,6 +150,9 @@ func _physics_process(delta: float) -> void:
 	
 	movement(delta)
 	move_and_slide()
+
+func floorslam():
+	pass
 
 func movement(delta):
 	if not is_on_floor():
@@ -294,6 +300,80 @@ func fire():
 				is_reloading=false
 				fire_shots=6
 		)
+	
+
+func airsnap():
+	snap_target = enemy_detector.get_furthest_enemy()
+	
+	var distance = global_position.distance_to(snap_target.global_position)
+	
+	
+	
+	if snap_target==null:
+		return
+	
+	is_snapping=true
+	snap_cooldown=true
+	
+	var direction = snap_target.global_position - global_position
+	var angle = atan2(direction.x, direction.z)
+	direction = direction.normalized()
+
+	var target_position = snap_target.global_position - direction * SNAP_DISTANCE
+
+
+	# Face the enemy
+	#body.look_at(
+		#snap_target.global_position,
+		#Vector3.UP
+	#)
+	#
+	#body.rotate_y(deg_to_rad(180))
+
+	# Move player toward enemy
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
+
+	tween.tween_property(
+		self,
+		"global_position",
+		target_position,
+		SNAP_DURATION
+	)
+	
+	var look_direction = snap_target.global_position - body.global_position
+	look_direction.y = 0
+
+	var target_angle = atan2(
+		look_direction.x,
+		look_direction.z
+	)
+
+	var rotation_tween = create_tween()
+	rotation_tween.set_trans(Tween.TRANS_SINE)
+	rotation_tween.set_ease(Tween.EASE_OUT)
+
+	rotation_tween.tween_property(
+		body,
+		"rotation:y",
+		target_angle + deg_to_rad(90),
+		SNAP_DURATION
+	)
+
+	await tween.finished
+
+	# Make sure we don't continue if something interrupted the snap
+	if not is_snapping:
+		return
+
+	velocity = Vector3.ZERO
+
+	# Play attack
+	basicanims.play("hit_one")
+	
+	await get_tree().create_timer(SNAP_COOLDOWN).timeout
+	snap_cooldown = false
 
 func snap():
 	snap_target = enemy_detector.get_furthest_enemy()
