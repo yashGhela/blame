@@ -35,7 +35,7 @@ const FIRE_RELOAD=1.5
 var fire_shots:=6
 var is_reloading=false
 
-const DASH_SPEED = 18.0
+const DASH_SPEED = 25.0
 const DASH_DURATION = 0.3
 
 const SNAP_COOLDOWN=1.5
@@ -370,7 +370,7 @@ func airsnap():
 	velocity = Vector3.ZERO
 
 	# Play attack
-	basicanims.play("hit_one")
+	basicanims.play("hit_three")
 	
 	await get_tree().create_timer(SNAP_COOLDOWN).timeout
 	snap_cooldown = false

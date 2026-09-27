@@ -87,6 +87,33 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, 1.5707964, 1.5376351)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area3D/CollisionShape3D:shape:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vuosb"]
+resource_name = "floorslam"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/CollisionShape3D:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_kuag1"]
 resource_name = "hit_one"
@@ -253,10 +280,14 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_05j85"]
 _data = {
 &"RESET": SubResource("Animation_7xu6t"),
+&"floorslam": SubResource("Animation_vuosb"),
 &"hit_one": SubResource("Animation_kuag1"),
 &"hit_three": SubResource("Animation_dg8n4"),
 &"hit_two": SubResource("Animation_05j85")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n7aa4"]
+size = Vector3(1, 0, 1)
 
 [node name="Playerthirdpers" type="CharacterBody3D" unique_id=1172021385 groups=["Player"]]
 script = ExtResource("1_77iq7")
@@ -343,6 +374,12 @@ margin = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="CamOrigin/CamPitch/SpringArm3D" unique_id=957776855]
 transform = Transform3D(1, -1.7763568e-15, 2.1316282e-14, 1.7763567e-15, 1.0000002, 2.980232e-08, 1.4210855e-14, -2.980232e-08, 1.0000002, 9.22806e-08, 0.0069811344, 3.0474908)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=34030037]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=221534102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9196032, 0)
+shape = SubResource("BoxShape3D_n7aa4")
 
 [connection signal="body_entered" from="body/hand1/hand1area" to="." method="_on_hand_1_area_body_entered"]
 [connection signal="body_entered" from="body/hand2/hand2area" to="." method="_on_hand_2_area_body_entered"]
