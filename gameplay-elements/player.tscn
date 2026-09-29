@@ -308,6 +308,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_7xu6t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_kuag1")
 value = 50.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="shotnumberslabel" type="Label" parent="CanvasLayer" unique_id=2008028537]
 offset_left = 14.0
@@ -315,6 +316,7 @@ offset_top = 80.0
 offset_right = 54.0
 offset_bottom = 103.0
 text = "Shot Number: "
+metadata/_edit_use_anchors_ = true
 
 [node name="shotamount" type="Label" parent="CanvasLayer" unique_id=1846336593]
 offset_left = 131.0
@@ -322,6 +324,7 @@ offset_top = 81.0
 offset_right = 171.0
 offset_bottom = 104.0
 text = "6"
+metadata/_edit_use_anchors_ = true
 
 [node name="InteractionZone" type="Area3D" parent="." unique_id=1056080400 groups=["Player"]]
 
@@ -334,7 +337,7 @@ libraries/ = SubResource("AnimationLibrary_05j85")
 [node name="EnemyDetector" type="Node" parent="." unique_id=656638712]
 script = ExtResource("3_kuag1")
 
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1811409892]
+[node name="floorcast" type="RayCast3D" parent="." unique_id=1811409892]
 transform = Transform3D(0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(100, 0, 0)
 

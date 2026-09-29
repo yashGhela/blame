@@ -22,6 +22,7 @@ var bulletinst
 @onready var enemy_detector: Node = $EnemyDetector
 @onready var shotamount: Label = $CanvasLayer/shotamount
 
+@onready var floorcast: RayCast3D = $floorcast
 
 
 const FIRE_RELOAD=1.5
