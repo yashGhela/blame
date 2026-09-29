@@ -334,6 +334,10 @@ libraries/ = SubResource("AnimationLibrary_05j85")
 [node name="EnemyDetector" type="Node" parent="." unique_id=656638712]
 script = ExtResource("3_kuag1")
 
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1811409892]
+transform = Transform3D(0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
+target_position = Vector3(100, 0, 0)
+
 [connection signal="body_entered" from="body/hand1/hand1area" to="." method="_on_hand_1_area_body_entered"]
 [connection signal="body_entered" from="body/hand2/hand2area" to="." method="_on_hand_2_area_body_entered"]
 [connection signal="animation_finished" from="basicanims" to="." method="_on_basicanims_animation_finished"]
