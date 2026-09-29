@@ -307,7 +307,7 @@ func _on_basicanims_animation_finished(anim_name: StringName) -> void:
 			is_snapping = false
 			snap_target = null
 			
-
+#push
 
 func _on_hand_2_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemy"):
