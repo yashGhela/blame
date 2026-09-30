@@ -71,23 +71,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2631207, 1.5, -10.455828)
 [node name="deathzone" parent="." unique_id=1751392379 instance=ExtResource("5_ihxt7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.108017, 0)
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=186351245 groups=["Floor"]]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=1741927835]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1741927835]
 material_override = SubResource("StandardMaterial3D_kk6di")
 mesh = SubResource("BoxMesh_h8r6w")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1912483422]
+[node name="StaticBody3D2" type="StaticBody3D" parent="MeshInstance3D" unique_id=186351245 groups=["Floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D2" unique_id=1912483422]
 shape = SubResource("ConvexPolygonShape3D_s7fyc")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=876230352 groups=["Floor"]]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=192033992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 55.22662)
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D" unique_id=192033992]
 material_override = SubResource("StandardMaterial3D_kk6di")
 mesh = SubResource("BoxMesh_h8r6w")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=248796460]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3" unique_id=876230352 groups=["Floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D" unique_id=248796460]
 shape = SubResource("ConvexPolygonShape3D_s7fyc")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1537457038 groups=["Floor"]]
