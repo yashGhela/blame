@@ -338,7 +338,7 @@ func floorslam():
 				self,
 				"global_position",
 				target_position,
-				0.2
+				0.3
 			)
 			
 			var look_direction = collision_point - body.global_position
@@ -357,7 +357,7 @@ func floorslam():
 				body,
 				"rotation:y",
 				target_angle + deg_to_rad(90),
-				0.2
+				0.3
 			)
 
 			await tween.finished
@@ -563,7 +563,7 @@ func _on_hand_1_area_body_entered(body: Node3D) -> void:
 func _on_floorcol_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemy"):
 		var kd = global_position.direction_to(body.global_position)
-		kd.y=5;
+		kd.y=0;
 		var kv = 10
 		body.get_knockback(kd,kv,20)
 	
