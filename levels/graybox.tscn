@@ -104,6 +104,15 @@ mesh = ExtResource("3_gr74w")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PrimitiveSlope2/StaticBody3D" unique_id=75794507]
 shape = SubResource("ConvexPolygonShape3D_dg0o1")
 
+[node name="PrimitiveSlope3" type="MeshInstance3D" parent="." unique_id=530599075]
+transform = Transform3D(1.3945814e-06, 0, 0.99999875, 0, 1.3863616, 0, -10.6347685, 0, 1.3113399e-07, -65.88188, 23.600143, 53.223606)
+mesh = ExtResource("3_gr74w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PrimitiveSlope3" unique_id=1399115800]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PrimitiveSlope3/StaticBody3D" unique_id=1852581062]
+shape = SubResource("ConvexPolygonShape3D_dg0o1")
+
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=2097141167]
 transform = Transform3D(6.2137847, 0, 0, 0, 1, 0, 0, 0, 1, -46.37148, 4.010603, -6.901162)
 mesh = ExtResource("4_q1tdv")
@@ -131,6 +140,51 @@ mesh = ExtResource("4_q1tdv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3/StaticBody3D" unique_id=1496325919]
 shape = SubResource("ConvexPolygonShape3D_fx7vd")
 
+[node name="Floor4" type="MeshInstance3D" parent="." unique_id=912742376]
+transform = Transform3D(5.8032904, 0, 0, 0, 1, 0, 0, 0, 2.0449762, -58.53352, 16.02189, 21.835869)
+mesh = ExtResource("4_q1tdv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor4" unique_id=1451553184 groups=["Floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor4/StaticBody3D" unique_id=777142004]
+shape = SubResource("ConvexPolygonShape3D_fx7vd")
+
+[node name="Floor5" type="MeshInstance3D" parent="." unique_id=373172025]
+transform = Transform3D(2.3025525, 0, 0, 0, 1, 0, 0, 0, 2.0449762, -65.733475, 23.131006, 28.176771)
+mesh = ExtResource("4_q1tdv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor5" unique_id=1609769126 groups=["Floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor5/StaticBody3D" unique_id=316856487]
+shape = SubResource("ConvexPolygonShape3D_fx7vd")
+
+[node name="Floor6" type="MeshInstance3D" parent="." unique_id=1866455400]
+transform = Transform3D(2.3025525, 0, 0, 0, 1, 0, 0, 0, 11.403279, -72.39584, 29.816732, 54.19505)
+mesh = ExtResource("4_q1tdv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor6" unique_id=1609810683 groups=["Floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor6/StaticBody3D" unique_id=1275846199]
+shape = SubResource("ConvexPolygonShape3D_fx7vd")
+
+[node name="Floor7" type="MeshInstance3D" parent="." unique_id=2017473506]
+transform = Transform3D(-1.0064777e-07, 0, -6.761264, 0, 1, 0, 2.3025525, 0, -2.9554423e-07, -40.350815, 29.816732, 54.19505)
+mesh = ExtResource("4_q1tdv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor7" unique_id=156866574 groups=["Floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor7/StaticBody3D" unique_id=1237573907]
+shape = SubResource("ConvexPolygonShape3D_fx7vd")
+
+[node name="Floor8" type="MeshInstance3D" parent="." unique_id=2082216011]
+transform = Transform3D(2.3025525, 0, 0, 0, 1, 0, 0, 0, 11.403279, -58.403645, 29.816732, 54.19505)
+mesh = ExtResource("4_q1tdv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor8" unique_id=1451285343 groups=["Floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor8/StaticBody3D" unique_id=1598845949]
+shape = SubResource("ConvexPolygonShape3D_fx7vd")
+
 [node name="CubePrototypeLargeA" type="MeshInstance3D" parent="." unique_id=1454293030]
 transform = Transform3D(2.2938466, 0, 0, 0, 5.053586, 0, 0, 0, 1.6775556, -45.01045, 0.5, 5.692949)
 mesh = ExtResource("5_4vge4")
@@ -138,6 +192,69 @@ mesh = ExtResource("5_4vge4")
 [node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeA" unique_id=1166175413]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeA/StaticBody3D" unique_id=1051429231]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA/StaticBody3D" unique_id=2140179249]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CubePrototypeLargeA5" type="MeshInstance3D" parent="." unique_id=1358107170]
+transform = Transform3D(2.2938466, 0, 0, 0, 5.7376103, 0, 0, 0, 11.381807, -65.588646, 0.5, 53.93303)
+mesh = ExtResource("5_4vge4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeA5" unique_id=310964515]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeA5/StaticBody3D" unique_id=1287890449]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA5/StaticBody3D" unique_id=2043989786]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CubePrototypeLargeA7" type="MeshInstance3D" parent="." unique_id=737433626]
+transform = Transform3D(2.2938466, 0, 0, 0, 7.3165736, 0, 0, 0, 11.381807, -58.4461, 0.5, 53.93303)
+mesh = ExtResource("5_4vge4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeA7" unique_id=726605340]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeA7/StaticBody3D" unique_id=238255204]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA7/StaticBody3D" unique_id=1547003611]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CubePrototypeLargeA9" type="MeshInstance3D" parent="." unique_id=1252943601]
+transform = Transform3D(6.6384306, 0, 0, 0, 7.3165736, 0, 0, 0, 1.7796278, -41.812775, 0.5, 53.93303)
+mesh = ExtResource("5_4vge4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeA9" unique_id=2123430541]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeA9/StaticBody3D" unique_id=325798394]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA9/StaticBody3D" unique_id=1823378728]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CubePrototypeLargeA8" type="MeshInstance3D" parent="." unique_id=1055113869]
+transform = Transform3D(2.2938466, 0, 0, 0, 7.3165736, 0, 0, 0, 11.381807, -72.58232, 0.5, 53.93303)
+mesh = ExtResource("5_4vge4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeA8" unique_id=1348616552]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeA8/StaticBody3D" unique_id=599045213]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA8/StaticBody3D" unique_id=980523298]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CubePrototypeLargeA6" type="MeshInstance3D" parent="." unique_id=1929670290]
+transform = Transform3D(2.2938466, 0, 0, 0, 5.7376103, 0, 0, 0, 1.6775556, -65.588646, 0.5, 28.13641)
+mesh = ExtResource("5_4vge4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeA6" unique_id=777699955]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeA6/StaticBody3D" unique_id=618871853]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA6/StaticBody3D" unique_id=2060728712]
 shape = SubResource("ConvexPolygonShape3D_3lb85")
 
 [node name="CubePrototypeLargeA4" type="MeshInstance3D" parent="." unique_id=723346592]
@@ -180,6 +297,60 @@ mesh = ExtResource("6_705in")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeB2/StaticBody3D" unique_id=540681916]
 shape = SubResource("ConvexPolygonShape3D_nie3d")
 
+[node name="CubePrototypeLargeB4" type="MeshInstance3D" parent="." unique_id=185302725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.510456, 16.20353, 23.578934)
+mesh = ExtResource("6_705in")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeB4" unique_id=249752592]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeB4/StaticBody3D" unique_id=156142501]
+shape = SubResource("ConvexPolygonShape3D_nie3d")
+
+[node name="CubePrototypeLargeB6" type="MeshInstance3D" parent="." unique_id=438537909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.5311, 29.544796, 35.257404)
+mesh = ExtResource("6_705in")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeB6" unique_id=520012707]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeB6/StaticBody3D" unique_id=1980973620]
+shape = SubResource("ConvexPolygonShape3D_nie3d")
+
+[node name="CubePrototypeLargeB8" type="MeshInstance3D" parent="." unique_id=723433476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.716476, 29.544796, 50.794437)
+mesh = ExtResource("6_705in")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeB8" unique_id=221708586]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeB8/StaticBody3D" unique_id=404447397]
+shape = SubResource("ConvexPolygonShape3D_nie3d")
+
+[node name="CubePrototypeLargeB9" type="MeshInstance3D" parent="." unique_id=1773972392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.405643, 29.544796, 65.38036)
+mesh = ExtResource("6_705in")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeB9" unique_id=2099574014]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeB9/StaticBody3D" unique_id=704070555]
+shape = SubResource("ConvexPolygonShape3D_nie3d")
+
+[node name="CubePrototypeLargeB7" type="MeshInstance3D" parent="." unique_id=1926528100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.527435, 29.544796, 48.254063)
+mesh = ExtResource("6_705in")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeB7" unique_id=1607109423]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeB7/StaticBody3D" unique_id=466858363]
+shape = SubResource("ConvexPolygonShape3D_nie3d")
+
+[node name="CubePrototypeLargeB5" type="MeshInstance3D" parent="." unique_id=802487078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.00467, 16.20353, 23.578934)
+mesh = ExtResource("6_705in")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeB5" unique_id=806529719]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeB5/StaticBody3D" unique_id=1173375742]
+shape = SubResource("ConvexPolygonShape3D_nie3d")
+
 [node name="CubePrototypeLargeB3" type="MeshInstance3D" parent="." unique_id=2034306395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.39354, 16.20353, 26.558235)
 mesh = ExtResource("6_705in")
@@ -209,3 +380,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.603306, 17.665085, 23.838
 
 [node name="Striker2" parent="." unique_id=2145319030 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.877995, 17.665085, 26.063194)
+
+[node name="Striker3" parent="." unique_id=570517135 instance=ExtResource("9_fx7vd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.77578, 31.316738, 44.157623)
+
+[node name="Striker4" parent="." unique_id=1695350058 instance=ExtResource("9_fx7vd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.14489, 31.316738, 38.872868)
+
+[node name="Striker5" parent="." unique_id=533237699 instance=ExtResource("9_fx7vd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.79673, 31.316738, 59.01015)
+
+[node name="Striker6" parent="." unique_id=1209458046 instance=ExtResource("9_fx7vd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.17063, 31.316738, 58.179756)

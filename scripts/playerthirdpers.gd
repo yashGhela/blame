@@ -385,6 +385,8 @@ func airsnap():
 	var distance = global_position.distance_to(snap_target.global_position)
 	
 	
+	if distance >=40:
+		return
 	
 	
 	is_snapping=true
@@ -453,11 +455,15 @@ func airsnap():
 func snap():
 	snap_target = enemy_detector.get_furthest_enemy()
 	
+	if snap_target==null:
+		return
+	
 	var distance = global_position.distance_to(snap_target.global_position)
 	
 	
 	
-	if snap_target==null:
+	
+	if distance >=40:
 		return
 	
 	is_snapping=true
