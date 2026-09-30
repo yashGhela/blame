@@ -48,7 +48,7 @@ func get_furthest_enemy_in_range() -> CharacterBody3D:
 	var furthest: CharacterBody3D = null
 	var furthest_distance := -1.0
 	
-	var max_distance := 20.0
+	var max_distance := 15.0
 	var max_distance_squared := max_distance * max_distance
 	
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
