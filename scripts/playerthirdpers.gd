@@ -4,6 +4,7 @@ extends CharacterBody3D
 var SPEED = 9.0
 const JUMP_VELOCITY = 4.5
 const PHASE_JUMP_FORCE = 15.0
+const RUNNING_SPEED = 14.0
 
 var is_attacking:=false
 
@@ -30,6 +31,8 @@ var bulletinst
 
 @onready var floorcast: RayCast3D = $CamOrigin/floorcast
 
+
+var is_running= false
 
 var yaw =0.0
 var pitch = deg_to_rad(15.0)
@@ -186,8 +189,12 @@ func movement(delta):
 			is_phase_jumping=true
 			can_phase_jump=false
 		
-
-
+		
+	
+	if Input.is_action_just_pressed("run"):
+		is_running=true
+	if Input.is_action_just_released("run"):
+		is_running=false
 	
 	
 	
@@ -254,9 +261,12 @@ func movement(delta):
 	).normalized()
 
 	if direction != Vector3.ZERO:
-		velocity.x = -direction.x * SPEED
-		velocity.z = -direction.z * SPEED
-		
+		if is_running:
+			velocity.x = -direction.x * RUNNING_SPEED
+			velocity.z = -direction.z * RUNNING_SPEED
+		else:
+			velocity.x = -direction.x * SPEED
+			velocity.z = -direction.z * SPEED
 		
 		var target_y = atan2(direction.x, direction.z) + deg_to_rad(270)
 
