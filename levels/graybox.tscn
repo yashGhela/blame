@@ -108,7 +108,7 @@ shape = SubResource("ConvexPolygonShape3D_dg0o1")
 transform = Transform3D(6.2137847, 0, 0, 0, 1, 0, 0, 0, 1, -46.37148, 4.010603, -6.901162)
 mesh = ExtResource("4_q1tdv")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1462440454]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1462440454 groups=["Floor"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1948199331]
 shape = SubResource("ConvexPolygonShape3D_knidj")
@@ -117,7 +117,7 @@ shape = SubResource("ConvexPolygonShape3D_knidj")
 transform = Transform3D(2.3861525, 0, 0, 0, 1, 0, 0, 0, 2.5602884, -35.604145, 7.837343, 4.0639915)
 mesh = ExtResource("4_q1tdv")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor2" unique_id=1117186104]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor2" unique_id=1117186104 groups=["Floor"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2/StaticBody3D" unique_id=1329888164]
 shape = SubResource("ConvexPolygonShape3D_u0hem")
@@ -126,7 +126,7 @@ shape = SubResource("ConvexPolygonShape3D_u0hem")
 transform = Transform3D(5.8032904, 0, 0, 0, 1, 0, 0, 0, 6.5205297, -35.604145, 16.02189, 21.835869)
 mesh = ExtResource("4_q1tdv")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor3" unique_id=1093453735]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor3" unique_id=1093453735 groups=["Floor"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3/StaticBody3D" unique_id=1496325919]
 shape = SubResource("ConvexPolygonShape3D_fx7vd")
