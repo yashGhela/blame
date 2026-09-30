@@ -28,7 +28,7 @@ var bulletinst
 @onready var pivot: Node3D = $CamOrigin/CamPitch/SpringArm3D
 @onready var camera_3d: Camera3D = $CamOrigin/CamPitch/SpringArm3D/Camera3D
 
-@onready var floorcast: RayCast3D = $floorcast
+@onready var floorcast: RayCast3D = $CamOrigin/floorcast
 
 
 var yaw =0.0
@@ -322,14 +322,11 @@ func floorslam():
 		print(collider)
 		
 		if collider and collider.is_in_group("Floor"):
-			var collider_pos = collider.global_position
+			var collision_point = floorcast.get_collision_point()
+			var collision_normal = floorcast.get_collision_normal()
 			
-			var direction = collider_pos - global_position 
 			
-			var angle = atan2(direction.x, direction.z)
-			
-			var target_position = collider_pos - direction  * SNAP_DISTANCE
-			
+			var target_position = collision_point + (collision_point *0.1)
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_SINE)
 			tween.set_ease(Tween.EASE_OUT)
@@ -338,10 +335,10 @@ func floorslam():
 				self,
 				"global_position",
 				target_position,
-				3.0
+				0.2
 			)
 			
-			var look_direction = collider_pos - body.global_position
+			var look_direction = collision_point - body.global_position
 			look_direction.y = 0
 
 			var target_angle = atan2(
@@ -357,7 +354,7 @@ func floorslam():
 				body,
 				"rotation:y",
 				target_angle + deg_to_rad(90),
-				3.0
+				0.2
 			)
 
 			await tween.finished

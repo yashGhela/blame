@@ -364,6 +364,10 @@ script = ExtResource("2_vuosb")
 [node name="CamOrigin" type="Node3D" parent="." unique_id=307443930]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.9999997, 0, 0, 0, 0.99999976, 0, 0.43252575, 0)
 
+[node name="floorcast" type="RayCast3D" parent="CamOrigin" unique_id=1991592042]
+transform = Transform3D(1, 0, 0, 0, 0.70710695, -0.70710695, 0, 0.70710695, 0.70710695, 0, -0.43252584, 0)
+target_position = Vector3(0, 0, 100)
+
 [node name="CamPitch" type="Node3D" parent="CamOrigin" unique_id=40782520]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.96592575, -0.25881904, 0, 0.258819, 0.9659258, 0, 0, 0)
 
@@ -380,10 +384,6 @@ transform = Transform3D(1, -1.7763568e-15, 2.1316282e-14, 1.7763567e-15, 1.00000
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floorcol" unique_id=221534102]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9196032, 0)
 shape = SubResource("BoxShape3D_n7aa4")
-
-[node name="floorcast" type="RayCast3D" parent="." unique_id=1991592042]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0)
-target_position = Vector3(0, 0, 10)
 
 [connection signal="body_entered" from="body/hand1/hand1area" to="." method="_on_hand_1_area_body_entered"]
 [connection signal="body_entered" from="body/hand2/hand2area" to="." method="_on_hand_2_area_body_entered"]
