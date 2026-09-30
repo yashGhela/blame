@@ -44,7 +44,9 @@ func _physics_process(delta: float) -> void:
 	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+		
+	
+	rotation.y=0
 	# Movement + knockback
 	velocity.x = mv.x + kv.x
 	velocity.z = mv.z + kv.z
