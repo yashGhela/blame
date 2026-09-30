@@ -61,6 +61,7 @@ var health = 100
 var can_phase_jump:=true
 
 var is_floorslamming= false
+var is_phase_jumping = false
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -174,6 +175,7 @@ func movement(delta):
 		
 	if is_on_floor():
 		can_phase_jump=true
+		is_phase_jumping = false
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"): 
@@ -181,6 +183,7 @@ func movement(delta):
 			velocity.y = JUMP_VELOCITY
 		elif can_phase_jump:
 			velocity.y = PHASE_JUMP_FORCE
+			is_phase_jumping=true
 			can_phase_jump=false
 		
 
@@ -321,7 +324,7 @@ func floorslam():
 		
 		print(collider)
 		
-		if collider and collider.is_in_group("Floor"):
+		if collider and collider.is_in_group("Floor") and is_floorslamming:
 			var collision_point = floorcast.get_collision_point()
 			var collision_normal = floorcast.get_collision_normal()
 			
@@ -555,3 +558,13 @@ func _on_hand_1_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Battery"):
 		body.set_status()
 		print("setting status")
+
+
+func _on_floorcol_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Enemy"):
+		var kd = global_position.direction_to(body.global_position)
+		kd.y=5;
+		var kv = 10
+		body.get_knockback(kd,kv,20)
+	
+	

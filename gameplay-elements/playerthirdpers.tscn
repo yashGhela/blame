@@ -99,9 +99,22 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(1, 0, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("floorcol/CollisionShape3D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_vuosb"]
 resource_name = "floorslam"
+length = 0.37
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -109,10 +122,22 @@ tracks/0/path = NodePath("floorcol/CollisionShape3D:shape:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(1, 0, 1)]
+"values": [Vector3(1, 0, 1), Vector3(5, 3, 5), Vector3(1, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("floorcol/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.098046094, 0.34075645),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_kuag1"]
@@ -384,7 +409,9 @@ transform = Transform3D(1, -1.7763568e-15, 2.1316282e-14, 1.7763567e-15, 1.00000
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floorcol" unique_id=221534102]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9196032, 0)
 shape = SubResource("BoxShape3D_n7aa4")
+disabled = true
 
 [connection signal="body_entered" from="body/hand1/hand1area" to="." method="_on_hand_1_area_body_entered"]
 [connection signal="body_entered" from="body/hand2/hand2area" to="." method="_on_hand_2_area_body_entered"]
 [connection signal="animation_finished" from="basicanims" to="." method="_on_basicanims_animation_finished"]
+[connection signal="body_entered" from="floorcol" to="." method="_on_floorcol_body_entered"]
