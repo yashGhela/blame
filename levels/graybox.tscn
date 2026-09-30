@@ -78,7 +78,7 @@ environment = SubResource("Environment_7v2gh")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=103344179]
 mesh = SubResource("BoxMesh_80ttd")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1886228326 groups=["Floor"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1886228326]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=102319723]
 shape = SubResource("ConcavePolygonShape3D_cp67o")
