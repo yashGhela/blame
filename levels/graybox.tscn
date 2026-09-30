@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dqaq2e4ndjg72" path="res://gameplay-elements/pincer.tscn" id="7_fybl5"]
 [ext_resource type="PackedScene" uid="uid://ddgmqofrqjq3u" path="res://gameplay-elements/baton.tscn" id="8_fx7vd"]
 [ext_resource type="PackedScene" uid="uid://d4n1saad2w120" path="res://gameplay-elements/striker.tscn" id="9_fx7vd"]
+[ext_resource type="PackedScene" uid="uid://wd8ivhy2ed1" path="res://gameplay-elements/door.tscn" id="10_nie3d"]
+[ext_resource type="PackedScene" uid="uid://dcrjfth2dc3mh" path="res://gameplay-elements/monitor.tscn" id="11_b1vc1"]
+[ext_resource type="PackedScene" uid="uid://hdtdcvfqal1f" path="res://gameplay-elements/battery.tscn" id="12_rvvv2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80ttd"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -233,6 +236,69 @@ shape = SubResource("ConvexPolygonShape3D_3lb85")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA9/StaticBody3D" unique_id=1823378728]
 shape = SubResource("ConvexPolygonShape3D_3lb85")
 
+[node name="Floor9" type="MeshInstance3D" parent="." unique_id=339891898]
+transform = Transform3D(-2.85891e-07, 0, -6.7612634, 0, 1, 0, 6.540423, 0, -2.955442e-07, -15.482779, 29.816732, 54.436172)
+mesh = ExtResource("4_q1tdv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor9" unique_id=1512644816 groups=["Floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor9/StaticBody3D" unique_id=468898906]
+shape = SubResource("ConvexPolygonShape3D_fx7vd")
+
+[node name="CubePrototypeLargeA10" type="MeshInstance3D" parent="." unique_id=1281673076]
+transform = Transform3D(6.6384306, 0, 0, 0, 7.3165736, 0, 0, 0, 5.0550504, -16.944738, 0.5, 53.691902)
+mesh = ExtResource("5_4vge4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeA10" unique_id=1899824911]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeA10/StaticBody3D" unique_id=1598997336]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA10/StaticBody3D" unique_id=1910815114]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="Floor10" type="MeshInstance3D" parent="." unique_id=1095207911]
+transform = Transform3D(-1.2299782e-07, 0, -7.482717, 0, 1, 0, 2.8138618, 0, -3.2707993e-07, 8.681183, 29.816732, 54.22414)
+mesh = ExtResource("4_q1tdv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor10" unique_id=1063062363 groups=["Floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor10/StaticBody3D" unique_id=2083284957]
+shape = SubResource("ConvexPolygonShape3D_fx7vd")
+
+[node name="CubePrototypeLargeA11" type="MeshInstance3D" parent="." unique_id=1919788875]
+transform = Transform3D(7.3467774, 0, 0, 0, 7.3165736, 0, 0, 0, 2.1748154, 7.063225, 0.5, 53.903934)
+mesh = ExtResource("5_4vge4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeA11" unique_id=289623048]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeA11/StaticBody3D" unique_id=206689361]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA11/StaticBody3D" unique_id=1400801954]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="Floor11" type="MeshInstance3D" parent="." unique_id=675470105]
+transform = Transform3D(-2.8138618, 0, 3.9657266e-07, 0, 1, 0, -2.4599564e-07, 0, -4.5362625, 17.20578, 29.816732, 65.74287)
+mesh = ExtResource("4_q1tdv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor11" unique_id=255845152 groups=["Floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor11/StaticBody3D" unique_id=1430857730]
+shape = SubResource("ConvexPolygonShape3D_fx7vd")
+
+[node name="CubePrototypeLargeA12" type="MeshInstance3D" parent="." unique_id=1423516981]
+transform = Transform3D(-1.9468403e-07, 0, -2.1748154, 0, 7.3165736, 0, 4.4538517, 0, -9.50642e-08, 17.525986, 0.5, 64.76201)
+mesh = ExtResource("5_4vge4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeA12" unique_id=918569626]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeA12/StaticBody3D" unique_id=552749567]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA12/StaticBody3D" unique_id=2012567149]
+shape = SubResource("ConvexPolygonShape3D_3lb85")
+
 [node name="CubePrototypeLargeA8" type="MeshInstance3D" parent="." unique_id=1055113869]
 transform = Transform3D(2.2938466, 0, 0, 0, 7.3165736, 0, 0, 0, 11.381807, -72.58232, 0.5, 53.93303)
 mesh = ExtResource("5_4vge4")
@@ -392,3 +458,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.79673, 31.316738, 59.0101
 
 [node name="Striker6" parent="." unique_id=1209458046 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.17063, 31.316738, 58.179756)
+
+[node name="Door" parent="." unique_id=2130594673 instance=ExtResource("10_nie3d")]
+transform = Transform3D(-2.5505597e-07, 0, -5.835, 0, 5.835, 0, 5.835, 0, -2.5505597e-07, -2.4893723, 30.316732, 53.747135)
+
+[node name="Monitor" parent="." unique_id=1779124990 instance=ExtResource("11_b1vc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.401213, 35.986366, 55.915382)
+
+[node name="Battery" parent="Monitor" unique_id=1722405648 instance=ExtResource("12_rvvv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.7054596, -2.6635742)
+
+[node name="Battery2" parent="Monitor" unique_id=1026453850 instance=ExtResource("12_rvvv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.61613464, -4.680561, 3.0704155)
+
+[node name="Battery3" parent="Monitor" unique_id=1776290040 instance=ExtResource("12_rvvv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.479884, -4.680561, -0.056453705)
+
+[node name="Battery4" parent="Monitor" unique_id=1115881077 instance=ExtResource("12_rvvv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6915054, -4.680561, -10.607742)
+
+[node name="Battery5" parent="Monitor" unique_id=611071056 instance=ExtResource("12_rvvv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8305855, -4.680561, 8.391022)
+
+[node name="Battery6" parent="Monitor" unique_id=390447567 instance=ExtResource("12_rvvv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2055454, -4.680561, -10.995708)
+
+[node name="Battery7" parent="Monitor" unique_id=1592724969 instance=ExtResource("12_rvvv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.388235, -4.680561, 9.570435)
