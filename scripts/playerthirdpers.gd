@@ -376,7 +376,7 @@ func floorslam():
 
 
 func airsnap():
-	snap_target = enemy_detector.get_furthest_enemy()
+	snap_target = enemy_detector.get_furthest_enemy_in_range()
 	
 	
 	if snap_target==null:
@@ -385,8 +385,6 @@ func airsnap():
 	var distance = global_position.distance_to(snap_target.global_position)
 	
 	
-	if distance >=40:
-		return
 	
 	
 	is_snapping=true
@@ -453,18 +451,14 @@ func airsnap():
 	snap_cooldown = false
 
 func snap():
-	snap_target = enemy_detector.get_furthest_enemy()
+	snap_target = enemy_detector.get_furthest_enemy_in_range()
 	
 	if snap_target==null:
 		return
 	
 	var distance = global_position.distance_to(snap_target.global_position)
 	
-	
-	
-	
-	if distance >=40:
-		return
+
 	
 	is_snapping=true
 	snap_cooldown=true
