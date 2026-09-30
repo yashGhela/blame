@@ -28,6 +28,9 @@ var bulletinst
 @onready var pivot: Node3D = $CamOrigin/CamPitch/SpringArm3D
 @onready var camera_3d: Camera3D = $CamOrigin/CamPitch/SpringArm3D/Camera3D
 
+@onready var floorcast: RayCast3D = $floorcast
+
+
 var yaw =0.0
 var pitch = deg_to_rad(15.0)
 
@@ -92,6 +95,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	health_bar.value=health
 	shotamount.text= str(fire_shots)
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
 
 
 func _physics_process(delta: float) -> void:
@@ -143,7 +149,11 @@ func _physics_process(delta: float) -> void:
 			snap()
 		elif not is_on_floor():
 			airsnap()
-		
+			
+			
+	if Input.is_action_just_pressed("floorslam"):
+		if not is_on_floor():
+			floorslam()
 	
 	if Input.is_action_just_pressed("fire"):
 		fire()
@@ -151,8 +161,7 @@ func _physics_process(delta: float) -> void:
 	movement(delta)
 	move_and_slide()
 
-func floorslam():
-	pass
+
 
 func movement(delta):
 	if not is_on_floor():
@@ -300,7 +309,10 @@ func fire():
 				is_reloading=false
 				fire_shots=6
 		)
-	
+		
+
+func floorslam():
+	pass
 
 func airsnap():
 	snap_target = enemy_detector.get_furthest_enemy()
