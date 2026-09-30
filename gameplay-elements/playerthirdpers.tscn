@@ -90,7 +90,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Area3D/CollisionShape3D:shape:size")
+tracks/4/path = NodePath("floorcol/CollisionShape3D:shape:size")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -105,7 +105,7 @@ resource_name = "floorslam"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Area3D/CollisionShape3D:shape:size")
+tracks/0/path = NodePath("floorcol/CollisionShape3D:shape:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -375,9 +375,9 @@ margin = 0.5
 [node name="Camera3D" type="Camera3D" parent="CamOrigin/CamPitch/SpringArm3D" unique_id=957776855]
 transform = Transform3D(1, -1.7763568e-15, 2.1316282e-14, 1.7763567e-15, 1.0000002, 2.980232e-08, 1.4210855e-14, -2.980232e-08, 1.0000002, 9.22806e-08, 0.0069811344, 3.0474908)
 
-[node name="Area3D" type="Area3D" parent="." unique_id=34030037]
+[node name="floorcol" type="Area3D" parent="." unique_id=34030037]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=221534102]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floorcol" unique_id=221534102]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9196032, 0)
 shape = SubResource("BoxShape3D_n7aa4")
 

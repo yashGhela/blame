@@ -23,6 +23,7 @@ Signalbus="*uid://b04r1bla6mie4"
 Player=""
 Enemy=""
 Battery=""
+Floor=""
 
 [input]
 

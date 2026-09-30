@@ -60,6 +60,8 @@ var health = 100
 
 var can_phase_jump:=true
 
+var is_floorslamming= false
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		yaw -= event.relative.x * sens
@@ -312,7 +314,66 @@ func fire():
 		
 
 func floorslam():
-	pass
+	is_floorslamming=  true
+	
+	if floorcast.is_colliding():
+		var collider = floorcast.get_collider()
+		
+		print(collider)
+		
+		if collider and collider.is_in_group("Floor"):
+			var collider_pos = collider.global_position
+			
+			var direction = collider_pos - global_position
+			
+			var angle = atan2(direction.x, direction.z)
+			
+			var target_position = collider_pos - direction 
+			
+			var tween = create_tween()
+			tween.set_trans(Tween.TRANS_SINE)
+			tween.set_ease(Tween.EASE_OUT)
+
+			tween.tween_property(
+				self,
+				"global_position",
+				target_position,
+				SNAP_DURATION
+			)
+			
+			var look_direction = snap_target.global_position - body.global_position
+			look_direction.y = 0
+
+			var target_angle = atan2(
+				look_direction.x,
+				look_direction.z
+			)
+
+			var rotation_tween = create_tween()
+			rotation_tween.set_trans(Tween.TRANS_SINE)
+			rotation_tween.set_ease(Tween.EASE_OUT)
+
+			rotation_tween.tween_property(
+				body,
+				"rotation:y",
+				target_angle + deg_to_rad(90),
+				SNAP_DURATION
+			)
+
+			await tween.finished
+
+			# Make sure we don't continue if something interrupted the snap
+			if not is_floorslamming:
+				return
+
+			velocity = Vector3.ZERO
+
+			# Play attack
+			basicanims.play("floorslam")
+			
+			
+			
+
 
 func airsnap():
 	snap_target = enemy_detector.get_furthest_enemy()
