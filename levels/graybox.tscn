@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://wd8ivhy2ed1" path="res://gameplay-elements/door.tscn" id="10_nie3d"]
 [ext_resource type="PackedScene" uid="uid://dcrjfth2dc3mh" path="res://gameplay-elements/monitor.tscn" id="11_b1vc1"]
 [ext_resource type="PackedScene" uid="uid://hdtdcvfqal1f" path="res://gameplay-elements/battery.tscn" id="12_rvvv2"]
+[ext_resource type="PackedScene" uid="uid://c6xmcc5jut7oa" path="res://gameplay-elements/modelfiles/railing.tscn" id="13_3lb85"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80ttd"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -87,7 +88,7 @@ mesh = SubResource("BoxMesh_80ttd")
 shape = SubResource("ConcavePolygonShape3D_cp67o")
 
 [node name="Playerthirdpers" parent="." unique_id=1172021385 instance=ExtResource("2_7v2gh")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13.075729, 32.461075, 54.524323)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -66.01969, 3.589096, -6.1712)
 
 [node name="PrimitiveSlope" type="MeshInstance3D" parent="." unique_id=265901754]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -61, 0.5535526, -7)
@@ -144,7 +145,7 @@ mesh = ExtResource("4_q1tdv")
 shape = SubResource("ConvexPolygonShape3D_fx7vd")
 
 [node name="Floor4" type="MeshInstance3D" parent="." unique_id=912742376]
-transform = Transform3D(5.8032904, 0, 0, 0, 1, 0, 0, 0, 2.0449762, -58.53352, 16.02189, 21.835869)
+transform = Transform3D(5.8032904, 0, 0, 0, 1, 0, 0, 0, 2.0449762, -58.516224, 16.02189, 21.835869)
 mesh = ExtResource("4_q1tdv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor4" unique_id=1451553184 groups=["Floor"]]
@@ -328,7 +329,7 @@ transform = Transform3D(2.2938466, 0, 0, 0, 3.9607377, 0, 0, 0, 1.6775556, -35.6
 mesh = ExtResource("5_4vge4")
 
 [node name="CubePrototypeLargeA2" type="MeshInstance3D" parent="." unique_id=140208215]
-transform = Transform3D(2.2938466, 0, 0, 0, 5.053586, 0, 0, 0, 1.6775556, -25.214108, 0.5, 5.692949)
+transform = Transform3D(2.2938466, 0, 0, 0, 5.053586, 0, 0, 0, 1.6775556, -25.214108, 0.50000095, 5.692949)
 mesh = ExtResource("5_4vge4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeA2" unique_id=1745731718]
@@ -486,3 +487,291 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.388235, -4.680561, 9.570435
 
 [node name="Door" parent="Monitor" unique_id=2130594673 instance=ExtResource("10_nie3d")]
 transform = Transform3D(-2.5505597e-07, 0, -5.835, 0, 5.835, 0, 5.835, 0, -2.5505597e-07, 13.91184, -5.669634, -2.1682472)
+
+[node name="railing" parent="." unique_id=454326787 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.315964, 17.205082, 9.256039)
+
+[node name="railing2" parent="." unique_id=311494182 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.245388, 17.205082, 9.256039)
+
+[node name="railing16" parent="." unique_id=790720756 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.277283, 17.205082, 9.256039)
+
+[node name="railing17" parent="." unique_id=1791876559 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.915306, 17.205082, 9.256039)
+
+[node name="railing3" parent="." unique_id=1671723305 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.194317, 17.205082, 9.256039)
+
+[node name="railing4" parent="." unique_id=159932860 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.394302, 17.205082, 9.256039)
+
+[node name="railing18" parent="." unique_id=110691576 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.315964, 17.205082, 33.90142)
+
+[node name="railing19" parent="." unique_id=913230928 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.245388, 17.205082, 33.90142)
+
+[node name="railing20" parent="." unique_id=1445668102 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.277283, 17.205082, 33.90142)
+
+[node name="railing21" parent="." unique_id=851672180 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.915306, 17.205082, 33.90142)
+
+[node name="railing22" parent="." unique_id=1513465920 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.194317, 17.205082, 33.90142)
+
+[node name="railing23" parent="." unique_id=675020187 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.204773, 17.205082, 33.90142)
+
+[node name="railing24" parent="." unique_id=788072516 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.10388, 17.205082, 25.153316)
+
+[node name="railing26" parent="." unique_id=131720643 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.86303, 17.205082, 25.153316)
+
+[node name="railing28" parent="." unique_id=1579163374 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.10388, 17.205082, 17.99031)
+
+[node name="railing29" parent="." unique_id=448407202 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.86303, 17.205082, 17.99031)
+
+[node name="railing30" parent="." unique_id=621716418 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.387463, 17.205082, 17.99031)
+
+[node name="railing31" parent="." unique_id=1887194873 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.14661, 17.205082, 17.99031)
+
+[node name="railing36" parent="." unique_id=47897830 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.14661, 17.205082, 25.198883)
+
+[node name="railing37" parent="." unique_id=985954385 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.177296, 24.167793, 24.37529)
+
+[node name="railing40" parent="." unique_id=1683220926 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -61.83159, 24.167793, 29.014597)
+
+[node name="railing41" parent="." unique_id=370098827 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -61.83159, 24.167793, 25.913694)
+
+[node name="railing42" parent="." unique_id=72794623 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -69.96233, 24.167793, 29.014597)
+
+[node name="railing43" parent="." unique_id=1613679129 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -69.96233, 24.167793, 25.913694)
+
+[node name="railing44" parent="." unique_id=1158057415 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 36.537292)
+
+[node name="railing45" parent="." unique_id=645268863 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 33.436386)
+
+[node name="railing46" parent="." unique_id=1772501759 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 43.552807)
+
+[node name="railing47" parent="." unique_id=1880740146 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 40.4519)
+
+[node name="railing48" parent="." unique_id=2072066079 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 50.524113)
+
+[node name="railing49" parent="." unique_id=1667362181 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 47.423206)
+
+[node name="railing50" parent="." unique_id=1552190793 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 57.547825)
+
+[node name="railing51" parent="." unique_id=962681098 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 54.44692)
+
+[node name="railing52" parent="." unique_id=1638078810 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 64.43545)
+
+[node name="railing53" parent="." unique_id=1072901447 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 61.33454)
+
+[node name="railing54" parent="." unique_id=36481861 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 71.297386)
+
+[node name="railing56" parent="." unique_id=576462550 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 75.13554)
+
+[node name="railing57" parent="." unique_id=878854069 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1.0000001, 0, -4.3711392e-08, 0, 1, 0, 4.3711392e-08, 0, 1.0000001, -74.689674, 30.87939, 76.56725)
+
+[node name="railing58" parent="." unique_id=528318198 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1.0000001, 0, -4.3711392e-08, 0, 1, 0, 4.3711392e-08, 0, 1.0000001, -70.605606, 30.87939, 76.56725)
+
+[node name="railing59" parent="." unique_id=1666519470 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1.0000001, 0, -4.3711392e-08, 0, 1, 0, 4.3711392e-08, 0, 1.0000001, -74.689674, 30.87939, 32.091614)
+
+[node name="railing60" parent="." unique_id=922955754 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1.0000001, 0, -4.3711392e-08, 0, 1, 0, 4.3711392e-08, 0, 1.0000001, -70.605606, 30.87939, 32.091614)
+
+[node name="railing61" parent="." unique_id=1000019831 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1.0000001, 0, -4.3711392e-08, 0, 1, 0, 4.3711392e-08, 0, 1.0000001, -60.65325, 30.87939, 32.091614)
+
+[node name="railing62" parent="." unique_id=819660619 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1.0000001, 0, -4.3711392e-08, 0, 1, 0, 4.3711392e-08, 0, 1.0000001, -56.569183, 30.87939, 32.091614)
+
+[node name="railing63" parent="." unique_id=1021131837 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1.0000001, 0, -4.3711392e-08, 0, 1, 0, 4.3711392e-08, 0, 1.0000001, -60.65325, 30.87939, 76.4808)
+
+[node name="railing64" parent="." unique_id=1987221643 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1.0000001, 0, -4.3711392e-08, 0, 1, 0, 4.3711392e-08, 0, 1.0000001, -56.569183, 30.87939, 76.4808)
+
+[node name="railing55" parent="." unique_id=250706896 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -76.70138, 30.87939, 68.19648)
+
+[node name="railing65" parent="." unique_id=1773193995 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -54.68135, 30.87939, 36.537292)
+
+[node name="railing66" parent="." unique_id=883143225 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -54.68135, 30.87939, 33.436386)
+
+[node name="railing67" parent="." unique_id=1894451455 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -54.68135, 30.87939, 43.552807)
+
+[node name="railing68" parent="." unique_id=873830716 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -54.68135, 30.87939, 40.4519)
+
+[node name="railing70" parent="." unique_id=775171513 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -54.68135, 30.87939, 47.423206)
+
+[node name="railing71" parent="." unique_id=1002951768 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -54.68135, 30.87939, 57.547825)
+
+[node name="railing73" parent="." unique_id=686361431 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -54.68135, 30.87939, 64.43545)
+
+[node name="railing74" parent="." unique_id=424108516 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -54.68135, 30.87939, 61.33454)
+
+[node name="railing75" parent="." unique_id=963297127 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -54.68135, 30.87939, 71.297386)
+
+[node name="railing76" parent="." unique_id=1497222182 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -54.68135, 30.87939, 75.13554)
+
+[node name="railing77" parent="." unique_id=998795866 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -54.68135, 30.87939, 68.19648)
+
+[node name="railing78" parent="." unique_id=772291062 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -62.228146, 30.87939, 36.537292)
+
+[node name="railing79" parent="." unique_id=1738611708 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -62.228146, 30.87939, 33.436386)
+
+[node name="railing81" parent="." unique_id=92643112 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -62.228146, 30.87939, 40.4519)
+
+[node name="railing82" parent="." unique_id=1553671646 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -62.228146, 30.87939, 50.524113)
+
+[node name="railing83" parent="." unique_id=1338663826 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -62.228146, 30.87939, 47.423206)
+
+[node name="railing84" parent="." unique_id=206532 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -62.228146, 30.87939, 57.547825)
+
+[node name="railing85" parent="." unique_id=1273863763 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -62.228146, 30.87939, 54.44692)
+
+[node name="railing86" parent="." unique_id=899897556 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -62.228146, 30.87939, 64.43545)
+
+[node name="railing87" parent="." unique_id=1241797236 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -62.228146, 30.87939, 61.33454)
+
+[node name="railing89" parent="." unique_id=1010605608 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -62.228146, 30.87939, 75.13554)
+
+[node name="railing90" parent="." unique_id=208484502 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -62.228146, 30.87939, 68.19648)
+
+[node name="railing91" parent="." unique_id=1612969185 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -68.40538, 30.87939, 36.537292)
+
+[node name="railing92" parent="." unique_id=1688812036 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -68.40538, 30.87939, 33.436386)
+
+[node name="railing93" parent="." unique_id=1129525727 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -68.40538, 30.87939, 43.552807)
+
+[node name="railing95" parent="." unique_id=1327589647 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -68.40538, 30.87939, 50.524113)
+
+[node name="railing96" parent="." unique_id=1747225541 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -68.40538, 30.87939, 47.423206)
+
+[node name="railing98" parent="." unique_id=1795914391 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -68.40538, 30.87939, 54.44692)
+
+[node name="railing99" parent="." unique_id=611978747 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -68.40538, 30.87939, 64.43545)
+
+[node name="railing100" parent="." unique_id=552730572 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -68.40538, 30.87939, 61.33454)
+
+[node name="railing102" parent="." unique_id=433519194 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -68.40538, 30.87939, 75.13554)
+
+[node name="railing103" parent="." unique_id=1160310635 instance=ExtResource("13_3lb85")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -68.40538, 30.87939, 68.19648)
+
+[node name="railing38" parent="." unique_id=1460273847 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.89261, 24.167793, 24.37529)
+
+[node name="railing39" parent="." unique_id=1667355800 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.50346, 24.167793, 24.37529)
+
+[node name="railing32" parent="." unique_id=792557398 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.80414, 17.205082, 17.99031)
+
+[node name="railing33" parent="." unique_id=1327746938 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.563286, 17.205082, 17.99031)
+
+[node name="railing34" parent="." unique_id=1797788837 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.16133, 17.205082, 17.99031)
+
+[node name="railing35" parent="." unique_id=1648960681 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -69.71279, 17.205082, 20.014389)
+
+[node name="railing27" parent="." unique_id=503886576 instance=ExtResource("13_3lb85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.625168, 17.205082, 25.153316)
+
+[node name="railing5" parent="." unique_id=1838894142 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-5.35735e-08, 0, -1, 0, 1, 0, 1.2256188, 0, -4.371139e-08, -46.23816, 17.205082, 11.284575)
+
+[node name="railing6" parent="." unique_id=164429305 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -46.23816, 17.205082, 15.677014)
+
+[node name="railing7" parent="." unique_id=1455045376 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -46.23816, 17.205082, 28.381798)
+
+[node name="railing25" parent="." unique_id=2063816823 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -46.23816, 17.205082, 26.744675)
+
+[node name="railing8" parent="." unique_id=1806744088 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -46.23816, 17.205082, 32.21121)
+
+[node name="railing9" parent="." unique_id=1221110801 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -24.610779, 17.205082, 28.381798)
+
+[node name="railing10" parent="." unique_id=268026141 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -24.610779, 17.205082, 32.21121)
+
+[node name="railing11" parent="." unique_id=431250058 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -24.610779, 17.205082, 20.476776)
+
+[node name="railing12" parent="." unique_id=812049583 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -24.610779, 17.205082, 24.306187)
+
+[node name="railing13" parent="." unique_id=1014777573 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -24.610779, 17.205082, 12.879168)
+
+[node name="railing15" parent="." unique_id=1822261626 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -24.610779, 17.205082, 9.046467)
+
+[node name="railing14" parent="." unique_id=1976996641 instance=ExtResource("13_3lb85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -24.610779, 17.205082, 16.708578)

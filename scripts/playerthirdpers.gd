@@ -12,8 +12,11 @@ var is_attacking:=false
 @export var hit_pull_speed := 8.0
 @export var is_phasing:=false
 @export var bullet:PackedScene
+@export var joy_sens: float = 3.0
+@export var mouse_sens =0.003
+
 var bulletinst
-@export var sens =0.003
+
 @onready var health_bar: ProgressBar = $"CanvasLayer/health bar"
 @onready var body: MeshInstance3D = $body
 
@@ -66,19 +69,21 @@ var can_phase_jump:=true
 var is_floorslamming= false
 var is_phase_jumping = false
 
-func _input(event):
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		yaw -= event.relative.x * sens
-		pitch += event.relative.y * sens
+		yaw -= event.relative.x * mouse_sens
+		pitch += event.relative.y * mouse_sens
+		apply_rotation()
 
-		pitch = clamp(
-			pitch,
-			deg_to_rad(-60),
-			deg_to_rad(45)
-		)
+func apply_rotation():
+	# Clamp pitch so the camera doesn't flip upside down
+	pitch = clamp(pitch, deg_to_rad(-60), deg_to_rad(45))
+	
+	# Apply to your nodes
+	cam_origin.rotation.y = yaw
+	cam_pitch.rotation.x = pitch
 
-		cam_origin.rotation.y = yaw
-		cam_pitch.rotation.x = pitch
+
 
 
 func _ready() -> void:
@@ -101,6 +106,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	health_bar.value=health
 	shotamount.text= str(fire_shots)
+	
+	var joy_vector = Input.get_vector("rs_left", "rs_right", "rs_up", "rs_down")
+	
+	if joy_vector.length() > 0:
+		yaw -= joy_vector.x * joy_sens * delta
+		pitch += joy_vector.y * joy_sens * delta
+		apply_rotation()
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
