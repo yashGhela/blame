@@ -8,6 +8,7 @@ const RUNNING_SPEED = 14.0
 
 var is_attacking:=false
 var action_locked := false  # true while jump / phasejump / dash is playing
+var was_on_floor := true
 
 @export var hit_pull_distance := 1.0
 @export var hit_pull_speed := 8.0
@@ -24,8 +25,8 @@ var bulletinst
 
 
 @onready var basicanims: AnimationPlayer = $basicanims
-@onready var hand_1_col: CollisionShape3D = $body/hand1/hand1area/hand1col
-@onready var hand_2_col: CollisionShape3D = $body/hand2/hand2area/hand2col
+@onready var hand_1_col: CollisionShape3D = $%handlcol
+@onready var hand_2_col: CollisionShape3D = $%handrcol
 @onready var enemy_detector: Node = $EnemyDetector
 @onready var shotamount: Label = $CanvasLayer/shotamount
 
@@ -125,6 +126,9 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	if is_attacking and not animation_player.is_playing():
+		is_attacking = false
+	
 	if is_snapping:
 		velocity = Vector3.ZERO
 		return
@@ -170,11 +174,15 @@ func movement(delta):
 		velocity.z = velocity.z/2
 		
 	
-	if is_on_floor():
+	var on_floor := is_on_floor()
+	if on_floor:
 		can_phase_jump = true
 		is_phase_jumping = false
-		if animation_player.current_animation in ["jump", "phasejump"]:
+		if not was_on_floor and not is_attacking and not is_dashing:
+			# just landed: release any air action
 			action_locked = false
+			animation_player.speed_scale = 1.0
+	was_on_floor = on_floor
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"): 
@@ -564,6 +572,8 @@ func _on_basicanims_animation_finished(anim_name: StringName) -> void:
 
 func _on_hand_2_area_body_entered(body: Node3D) -> void:
 	
+	print("hand 2 is hitting body: ", body)
+	
 	if body.is_in_group("Enemy"):
 		var kd = global_position.direction_to(body.global_position)
 		kd.y=0;
@@ -576,6 +586,9 @@ func _on_hand_2_area_body_entered(body: Node3D) -> void:
 
 
 func _on_hand_1_area_body_entered(body: Node3D) -> void:
+	
+	print("hand 1 is hitting body: ", body)
+	
 	if body.is_in_group("Enemy"):
 		var kd = global_position.direction_to(body.global_position)
 		kd.y=0;
