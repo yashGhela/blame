@@ -18,7 +18,9 @@ var is_attacking:=false
 var bulletinst
 
 @onready var health_bar: ProgressBar = $"CanvasLayer/health bar"
-@onready var body: MeshInstance3D = $body
+#@onready var body: MeshInstance3D = $body
+@onready var body: Node3D = $larsv1
+
 
 @onready var basicanims: AnimationPlayer = $basicanims
 @onready var hand_1_col: CollisionShape3D = $body/hand1/hand1area/hand1col
@@ -33,6 +35,7 @@ var bulletinst
 @onready var camera_3d: Camera3D = $CamOrigin/CamPitch/SpringArm3D/Camera3D
 
 @onready var floorcast: RayCast3D = $CamOrigin/floorcast
+@onready var animation_player: AnimationPlayer = $larsv1/AnimationPlayer
 
 
 var is_running= false
@@ -196,10 +199,12 @@ func movement(delta):
 	if Input.is_action_just_pressed("jump"): 
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			animation_player.play("jump")
 		elif can_phase_jump:
 			velocity.y = PHASE_JUMP_FORCE
 			is_phase_jumping=true
 			can_phase_jump=false
+			animation_player.play("phasejump")
 		
 		
 	
@@ -245,6 +250,8 @@ func movement(delta):
 			10.0 * delta
 			)
 		
+		animation_player.play("dash")
+		
 	
 	if is_dashing:
 		dash_timer -= delta
@@ -276,9 +283,12 @@ func movement(delta):
 		if is_running:
 			velocity.x = -direction.x * RUNNING_SPEED
 			velocity.z = -direction.z * RUNNING_SPEED
+			animation_player.play("run")
 		else:
 			velocity.x = -direction.x * SPEED
 			velocity.z = -direction.z * SPEED
+			animation_player.play("walk")
+			
 		
 		var target_y = atan2(direction.x, direction.z) + deg_to_rad(270)
 
@@ -292,6 +302,7 @@ func movement(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		animation_player.play("idle")
 
 
 func fire():

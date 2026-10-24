@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c0jpp3laepyid" path="res://scripts/playerthirdpers.gd" id="1_77iq7"]
 [ext_resource type="PackedScene" uid="uid://c4kjijnttjoi8" path="res://gameplay-elements/playershot.tscn" id="2_n7aa4"]
 [ext_resource type="Script" uid="uid://b7e63djr4gt5y" path="res://scripts/enemy_detector.gd" id="2_vuosb"]
+[ext_resource type="PackedScene" uid="uid://da4f7wip2ib2e" path="res://gameplay-elements/modelfiles/larsv_1.tscn" id="4_n7aa4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5rg3e"]
 
@@ -319,6 +320,7 @@ script = ExtResource("1_77iq7")
 bullet = ExtResource("2_n7aa4")
 
 [node name="body" type="MeshInstance3D" parent="." unique_id=1924451069]
+visible = false
 mesh = SubResource("CapsuleMesh_5rg3e")
 
 [node name="hand1" type="MeshInstance3D" parent="body" unique_id=444260183]
@@ -343,6 +345,7 @@ disabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=775093265]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_1qg6e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1869511890]
@@ -411,7 +414,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9196032, 0)
 shape = SubResource("BoxShape3D_n7aa4")
 disabled = true
 
+[node name="larsv1" parent="." unique_id=1228945590 instance=ExtResource("4_n7aa4")]
+transform = Transform3D(-3.9558806e-08, 0, -0.905, 0, 0.905, 0, 0.905, 0, -3.9558806e-08, 0, -0.9572265, 0)
+
 [connection signal="body_entered" from="body/hand1/hand1area" to="." method="_on_hand_1_area_body_entered"]
 [connection signal="body_entered" from="body/hand2/hand2area" to="." method="_on_hand_2_area_body_entered"]
 [connection signal="animation_finished" from="basicanims" to="." method="_on_basicanims_animation_finished"]
 [connection signal="body_entered" from="floorcol" to="." method="_on_floorcol_body_entered"]
+
+[editable path="larsv1"]
