@@ -94,6 +94,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Signalbus.connect("talking",Callable(self,"on_talking_activated"))
 	Signalbus.connect("talkingended",Callable(self,"on_talking_ended"))
+	
 
 #func on_talking_ended():
 	#var tween = create_tween()
@@ -131,37 +132,14 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("hit"):
 		
-		is_attacking=true
-		
-		#var camera_forward = -camera_3d.global_transform.basis.z
-		#camera_forward.y = 0
-		#camera_forward = camera_forward.normalized()
-		#
-		## Rotate body toward camera
-		#var target_y = atan2(
-			#camera_forward.x,
-			#camera_forward.z
-		#)
-		#
-		#body.rotation.y = target_y
-		
-		hitcounter+=1
+		is_attacking = true
+		hitcounter += 1
+		if hitcounter > 3:
+			hitcounter = 1
 		match hitcounter:
-			1:
-				play_action("uppercut")
-				SPEED=10.0
-			2:
-				play_action("downstrike")
-				SPEED=11.0
-			3:
-				play_action("downstrikerev")
-				SPEED= 12.0
-			
-		hand_1_col.disabled=false
-		hand_2_col.disabled=false
-		
-		if hitcounter>3:
-			hitcounter=0
+			1: play_action("uppercut"); SPEED = 10.0
+			2: play_action("downstrike"); SPEED = 11.0
+			3: play_action("downstrikerev"); SPEED = 12.0
 	
 	if Input.is_action_just_pressed("snap"):
 		if is_snapping:
@@ -481,16 +459,18 @@ func airsnap():
 	await tween.finished
 
 	# Make sure we don't continue if something interrupted the snap
-	if not is_snapping:
-		return
+	is_attacking = true
+	play_action("uppercut")
+	await get_tree().create_timer(0.4).timeout   # roughly the length of the strike
 
-	velocity = Vector3.ZERO
+	is_snapping = false        # always released, no signals needed
+	snap_target = null
 
-	# Play attack
-	basicanims.play("hit_three")
-	
 	await get_tree().create_timer(SNAP_COOLDOWN).timeout
 	snap_cooldown = false
+	
+	
+	
 
 func snap():
 	snap_target = enemy_detector.get_furthest_enemy_in_range()
@@ -535,17 +515,19 @@ func snap():
 	play_action("dash")
 	await tween.finished
 
-	# Make sure we don't continue if something interrupted the snap
-	if not is_snapping:
-		return
+	is_attacking = true
+	play_action("uppercut")
+	await get_tree().create_timer(0.4).timeout   # roughly the length of the strike
 
-	velocity = Vector3.ZERO
+	is_snapping = false        # always released, no signals needed
+	snap_target = null
 
-	# Play attack
-	basicanims.play("hit_one")
-	
 	await get_tree().create_timer(SNAP_COOLDOWN).timeout
 	snap_cooldown = false
+	
+	
+	
+
 	
 	
 	
@@ -617,18 +599,22 @@ func _on_floorcol_body_entered(body: Node3D) -> void:
 
 func play_action(anim: StringName) -> void:
 	action_locked = true
+	animation_player.speed_scale=1.5
 	animation_player.play(anim)
 
 func play_locomotion(anim: StringName) -> void:
+	if action_locked and not animation_player.is_playing():
+		action_locked = false
 	if action_locked or is_attacking or not is_on_floor():
 		return
+	animation_player.speed_scale = 1.0
 	if animation_player.current_animation != anim:
 		animation_player.play(anim)
-
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name in ["jump", "phasejump", "dash", "kickshot", "uppercut", "downstrike", "downstrikerev"]:
 		action_locked = false
+		animation_player.speed_scale=1
 	
 	if anim_name=="uppercut" or anim_name=="downstrike" or anim_name=="downstrikerev":
 		hand_1_col.disabled=true
@@ -638,3 +624,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		if is_snapping:
 			is_snapping = false
 			snap_target = null
+		action_locked = false
+		animation_player.speed_scale=1
