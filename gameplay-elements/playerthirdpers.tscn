@@ -421,5 +421,6 @@ transform = Transform3D(-3.9558806e-08, 0, -0.905, 0, 0.905, 0, 0.905, 0, -3.955
 [connection signal="body_entered" from="body/hand2/hand2area" to="." method="_on_hand_2_area_body_entered"]
 [connection signal="animation_finished" from="basicanims" to="." method="_on_basicanims_animation_finished"]
 [connection signal="body_entered" from="floorcol" to="." method="_on_floorcol_body_entered"]
+[connection signal="animation_finished" from="larsv1/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="larsv1"]

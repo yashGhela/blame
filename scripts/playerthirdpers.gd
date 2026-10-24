@@ -7,6 +7,7 @@ const PHASE_JUMP_FORCE = 15.0
 const RUNNING_SPEED = 14.0
 
 var is_attacking:=false
+var action_locked := false  # true while jump / phasejump / dash is playing
 
 @export var hit_pull_distance := 1.0
 @export var hit_pull_speed := 8.0
@@ -147,13 +148,13 @@ func _physics_process(delta: float) -> void:
 		hitcounter+=1
 		match hitcounter:
 			1:
-				basicanims.play("hit_one")
+				play_action("uppercut")
 				SPEED=10.0
 			2:
-				basicanims.play("hit_two")
+				play_action("downstrike")
 				SPEED=11.0
 			3:
-				basicanims.play("hit_three")
+				play_action("downstrikerev")
 				SPEED= 12.0
 			
 		hand_1_col.disabled=false
@@ -190,21 +191,24 @@ func movement(delta):
 		velocity.x = velocity.x/2
 		velocity.z = velocity.z/2
 		
-		
+	
 	if is_on_floor():
-		can_phase_jump=true
+		can_phase_jump = true
 		is_phase_jumping = false
+		if animation_player.current_animation in ["jump", "phasejump"]:
+			action_locked = false
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"): 
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
-			animation_player.play("jump")
+			play_action("jump")
 		elif can_phase_jump:
 			velocity.y = PHASE_JUMP_FORCE
 			is_phase_jumping=true
 			can_phase_jump=false
-			animation_player.play("phasejump")
+			play_action("phasejump")
+
 		
 		
 	
@@ -250,7 +254,8 @@ func movement(delta):
 			10.0 * delta
 			)
 		
-		animation_player.play("dash")
+		play_action("dash")
+
 		
 	
 	if is_dashing:
@@ -283,11 +288,11 @@ func movement(delta):
 		if is_running:
 			velocity.x = -direction.x * RUNNING_SPEED
 			velocity.z = -direction.z * RUNNING_SPEED
-			animation_player.play("run")
+			play_locomotion("run")
 		else:
 			velocity.x = -direction.x * SPEED
 			velocity.z = -direction.z * SPEED
-			animation_player.play("walk")
+			play_locomotion("walk")
 			
 		
 		var target_y = atan2(direction.x, direction.z) + deg_to_rad(270)
@@ -302,7 +307,7 @@ func movement(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-		animation_player.play("idle")
+		play_locomotion("idle")
 
 
 func fire():
@@ -331,6 +336,8 @@ func fire():
 		target.global_position,
 		SNAP_DURATION
 	)
+	
+	play_action("kickshot")
 	
 	await tween.finished
 	
@@ -468,6 +475,8 @@ func airsnap():
 		target_angle + deg_to_rad(90),
 		SNAP_DURATION
 	)
+	
+	play_action("dash")
 
 	await tween.finished
 
@@ -522,7 +531,8 @@ func snap():
 		target_position,
 		SNAP_DURATION
 	)
-
+	
+	play_action("dash")
 	await tween.finished
 
 	# Make sure we don't continue if something interrupted the snap
@@ -602,4 +612,29 @@ func _on_floorcol_body_entered(body: Node3D) -> void:
 		var kv = 10
 		body.get_knockback(kd,kv,20)
 	
+
+
+
+func play_action(anim: StringName) -> void:
+	action_locked = true
+	animation_player.play(anim)
+
+func play_locomotion(anim: StringName) -> void:
+	if action_locked or is_attacking or not is_on_floor():
+		return
+	if animation_player.current_animation != anim:
+		animation_player.play(anim)
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name in ["jump", "phasejump", "dash", "kickshot", "uppercut", "downstrike", "downstrikerev"]:
+		action_locked = false
 	
+	if anim_name=="uppercut" or anim_name=="downstrike" or anim_name=="downstrikerev":
+		hand_1_col.disabled=true
+		hand_2_col.disabled=true
+		
+		is_attacking=false
+		if is_snapping:
+			is_snapping = false
+			snap_target = null
