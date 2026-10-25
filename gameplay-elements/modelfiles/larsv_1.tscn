@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dkp46cc7bkarn" path="res://assets/glb/larsv1_earslars.png" id="5_0luc6"]
 [ext_resource type="Shader" uid="uid://cvelxc5besak3" path="res://gameplay-elements/shaders/imagecelshader.gdshader" id="5_cl3xs"]
 [ext_resource type="Texture2D" uid="uid://bl34phgqgj4wo" path="res://assets/glb/larsv1_foreheadscar.png" id="6_cl3xs"]
+[ext_resource type="AnimationLibrary" uid="uid://c5u3256lmmsxv" path="res://assets/glb/larsv1animations.glb" id="12_g3itt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g3itt"]
 render_priority = 0
@@ -78463,3 +78464,4 @@ shape = SubResource("ConcavePolygonShape3D_n0npx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=112827437]
 libraries/ = SubResource("AnimationLibrary_e5e7o")
+libraries/larsv1animations = ExtResource("12_g3itt")
