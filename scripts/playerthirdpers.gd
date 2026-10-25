@@ -278,7 +278,7 @@ func movement(delta):
 		else:
 			velocity.x = -direction.x * SPEED
 			velocity.z = -direction.z * SPEED
-			play_locomotion("walk")
+			play_locomotion("larsv1animations/walkrefined")
 			
 		
 		var target_y = atan2(direction.x, direction.z) + deg_to_rad(270)
@@ -598,6 +598,8 @@ func _on_hand_1_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Battery"):
 		body.set_status()
 		print("setting status")
+		
+
 
 
 func _on_floorcol_body_entered(body: Node3D) -> void:
