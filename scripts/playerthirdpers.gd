@@ -193,7 +193,7 @@ func movement(delta):
 			velocity.y = PHASE_JUMP_FORCE
 			is_phase_jumping=true
 			can_phase_jump=false
-			play_action("phasejump")
+			play_action("larsv1animations/phasejump")
 
 		
 		
