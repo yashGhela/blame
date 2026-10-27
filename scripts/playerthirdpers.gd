@@ -64,6 +64,7 @@ var is_snapping= false
 var snap_target: Node3D = null
 const SNAP_DISTANCE = 1.5
 const SNAP_DURATION = 0.25
+var can_snap:=false
 var dash_timer = 0.0
 var hitcounter = 0
 
@@ -95,6 +96,11 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Signalbus.connect("talking",Callable(self,"on_talking_activated"))
 	Signalbus.connect("talkingended",Callable(self,"on_talking_ended"))
+	Signalbus.connect("burnoutmode", Callable(self, "on_burnout"))
+	Signalbus.connect("explosivemode", Callable(self, "on_burnout"))
+	Signalbus.connect("hardmode", Callable(self, "on_burnout"))
+	Signalbus.connect("snapmode", Callable(self, "on_burnout"))
+	Signalbus.connect("normalmode", Callable(self, "on_burnout"))
 	
 
 #func on_talking_ended():
@@ -145,7 +151,7 @@ func _physics_process(delta: float) -> void:
 			2: play_action("downstrike"); SPEED = 11.0
 			3: play_action("downstrikerev"); SPEED = 12.0
 	
-	if Input.is_action_just_pressed("snap"):
+	if Input.is_action_just_pressed("snap") and can_snap:
 		if is_snapping:
 			return
 		
