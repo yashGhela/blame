@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dkp46cc7bkarn" path="res://assets/glb/larsv1_earslars.png" id="13_na0c4"]
 [ext_resource type="Texture2D" uid="uid://bl34phgqgj4wo" path="res://assets/glb/larsv1_foreheadscar.png" id="14_fsxwo"]
 [ext_resource type="AnimationLibrary" uid="uid://c5u3256lmmsxv" path="res://assets/glb/larsv1animations.glb" id="15_u2cmt"]
+[ext_resource type="Script" uid="uid://cju2fw2y7lra7" path="res://scripts/charge_manager.gd" id="16_8h3dp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5rg3e"]
 
@@ -78961,6 +78962,9 @@ disabled = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="larsv1" unique_id=112827437]
 libraries/ = SubResource("AnimationLibrary_e5e7o")
 libraries/larsv1animations = ExtResource("15_u2cmt")
+
+[node name="ChargeManager" type="Node" parent="." unique_id=1728387242]
+script = ExtResource("16_8h3dp")
 
 [connection signal="animation_finished" from="basicanims" to="." method="_on_basicanims_animation_finished"]
 [connection signal="body_entered" from="floorcol" to="." method="_on_floorcol_body_entered"]
