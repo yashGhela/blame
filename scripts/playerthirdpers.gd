@@ -3,8 +3,8 @@ extends CharacterBody3D
 
 var SPEED = 9.0
 const JUMP_VELOCITY = 4.5
-const PHASE_JUMP_FORCE = 15.0
-const RUNNING_SPEED = 14.0
+var PHASE_JUMP_FORCE = 15.0
+var RUNNING_SPEED = 14.0
 
 var is_attacking:=false
 var action_locked := false  # true while jump / phasejump / dash is playing
@@ -16,6 +16,7 @@ var was_on_floor := true
 @export var bullet:PackedScene
 @export var joy_sens: float = 3.0
 @export var mouse_sens =0.003
+
 
 var bulletinst
 
@@ -38,7 +39,7 @@ var bulletinst
 
 @onready var floorcast: RayCast3D = $CamOrigin/floorcast
 @onready var animation_player: AnimationPlayer = $larsv1/AnimationPlayer
-
+@onready var charge_manager: Node = $ChargeManager
 
 var is_running= false
 
@@ -68,12 +69,15 @@ var can_snap:=false
 var dash_timer = 0.0
 var hitcounter = 0
 
+var can_run=true
 var health = 100
 
 var can_phase_jump:=true
 
 var is_floorslamming= false
 var is_phase_jumping = false
+
+var dmg=20
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -97,22 +101,43 @@ func _ready() -> void:
 	Signalbus.connect("talking",Callable(self,"on_talking_activated"))
 	Signalbus.connect("talkingended",Callable(self,"on_talking_ended"))
 	Signalbus.connect("burnoutmode", Callable(self, "on_burnout"))
-	Signalbus.connect("explosivemode", Callable(self, "on_burnout"))
-	Signalbus.connect("hardmode", Callable(self, "on_burnout"))
-	Signalbus.connect("snapmode", Callable(self, "on_burnout"))
-	Signalbus.connect("normalmode", Callable(self, "on_burnout"))
+	Signalbus.connect("explosivemode", Callable(self, "on_explosive"))
+	Signalbus.connect("hardmode", Callable(self, "on_hard"))
+	Signalbus.connect("snapmode", Callable(self, "on_snap"))
+	Signalbus.connect("normalmode", Callable(self, "on_normal"))
 	
 
-#func on_talking_ended():
-	#var tween = create_tween()
-	#
-	#tween.tween_property(camera_3d,"size",8.0,0.7 ).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	#
-##Logic to zoom in when talking
-#func on_talking_activated():
-	#var tween = create_tween()
-	#
-	#tween.tween_property(camera_3d,"size",4.0,0.7 ).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+func on_burnout():
+	reset()
+	SPEED=5.0
+	can_run=false
+	
+func on_explosive():
+	reset()
+	explode()
+
+func on_hard():
+	reset()
+	SPEED=12.0
+	RUNNING_SPEED= 18.0
+	PHASE_JUMP_FORCE= 20.0
+	dmg=30
+
+func on_snap():
+	reset()
+	can_snap=true
+
+
+func on_normal():
+	reset()
+	
+func reset():
+	SPEED=9.0
+	RUNNING_SPEED=14.0
+	PHASE_JUMP_FORCE=15.0
+	can_run=true
+	dmg=20
+	can_snap=false
 
 
 func _process(delta: float) -> void:
@@ -204,7 +229,7 @@ func movement(delta):
 		
 		
 	
-	if Input.is_action_just_pressed("run"):
+	if Input.is_action_just_pressed("run") and can_run:
 		is_running=true
 	if Input.is_action_just_released("run"):
 		is_running=false
@@ -310,6 +335,7 @@ func fire():
 	fire_shots-=1
 	
 	bulletinst = bullet.instantiate()
+	bullet.player= self
 	
 	get_tree().current_scene.add_child(bulletinst)
 	
@@ -563,6 +589,8 @@ func disable_hand_2():
 	hand_2_col.disabled = true
 	
 
+func charge_manager_inc(amt:int):
+	charge_manager.increase_charge(amt);
 
 func _on_basicanims_animation_finished(anim_name: StringName) -> void:
 	if anim_name=="hit_one" or anim_name=="hit_two" or anim_name=="hit_three":
@@ -581,10 +609,14 @@ func _on_hand_2_area_body_entered(body: Node3D) -> void:
 	print("hand 2 is hitting body: ", body)
 	
 	if body.is_in_group("Enemy"):
+		
+		if is_snapping:
+			body.queue_free()
 		var kd = global_position.direction_to(body.global_position)
 		kd.y=0;
 		var kv = 25
-		body.get_knockback(kd,kv,20)
+		body.get_knockback(kd,kv,dmg)
+		charge_manager.increase_charge(20)
 	
 	if body.is_in_group("Battery"):
 		body.set_status()
@@ -596,10 +628,13 @@ func _on_hand_1_area_body_entered(body: Node3D) -> void:
 	print("hand 1 is hitting body: ", body)
 	
 	if body.is_in_group("Enemy"):
+		if is_snapping:
+			body.queue_free()
 		var kd = global_position.direction_to(body.global_position)
 		kd.y=0;
 		var kv = 10
-		body.get_knockback(kd,kv,20)
+		body.get_knockback(kd,kv,dmg)
+		charge_manager.increase_charge(20)
 	
 	if body.is_in_group("Battery"):
 		body.set_status()
@@ -613,9 +648,12 @@ func _on_floorcol_body_entered(body: Node3D) -> void:
 		var kd = global_position.direction_to(body.global_position)
 		kd.y=0;
 		var kv = 10
-		body.get_knockback(kd,kv,20)
+		body.get_knockback(kd,kv,dmg)
+		charge_manager.increase_charge(20)
 	
 
+func explode():
+	pass
 
 
 func play_action(anim: StringName) -> void:
