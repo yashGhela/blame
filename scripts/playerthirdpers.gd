@@ -335,7 +335,7 @@ func fire():
 	fire_shots-=1
 	
 	bulletinst = bullet.instantiate()
-	bullet.player= self
+	bulletinst.player= self
 	
 	get_tree().current_scene.add_child(bulletinst)
 	
