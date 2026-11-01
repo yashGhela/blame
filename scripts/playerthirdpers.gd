@@ -79,6 +79,9 @@ var is_phase_jumping = false
 
 var dmg=20
 
+var can_explode= false
+var is_exploding= false
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		yaw -= event.relative.x * mouse_sens
@@ -114,7 +117,7 @@ func on_burnout():
 	
 func on_explosive():
 	reset()
-	explode()
+	can_explode=true
 
 func on_hard():
 	reset()
@@ -138,6 +141,7 @@ func reset():
 	can_run=true
 	dmg=20
 	can_snap=false
+	can_explode=false
 
 
 func _process(delta: float) -> void:
@@ -176,7 +180,7 @@ func _physics_process(delta: float) -> void:
 			2: play_action("downstrike"); SPEED = 11.0
 			3: play_action("downstrikerev"); SPEED = 12.0
 	
-	if Input.is_action_just_pressed("snap") and can_snap:
+	if Input.is_action_just_pressed("snap") and can_snap and not can_explode:
 		if is_snapping:
 			return
 		
@@ -184,6 +188,8 @@ func _physics_process(delta: float) -> void:
 			snap()
 		elif not is_on_floor():
 			airsnap()
+	elif Input.is_action_just_pressed("snap") and can_explode:
+		explode()
 			
 			
 	if Input.is_action_just_pressed("floorslam"):
@@ -193,7 +199,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("fire"):
 		fire()
 	
-	movement(delta)
+	if !is_exploding:
+		movement(delta)
 	move_and_slide()
 
 
@@ -653,7 +660,13 @@ func _on_floorcol_body_entered(body: Node3D) -> void:
 	
 
 func explode():
-	pass
+	is_exploding=true
+	
+	basicanims.play("explode")
+	
+	await basicanims.animation_finished
+	
+	is_exploding=false
 
 
 func play_action(anim: StringName) -> void:
