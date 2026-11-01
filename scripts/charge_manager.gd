@@ -6,7 +6,7 @@ extends Node
 @export var snapno=5
 @export var hardmodeval = 450
 @export var snapmodeval = 700
-@export var explosivemodeval = 950
+@export var explosivemodeval = 200
 @export var burnoutmodeval = 1000
 
 @onready var charge_bar: ProgressBar = $"../CanvasLayer/ChargeBar"

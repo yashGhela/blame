@@ -698,3 +698,12 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			snap_target = null
 		action_locked = false
 		animation_player.speed_scale=1
+
+
+func _on_explodecol_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Enemy"):
+		var kd = global_position.direction_to(body.global_position)
+		kd.y=0;
+		var kv = 10
+		body.get_knockback(kd,kv,60)
+		

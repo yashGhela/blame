@@ -79080,3 +79080,4 @@ disabled = true
 [connection signal="body_entered" from="larsv1/manrig/Skeleton3D/leftbonefollow/handl" to="." method="_on_hand_1_area_body_entered"]
 [connection signal="body_entered" from="larsv1/manrig/Skeleton3D/rightbonefollow/handr" to="." method="_on_hand_2_area_body_entered"]
 [connection signal="animation_finished" from="larsv1/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="explodecol" to="." method="_on_explodecol_body_entered"]
