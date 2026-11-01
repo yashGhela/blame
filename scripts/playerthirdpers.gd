@@ -387,7 +387,7 @@ func floorslam():
 	if floorcast.is_colliding():
 		var collider = floorcast.get_collider()
 		
-		print(collider)
+		
 		
 		if collider and collider.is_in_group("Floor") and is_floorslamming:
 			var collision_point = floorcast.get_collision_point()
@@ -613,7 +613,7 @@ func _on_basicanims_animation_finished(anim_name: StringName) -> void:
 
 func _on_hand_2_area_body_entered(body: Node3D) -> void:
 	
-	print("hand 2 is hitting body: ", body)
+	
 	
 	if body.is_in_group("Enemy"):
 		
@@ -627,12 +627,12 @@ func _on_hand_2_area_body_entered(body: Node3D) -> void:
 	
 	if body.is_in_group("Battery"):
 		body.set_status()
-		print("setting status")
+		
 
 
 func _on_hand_1_area_body_entered(body: Node3D) -> void:
 	
-	print("hand 1 is hitting body: ", body)
+	
 	
 	if body.is_in_group("Enemy"):
 		if is_snapping:
@@ -645,7 +645,7 @@ func _on_hand_1_area_body_entered(body: Node3D) -> void:
 	
 	if body.is_in_group("Battery"):
 		body.set_status()
-		print("setting status")
+		
 		
 
 
@@ -703,7 +703,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_explodecol_body_entered(body: Node3D) -> void:
-	print("Exploding:", body)
+	
 	if body.is_in_group("Enemy"):
 		
 		var kd = global_position.direction_to(body.global_position)
