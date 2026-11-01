@@ -11,7 +11,7 @@ var wait_done=false
 
 
 func enter():
-	print("Attacking")
+	
 	enemy.mv = Vector3.ZERO
 	player = get_tree().get_first_node_in_group("Player")
 	if player == null:

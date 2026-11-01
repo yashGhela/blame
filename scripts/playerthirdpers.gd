@@ -661,11 +661,13 @@ func _on_floorcol_body_entered(body: Node3D) -> void:
 
 func explode():
 	is_exploding=true
+	velocity = Vector3.ZERO
 	
 	basicanims.play("explode")
 	
 	await basicanims.animation_finished
 	
+	Signalbus.normalmode.emit()
 	is_exploding=false
 
 
@@ -701,9 +703,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_explodecol_body_entered(body: Node3D) -> void:
+	print("Exploding:", body)
 	if body.is_in_group("Enemy"):
+		
 		var kd = global_position.direction_to(body.global_position)
 		kd.y=0;
-		var kv = 10
+		var kv = 20
 		body.get_knockback(kd,kv,60)
 		

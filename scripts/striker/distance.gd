@@ -8,7 +8,6 @@ var player:CharacterBody3D
 
 
 func enter():
-	print("Entering chase state")
 	
 	player =get_tree().get_first_node_in_group("Player")
 
@@ -16,9 +15,6 @@ func enter():
 
 func physics_update(_delta:float):
 	
-	print("striker distancing")
-	
-
 	
 	
 	var direction = enemy.global_position.direction_to(player.global_position)

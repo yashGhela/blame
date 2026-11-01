@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 
 
 func enter():
-	print("Entered Shoot")
+	
 	enemy.mv = Vector3.ZERO
 	player = get_tree().get_first_node_in_group("Player")
 	

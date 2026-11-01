@@ -15,7 +15,7 @@ func randomize_wander():
 	
 	
 func enter():
-	print("Entered Wander")
+	
 	randomize_wander()
 	player= get_tree().get_first_node_in_group("Player")
 
