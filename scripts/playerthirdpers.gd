@@ -627,6 +627,10 @@ func _on_hand_2_area_body_entered(body: Node3D) -> void:
 	
 	if body.is_in_group("Battery"):
 		body.set_status()
+	
+	if body.is_in_group("Charger"):
+		body.reduce_charge(25)
+		charge_manager.increase_charge(50)
 		
 
 
@@ -645,6 +649,11 @@ func _on_hand_1_area_body_entered(body: Node3D) -> void:
 	
 	if body.is_in_group("Battery"):
 		body.set_status()
+	
+	if body.is_in_group("Charger"):
+		body.reduce_charge(25)
+		charge_manager.increase_charge(50)
+		
 		
 		
 

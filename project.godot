@@ -24,6 +24,7 @@ Player=""
 Enemy=""
 Battery=""
 Floor=""
+Charger=""
 
 [input]
 

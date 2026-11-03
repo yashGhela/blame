@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dcrjfth2dc3mh" path="res://gameplay-elements/monitor.tscn" id="11_b1vc1"]
 [ext_resource type="PackedScene" uid="uid://hdtdcvfqal1f" path="res://gameplay-elements/battery.tscn" id="12_rvvv2"]
 [ext_resource type="PackedScene" uid="uid://c6xmcc5jut7oa" path="res://gameplay-elements/modelfiles/railing.tscn" id="13_3lb85"]
+[ext_resource type="PackedScene" uid="uid://bfe56gkiwmo8g" path="res://gameplay-elements/charger.tscn" id="14_d52os"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80ttd"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -775,3 +776,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -24.
 
 [node name="railing14" parent="." unique_id=1976996641 instance=ExtResource("13_3lb85")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -24.610779, 17.205082, 16.708578)
+
+[node name="Charger" parent="." unique_id=1844265222 instance=ExtResource("14_d52os")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.874023, 5.4996767, -8.127206)
+
+[node name="Charger2" parent="." unique_id=49790195 instance=ExtResource("14_d52os")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.51199, 5.499676, -5.9784927)

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bfe56gkiwmo8g"]
+
+[ext_resource type="Script" uid="uid://dvfkv7u0mgfcx" path="res://scripts/charger.gd" id="1_wo4if"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ecpo"]
+albedo_color = Color(0.39868647, 0.6153728, 0.6174178, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ecpo"]
+material = SubResource("StandardMaterial3D_6ecpo")
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5wmv"]
+albedo_color = Color(0.23031491, 0.23031494, 0.23031494, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mwl6s"]
+material = SubResource("StandardMaterial3D_q5wmv")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q5wmv"]
+points = PackedVector3Array(-0.5, -0.75, -0.5, -0.5, -0.75, 0.5, -0.5, 0.75, -0.5, 0.5, -0.75, -0.5, 0.5, -0.75, 0.5, -0.5, 0.75, 0.5, 0.5, 0.75, -0.5, 0.5, 0.75, 0.5)
+
+[node name="Charger" type="StaticBody3D" unique_id=1722405648 groups=["Charger"]]
+script = ExtResource("1_wo4if")
+
+[node name="batterybase" type="MeshInstance3D" parent="." unique_id=1630518375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23907304, 0)
+mesh = SubResource("BoxMesh_6ecpo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="batterybase" unique_id=1395516964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68501544, 0)
+mesh = SubResource("BoxMesh_mwl6s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=494711326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23907304, 0)
+shape = SubResource("ConvexPolygonShape3D_q5wmv")
