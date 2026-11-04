@@ -167,6 +167,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	body.rotation.x=0
 	if is_attacking and not animation_player.is_playing():
 		is_attacking = false
 	
@@ -699,8 +700,13 @@ func explode():
 
 func play_action(anim: StringName) -> void:
 	action_locked = true
-	animation_player.speed_scale=2
+	if anim=="dash" or anim =="kickshot":
+		animation_player.speed_scale=3
+	else:
+		animation_player.speed_scale=2.5
+	
 	animation_player.play(anim)
+	
 
 func play_locomotion(anim: StringName) -> void:
 	if action_locked and not animation_player.is_playing():
