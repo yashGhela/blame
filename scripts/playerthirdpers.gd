@@ -43,7 +43,7 @@ var bulletinst
 @onready var pivot: Node3D = $CamOrigin/CamPitch/SpringArm3D
 @onready var camera_3d: Camera3D = $CamOrigin/CamPitch/SpringArm3D/Camera3D
 
-@onready var floorcast: RayCast3D = $CamOrigin/floorcast
+@onready var floorcast: RayCast3D = $larsv1/floorcast
 @onready var animation_player: AnimationPlayer = $larsv1/AnimationPlayer
 @onready var charge_manager: Node = $ChargeManager
 
