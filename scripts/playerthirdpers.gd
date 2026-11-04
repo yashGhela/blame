@@ -695,7 +695,7 @@ func explode():
 
 func play_action(anim: StringName) -> void:
 	action_locked = true
-	animation_player.speed_scale=1.5
+	animation_player.speed_scale=2
 	animation_player.play(anim)
 
 func play_locomotion(anim: StringName) -> void:

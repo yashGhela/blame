@@ -12,7 +12,7 @@ extends Node
 @onready var charge_bar: ProgressBar = $"../CanvasLayer/ChargeBar"
 @onready var state_label: Label = $"../CanvasLayer/StateLabel"
 
-@export var hardmodetime := 8.0
+@export var hardmodetime := 15.0
 @export var snapmodetime := 6.0
 @export var explosivemodetime := 1.0
 @export var burnoutmodetime := 4.0

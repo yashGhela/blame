@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dmfydmdgl0paw" path="res://gameplay-elements/shaders/fresnelgradient.tres" id="7_fj51u"]
 [ext_resource type="Script" uid="uid://gmajokhsiawr" path="res://scripts/pincer/chase.gd" id="9_hruex"]
 [ext_resource type="Script" uid="uid://0f7m3dpej8hg" path="res://scripts/pincer/stun.gd" id="10_1bibk"]
+[ext_resource type="Shader" uid="uid://n01qh87nx2bd" path="res://effects/floorslameffect.tres" id="11_mrxr7"]
+[ext_resource type="ArrayMesh" uid="uid://dsdt14xna8xu8" path="res://assets/objs/circlemesh.obj" id="12_xcwkt"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6yjpq"]
 
@@ -30,19 +32,13 @@ shader_parameter/fresnel_gradient = ExtResource("7_fj51u")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6yjpq"]
 points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8xdl2"]
-size = Vector3(1, 0.001, 1)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mrxr7"]
+height = 0.001
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2d5f"]
-transparency = 1
-albedo_color = Color(0, 0, 0, 1)
-emission_enabled = true
-emission = Color(0.6457707, 0.18059787, 0.23227838, 1)
-emission_energy_multiplier = 16.0
-rim_enabled = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otvkn"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_j2d5f"]
-material = SubResource("StandardMaterial3D_j2d5f")
+material = SubResource("ShaderMaterial_otvkn")
 size = Vector2(1, 1)
 
 [sub_resource type="Animation" id="Animation_yirjq"]
@@ -95,9 +91,34 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0.34, 0.34, 0.34)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("floorslameffect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("floorslameffect:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.05, 0.05, 0.05)]
+}
 
 [sub_resource type="Animation" id="Animation_j2d5f"]
 resource_name = "pince"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -105,7 +126,7 @@ tracks/0/path = NodePath("Area3D/CollisionShape3D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1),
+"times": PackedFloat32Array(0, 0.2, 2.9333334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -117,14 +138,14 @@ tracks/1/path = NodePath("Area3D/CollisionShape3D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.56666666, 2.5, 2.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(1, 1, 1), Vector3(5, 5, 5), Vector3(1, 1, 1)]
+"values": [Vector3(1, 1, 1), Vector3(5, 5, 5), Vector3(5, 5, 5), Vector3(1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("areamesh:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -141,10 +162,34 @@ tracks/3/path = NodePath("areamesh:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.19999999, 0.87, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.34, 0.34, 0.34), Vector3(5, 5, 5), Vector3(1, 1, 1)]
+"values": [Vector3(0.34, 0.34, 0.34), Vector3(5, 5, 5), Vector3(5, 5, 5), Vector3(1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("floorslameffect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 2.7333333, 2.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("floorslameffect:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.56666666, 2.5, 2.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.03, 0.03, 0.03), Vector3(0.44, 0.44, 0.44), Vector3(0.44, 0.44, 0.44), Vector3(0.035, 0.035, 0.035)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yirjq"]
@@ -162,6 +207,13 @@ bg_color = Color(0.20885223, 0.21486989, 0.24036837, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3be0w"]
 bg_color = Color(0.71084154, 0.2374247, 0.23473942, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7w56"]
+render_priority = 0
+shader = ExtResource("11_mrxr7")
+shader_parameter/Circle_color = Color(0.7009733, 0.28230724, 0.57571256, 1)
+shader_parameter/extraopacity = 0.1150000054625
+shader_parameter/Speed = Vector2(0, -1.2)
+
 [node name="pincer" type="CharacterBody3D" unique_id=2139333681 groups=["Enemy", "Pincer"]]
 script = ExtResource("1_f6ek2")
 
@@ -177,7 +229,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82271826, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=236155786]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10127461, 0)
-shape = SubResource("BoxShape3D_8xdl2")
+shape = SubResource("CylinderShape3D_mrxr7")
 disabled = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=882864398 node_paths=PackedStringArray("initial_state")]
@@ -226,6 +278,12 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_3be0w")
 max_value = 75.0
 rounded = true
 show_percentage = false
+
+[node name="floorslameffect" type="MeshInstance3D" parent="." unique_id=274418148]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -0.925, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_s7w56")
+mesh = ExtResource("12_xcwkt")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Pince" method="_on_animation_player_animation_finished"]
