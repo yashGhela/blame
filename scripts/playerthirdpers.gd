@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 
+const HIT_EFFECT = preload("res://effects/hit_particles.tscn")
+
 var SPEED = 9.0
 const JUMP_VELOCITY = 4.5
 var PHASE_JUMP_FORCE = 15.0
@@ -30,6 +32,10 @@ var bulletinst
 @onready var hand_2_col: CollisionShape3D = $%handrcol
 @onready var enemy_detector: Node = $EnemyDetector
 @onready var shotamount: Label = $CanvasLayer/shotamount
+
+
+@export var handr: Area3D
+@export var handl: Area3D
 
 
 @onready var cam_origin = $CamOrigin
@@ -610,8 +616,11 @@ func _on_basicanims_animation_finished(anim_name: StringName) -> void:
 			snap_target = null
 		
 
+#right hand
 
 func _on_hand_2_area_body_entered(body: Node3D) -> void:
+	
+	spawn_hit_effect(handr)
 	
 	
 	
@@ -633,8 +642,11 @@ func _on_hand_2_area_body_entered(body: Node3D) -> void:
 		charge_manager.increase_charge(50)
 		
 
+#left hand
 
 func _on_hand_1_area_body_entered(body: Node3D) -> void:
+	
+	spawn_hit_effect(handl)
 	
 	
 	
@@ -720,3 +732,11 @@ func _on_explodecol_body_entered(body: Node3D) -> void:
 		var kv = 20
 		body.get_knockback(kd,kv,60)
 		
+
+func spawn_hit_effect(fist: Node3D) -> void:
+	var effect = HIT_EFFECT.instantiate()
+	get_tree().current_scene.add_child(effect)
+	effect.global_position = fist.global_position
+	
+	await effect.get_node("AnimationPlayer").animation_finished
+	effect.queue_free()

@@ -72476,9 +72476,11 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_8h3dp"]
 radius = 0.1804902
 
-[node name="Playerthirdpers" type="CharacterBody3D" unique_id=1172021385 groups=["Player"]]
+[node name="Playerthirdpers" type="CharacterBody3D" unique_id=1172021385 node_paths=PackedStringArray("handr", "handl") groups=["Player"]]
 script = ExtResource("1_77iq7")
 bullet = ExtResource("2_n7aa4")
+handr = NodePath("larsv1/manrig/Skeleton3D/rightbonefollow/handr")
+handl = NodePath("larsv1/manrig/Skeleton3D/leftbonefollow/handl")
 
 [node name="body" type="MeshInstance3D" parent="." unique_id=1924451069]
 visible = false

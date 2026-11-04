@@ -152,3 +152,4 @@ draw_pass_1 = SubResource("QuadMesh_34xm0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2076036304]
 libraries/ = SubResource("AnimationLibrary_cxivj")
+autoplay = &"hiteffect"
