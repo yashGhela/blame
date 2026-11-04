@@ -19,7 +19,7 @@ var was_on_floor := true
 @export var joy_sens: float = 3.0
 @export var mouse_sens =0.003
 
-
+var hit_effect_spawned = false
 var bulletinst
 
 @onready var health_bar: ProgressBar = $"CanvasLayer/health bar"
@@ -178,6 +178,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("hit"):
 		
 		is_attacking = true
+		hit_effect_spawned = false
 		hitcounter += 1
 		if hitcounter > 3:
 			hitcounter = 1
@@ -734,6 +735,11 @@ func _on_explodecol_body_entered(body: Node3D) -> void:
 		
 
 func spawn_hit_effect(fist: Node3D) -> void:
+	
+	if hit_effect_spawned:
+		return
+
+	hit_effect_spawned = true
 	var effect = HIT_EFFECT.instantiate()
 	get_tree().current_scene.add_child(effect)
 	effect.global_position = fist.global_position
