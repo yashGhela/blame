@@ -50,3 +50,6 @@ func timeout(time:int):
 		state_label.text="normal mode"
 		Signalbus.normalmode.emit()
 		)
+		
+func increase_charge(amt):
+	charge+=amt

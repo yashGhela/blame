@@ -206,7 +206,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("fire"):
 		fire()
 	
-	if !is_exploding:
+	if !is_exploding and !is_floorslamming:
 		movement(delta)
 	move_and_slide()
 
@@ -433,17 +433,21 @@ func floorslam():
 			)
 
 			await tween.finished
-
+			
+			
 			# Make sure we don't continue if something interrupted the snap
 			if not is_floorslamming:
 				return
 
 			velocity = Vector3.ZERO
-
+			
+			
 			# Play attack
 			basicanims.play("floorslam")
 			
+		is_floorslamming=false
 			
+		
 			
 
 

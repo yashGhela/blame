@@ -72611,7 +72611,7 @@ disabled = true
 transform = Transform3D(-3.9558806e-08, 0, -0.905, 0, 0.905, 0, 0.905, 0, -3.9558806e-08, 0, -0.9572265, 0)
 
 [node name="floorcast" type="RayCast3D" parent="larsv1" unique_id=1991592042]
-transform = Transform3D(-4.8299874e-08, 0.9401228, 0.5806316, 0, 0.58063155, -0.9401227, -1.1049722, -4.1094072e-08, -2.5380215e-08, 0, 1.0577089, 0)
+transform = Transform3D(1.1049721, 0, 0, 0, 0.26169953, -1.0735348, 0, 1.0735348, 0.26169953, 0, 1.0577089, 0)
 target_position = Vector3(0, 0, 100)
 
 [node name="manrig" type="Node3D" parent="larsv1" unique_id=644744912]
