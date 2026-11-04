@@ -1,0 +1,89 @@
+[gd_resource type="VisualShader" format=3 uid="uid://n01qh87nx2bd"]
+
+[sub_resource type="Gradient" id="Gradient_bx0nn"]
+offsets = PackedFloat32Array(0, 0.18090452, 0.9070352, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c8t7h"]
+gradient = SubResource("Gradient_bx0nn")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_kq427"]
+texture = SubResource("GradientTexture2D_c8t7h")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_0bncq"]
+operator = 2
+
+[sub_resource type="Gradient" id="Gradient_ge7nc"]
+offsets = PackedFloat32Array(0.6482412, 0.7160804, 0.7638191, 0.7788945, 0.8467337, 0.8869347, 0.9271357)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0.36842042, 0.36842042, 0.36842042, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bx0nn"]
+gradient = SubResource("Gradient_ge7nc")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_c8t7h"]
+expanded_output_ports = [0]
+texture = SubResource("GradientTexture2D_bx0nn")
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_f5m11"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ge7nc"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_bx0nn"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_c8t7h"]
+parameter_name = "Speed"
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_f5m11"]
+parameter_name = "Circle_color"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_f5m11"]
+parameter_name = "extraopacity"
+hint = 1
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ge7nc"]
+
+[sub_resource type="Gradient" id="Gradient_f5m11"]
+offsets = PackedFloat32Array(0.59799, 0.6658291, 0.7211055, 0.8040201, 0.86934674, 0.93467337)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.18000486, 0.18000486, 0.18000486, 1, 0, 0, 0, 1, 0.9027777, 0.9027777, 0.9027777, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ge7nc"]
+gradient = SubResource("Gradient_f5m11")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_bx0nn"]
+expanded_output_ports = [0]
+texture = SubResource("GradientTexture2D_ge7nc")
+
+[resource]
+flags/unshaded = true
+nodes/vertex/0/position = Vector2(380, 160)
+nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_bx0nn")
+nodes/vertex/2/position = Vector2(-80, 260)
+nodes/fragment/0/position = Vector2(820, 120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_c8t7h")
+nodes/fragment/2/position = Vector2(-70.71869, 369.62677)
+nodes/fragment/3/node = SubResource("VisualShaderNodeUVFunc_f5m11")
+nodes/fragment/3/position = Vector2(-342.89496, 459.8153)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_ge7nc")
+nodes/fragment/4/position = Vector2(-920, 440)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorOp_bx0nn")
+nodes/fragment/5/position = Vector2(-580, 640)
+nodes/fragment/6/node = SubResource("VisualShaderNodeVec2Parameter_c8t7h")
+nodes/fragment/6/position = Vector2(-940, 680)
+nodes/fragment/7/node = SubResource("VisualShaderNodeColorParameter_f5m11")
+nodes/fragment/7/position = Vector2(-260, 120)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatParameter_f5m11")
+nodes/fragment/8/position = Vector2(-220, 820)
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatOp_ge7nc")
+nodes/fragment/9/position = Vector2(180, 600)
+nodes/fragment/10/node = SubResource("VisualShaderNodeTexture_kq427")
+nodes/fragment/10/position = Vector2(60, 1000)
+nodes/fragment/11/node = SubResource("VisualShaderNodeFloatOp_0bncq")
+nodes/fragment/11/position = Vector2(399.55023, 741.6546)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 5, 0, 3, 2, 4, 0, 5, 0, 6, 0, 5, 1, 7, 0, 0, 0, 8, 0, 9, 0, 2, 1, 9, 1, 9, 0, 11, 0, 10, 0, 11, 1, 11, 0, 0, 1)

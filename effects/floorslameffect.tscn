@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bw6gcqhdthv6i"]
+
+[ext_resource type="Shader" uid="uid://n01qh87nx2bd" path="res://effects/floorslameffect.tres" id="1_ppb5n"]
+[ext_resource type="ArrayMesh" uid="uid://dsdt14xna8xu8" path="res://assets/objs/circlemesh.obj" id="2_sxilo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7w56"]
+render_priority = 0
+shader = ExtResource("1_ppb5n")
+shader_parameter/Circle_color = Color(0.24566752, 0.6354278, 0.8769071, 1)
+shader_parameter/extraopacity = 0.0790000037525
+shader_parameter/Speed = Vector2(0, -1.2)
+
+[node name="floorslameffect" type="MeshInstance3D" unique_id=274418148]
+material_override = SubResource("ShaderMaterial_s7w56")
+mesh = ExtResource("2_sxilo")

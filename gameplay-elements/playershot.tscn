@@ -22,12 +22,12 @@ radius = 0.64123863
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ff3vq"]
 cull_mode = 1
 shading_mode = 0
+albedo_color = Color(1.540184e-06, 0.86856604, 0.76167816, 1)
 grow = true
 grow_amount = 0.03
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0r8tn"]
 next_pass = SubResource("StandardMaterial3D_ff3vq")
-shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ff3vq"]
