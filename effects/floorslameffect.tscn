@@ -6,8 +6,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s7w56"]
 render_priority = 0
 shader = ExtResource("1_ppb5n")
-shader_parameter/Circle_color = Color(0.24566752, 0.6354278, 0.8769071, 1)
-shader_parameter/extraopacity = 0.0790000037525
+shader_parameter/Circle_color = Color(0.58092654, 0.35944924, 0.6707802, 1)
+shader_parameter/extraopacity = 0.1150000054625
 shader_parameter/Speed = Vector2(0, -1.2)
 
 [node name="floorslameffect" type="MeshInstance3D" unique_id=274418148]

@@ -621,12 +621,9 @@ func _on_basicanims_animation_finished(anim_name: StringName) -> void:
 
 func _on_hand_2_area_body_entered(body: Node3D) -> void:
 	
-	spawn_hit_effect(handr)
-	
-	
 	
 	if body.is_in_group("Enemy"):
-		
+		spawn_hit_effect(handr)
 		if is_snapping:
 			body.queue_free()
 		var kd = global_position.direction_to(body.global_position)
@@ -636,9 +633,11 @@ func _on_hand_2_area_body_entered(body: Node3D) -> void:
 		charge_manager.increase_charge(20)
 	
 	if body.is_in_group("Battery"):
+		spawn_hit_effect(handr)
 		body.set_status()
 	
 	if body.is_in_group("Charger"):
+		spawn_hit_effect(handr)
 		body.reduce_charge(25)
 		charge_manager.increase_charge(50)
 		
@@ -647,13 +646,12 @@ func _on_hand_2_area_body_entered(body: Node3D) -> void:
 
 func _on_hand_1_area_body_entered(body: Node3D) -> void:
 	
-	spawn_hit_effect(handl)
-	
 	
 	
 	if body.is_in_group("Enemy"):
 		if is_snapping:
 			body.queue_free()
+		spawn_hit_effect(handl)
 		var kd = global_position.direction_to(body.global_position)
 		kd.y=0;
 		var kv = 10
@@ -661,9 +659,11 @@ func _on_hand_1_area_body_entered(body: Node3D) -> void:
 		charge_manager.increase_charge(20)
 	
 	if body.is_in_group("Battery"):
+		spawn_hit_effect(handl)
 		body.set_status()
 	
 	if body.is_in_group("Charger"):
+		spawn_hit_effect(handl)
 		body.reduce_charge(25)
 		charge_manager.increase_charge(50)
 		
