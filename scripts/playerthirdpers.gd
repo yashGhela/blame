@@ -406,13 +406,19 @@ func floorslam():
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_SINE)
 			tween.set_ease(Tween.EASE_OUT)
+			
+			
 
 			tween.tween_property(
 				self,
 				"global_position",
 				target_position,
-				0.3
+				0.4
 			)
+			
+			play_action("larsv1animations/floorslam")
+			
+			
 			
 			var look_direction = collision_point - body.global_position
 			look_direction.y = 0
@@ -430,7 +436,7 @@ func floorslam():
 				body,
 				"rotation:y",
 				target_angle + deg_to_rad(90),
-				0.3
+				0.4
 			)
 
 			await tween.finished
@@ -446,10 +452,17 @@ func floorslam():
 			# Play attack
 			basicanims.play("floorslam")
 			
-		is_floorslamming=false
-			
 		
-			
+		await get_tree().create_timer(0.5).timeout
+
+		if is_floorslamming:
+			is_floorslamming = false
+			action_locked = false
+			is_attacking = false
+			animation_player.speed_scale = 1.0
+			velocity = Vector3.ZERO
+
+
 
 
 func airsnap():
@@ -512,16 +525,14 @@ func airsnap():
 		target_angle + deg_to_rad(90),
 		SNAP_DURATION
 	)
-	
-	play_action("dash")
+	is_attacking = true
+	play_action("larsv1animations/snap")
 
 	await tween.finished
 
 	# Make sure we don't continue if something interrupted the snap
-	is_attacking = true
-	play_action("uppercut")
-	await get_tree().create_timer(0.4).timeout   # roughly the length of the strike
-
+	
+	
 	is_snapping = false        # always released, no signals needed
 	snap_target = null
 
@@ -570,14 +581,13 @@ func snap():
 		target_position,
 		SNAP_DURATION
 	)
+	is_attacking = true
 	
-	play_action("dash")
+	play_action("larsv1animations/snap")
 	await tween.finished
 
-	is_attacking = true
-	play_action("uppercut")
-	await get_tree().create_timer(0.4).timeout   # roughly the length of the strike
-
+	
+	
 	is_snapping = false        # always released, no signals needed
 	snap_target = null
 
@@ -702,6 +712,9 @@ func play_action(anim: StringName) -> void:
 	action_locked = true
 	if anim=="dash" or anim =="kickshot":
 		animation_player.speed_scale=3
+	
+	elif anim=="larsv1animations/floorslam":
+		animation_player.speed_scale=3
 	else:
 		animation_player.speed_scale=2.5
 	
@@ -722,6 +735,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		action_locked = false
 		animation_player.speed_scale=1
 	
+	if anim_name=="larsv1animations/floorslam":
+		is_floorslamming=false
 	if anim_name=="uppercut" or anim_name=="downstrike" or anim_name=="downstrikerev":
 		hand_1_col.disabled=true
 		hand_2_col.disabled=true
