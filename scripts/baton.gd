@@ -92,3 +92,7 @@ func _on_static_body_3d_body_entered(body: Node3D) -> void:
 	print(body)
 	if body.is_in_group("Player"):
 		player.health-=10
+		
+		
+func set_stun():
+	state_machine.current_state = stun
