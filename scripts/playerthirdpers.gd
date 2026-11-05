@@ -420,7 +420,7 @@ func floorslam():
 			
 			
 			
-			var look_direction = collision_point - body.global_position
+			var look_direction = collision_point + body.global_position
 			look_direction.y = 0
 
 			var target_angle = atan2(
