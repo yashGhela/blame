@@ -7,6 +7,7 @@ var SPEED = 9.0
 const JUMP_VELOCITY = 4.5
 var PHASE_JUMP_FORCE = 15.0
 var RUNNING_SPEED = 14.0
+const SNEAK_SPEED = 4.0
 
 var is_attacking:=false
 var action_locked := false  # true while jump / phasejump / dash is playing
@@ -63,6 +64,8 @@ const SNAP_COOLDOWN=1.5
 var snap_cooldown = false
 
 var jumpnum=1
+
+var is_sneaking= false
 
 
 var is_dashing = false
@@ -242,7 +245,12 @@ func movement(delta):
 			play_action("larsv1animations/phasejump")
 
 		
-		
+	if Input.is_action_just_pressed("sneak"):
+		is_running=false
+		is_sneaking=true
+	
+	if Input.is_action_just_released("sneak"):
+		is_sneaking=false
 	
 	if Input.is_action_just_pressed("run") and can_run:
 		is_running=true
@@ -321,6 +329,10 @@ func movement(delta):
 			velocity.x = -direction.x * RUNNING_SPEED
 			velocity.z = -direction.z * RUNNING_SPEED
 			play_locomotion("run")
+		elif is_sneaking:
+			velocity.x = -direction.x * SNEAK_SPEED
+			velocity.z = -direction.z * SNEAK_SPEED
+			play_locomotion("larsv1animations/walkrefined")
 		else:
 			velocity.x = -direction.x * SPEED
 			velocity.z = -direction.z * SPEED
