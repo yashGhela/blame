@@ -54,3 +54,5 @@ func get_knockback(direction, force,damage):
 	await get_tree().create_timer(0.5).timeout
 	kv = Vector3.ZERO
 	
+func set_stun():
+	state_machine.current_state = stun

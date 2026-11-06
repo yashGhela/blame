@@ -420,7 +420,7 @@ func floorslam():
 			
 			
 			
-			var look_direction = collision_point - body.global_position
+			var look_direction = collision_point + body.global_position
 			look_direction.y = 0
 
 			var target_angle = atan2(
@@ -474,7 +474,7 @@ func airsnap():
 	
 	var distance = global_position.distance_to(snap_target.global_position)
 	
-	
+	snap_target.set_stun()
 	
 	
 	is_snapping=true
@@ -569,6 +569,8 @@ func snap():
 	)
 	
 	body.rotate_y(deg_to_rad(180))
+	
+	snap_target.set_stun()
 
 	# Move player toward enemy
 	var tween = create_tween()
