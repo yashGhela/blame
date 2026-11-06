@@ -700,6 +700,7 @@ func explode():
 	is_exploding=true
 	velocity = Vector3.ZERO
 	
+	play_action("larsv1animations/explode")
 	basicanims.play("explode")
 	
 	await basicanims.animation_finished
