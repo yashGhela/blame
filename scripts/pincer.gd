@@ -9,6 +9,10 @@ var timeshit= 0
 @onready var state_machine: Node = $StateMachine
 @onready var stun: Node = $StateMachine/Stun
 
+@export var mode = "patrol"
+
+
+
 func _process(delta: float) -> void:
 	progress_bar.value=health
 	if health<=0:
@@ -16,7 +20,7 @@ func _process(delta: float) -> void:
 	
 	
 	if timeshit>=3 and state_machine.current_state!=stun:
-		state_machine.current_state = stun
+		set_stun()
 		timeshit=0
 
 

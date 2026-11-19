@@ -9,6 +9,9 @@ var mv:=Vector3.ZERO
 @onready var progress_bar: ProgressBar = $SubViewport/ProgressBar
 @onready var body: MeshInstance3D = $body
 
+
+
+
 func _process(delta: float) -> void:
 	progress_bar.value=health
 	
