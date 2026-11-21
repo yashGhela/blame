@@ -42,10 +42,13 @@ func update_target_location(target_location):
 
 func _ready() -> void:
 	enter_patrol_mode()
+	print("Initial mode: ", mode.current_state.name)
 
 func _process(delta: float) -> void:
 	progress_bar.value=health
 	state_label.text= mode.current_state.name
+	
+
 	if health<=0:
 		queue_free()
 	
@@ -89,11 +92,13 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 #these functions are for the team monitor to force a change to all the enemies attached
 func enter_attack_mode():
+	print("ENTER_ATTACK_MODE FUNCTION CALLED")
 	if mode.current_state!=attack:
 		mode.current_state=attack
 	Signalbus.alertTeam.emit(self)
 
 func enter_patrol_mode():
+	print("ENTER PATROL MODE CALLED")
 	if mode.current_state!=patrol:
 		mode.current_state=patrol
 	Signalbus.dealertteam.emit(self)

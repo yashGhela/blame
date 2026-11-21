@@ -13,6 +13,11 @@ func _ready() -> void:
 
 #this will let us handle changing modes
 func on_mode_transitioned(state, new_mode_name):
+	
+	print("MODE TRANSITION REQUEST:")
+	print("From: ", state.name)
+	print("To: ", new_mode_name)
+	print("Current: ", current_state.name)
 	if state != current_state:
 		return
 

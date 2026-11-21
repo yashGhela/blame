@@ -2,7 +2,7 @@ extends Node
 
 
 var states = ["PLAYER_ALERT", "AREA_ALERT","GUARDING_NO_ALERT"]
-@export var context_level = states[0];
+@export var context_level = states[2];
 
 @export var parent:CharacterBody3D
 

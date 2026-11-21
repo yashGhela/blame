@@ -5,6 +5,7 @@ extends State
 
 
 func enter():
+	print("ATTACK MODE ENTERED")
 	attack_state_machine.current_state = attack_state_machine.initial_state
 
 

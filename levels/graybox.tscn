@@ -503,12 +503,6 @@ mesh = ExtResource("6_705in")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeB3/StaticBody3D" unique_id=2048035454]
 shape = SubResource("ConvexPolygonShape3D_b1vc1")
 
-[node name="pincer" parent="." unique_id=2139333681 instance=ExtResource("7_fybl5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.546486, 17.74807, 13.587253)
-
-[node name="pincer2" parent="." unique_id=320564426 instance=ExtResource("7_fybl5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.546486, 17.74807, 20.357342)
-
 [node name="Baton" parent="." unique_id=723997313 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.097534, 18.251957, 13.022586)
 
@@ -879,18 +873,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.64164, 31.476763, 85.97186
 [node name="Striker8" parent="." unique_id=1466150109 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.530592, 31.476763, 77.23135)
 
-[node name="pincer3" parent="." unique_id=1883941600 instance=ExtResource("7_fybl5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.910093, 31.476763, 90.81762)
-
-[node name="pincer4" parent="." unique_id=1723859230 instance=ExtResource("7_fybl5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.622224, 31.476763, 76.7778)
-
-[node name="pincer5" parent="." unique_id=2101467102 instance=ExtResource("7_fybl5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.779633, 31.476763, 130.7723)
-
-[node name="pincer6" parent="." unique_id=135265605 instance=ExtResource("7_fybl5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.614605, 31.476763, 124.35181)
-
 [node name="Striker9" parent="." unique_id=517787151 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.563713, 31.476763, 117.93428)
 
@@ -991,5 +973,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.077, 0.3, -32.301)
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=429072525]
 transform = Transform3D(-0.9999987, -2.7806565e-10, -1.4456089e-05, 0, 0.9999992, -1.9235149e-05, 1.4456092e-05, -1.9235164e-05, -0.9999985, -74.07714, 0.2998166, -32.300797)
 
-[node name="pincer7" parent="Path3D/PathFollow3D" unique_id=1966355649 instance=ExtResource("7_fybl5")]
+[node name="pincer7" parent="Path3D/PathFollow3D" unique_id=1966355649 node_paths=PackedStringArray("pathStart", "path", "pathFollow") instance=ExtResource("7_fybl5")]
 transform = Transform3D(-1.0000013, 0, 1.445613e-05, -2.7806607e-10, 1.0000007, -1.9235193e-05, -1.4456133e-05, -1.9235207e-05, -1.0000014, -2.4555588, 1.7001376, -2.345644)
+pathStart = NodePath("../../PathStart")
+path = NodePath("../..")
+pathFollow = NodePath("..")

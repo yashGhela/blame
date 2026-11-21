@@ -9,6 +9,7 @@ extends State
 
 
 func enter():
+	print("PATROL MODE ENTERED")
 	patrol_state_machine.current_state = patrol_state_machine.initial_state
 
 
