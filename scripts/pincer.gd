@@ -106,6 +106,8 @@ func enter_patrol_mode():
 func get_knockback(direction, force,damage):
 	health-=damage
 	kv =  direction.normalized() * (force * 0.4)
+	if mode.current_state!=attack:
+		enter_attack_mode()
 	#ap.play("flash")
 	#await get_tree().create_timer(0.5).timeout
 	#kv = Vector3.ZERO
