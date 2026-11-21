@@ -14,3 +14,8 @@ func update(_delta:float):
 
 func physics_update(_delta:float):
 	pass	
+
+
+
+func transition_to(new_state_name):
+	Transitioned.emit(self, new_state_name)

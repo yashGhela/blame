@@ -16,8 +16,7 @@ var timeshit= 0
 
 
 func _ready() -> void:
-	if mode.current_state!=patrol:
-		mode.current_state=patrol
+	enter_patrol_mode()
 
 func _process(delta: float) -> void:
 	progress_bar.value=health
@@ -57,10 +56,12 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 #these functions are for the team monitor to force a change to all the enemies attached
 func enter_attack_mode():
-	pass
+	if mode.current_state!=attack:
+		mode.current_state=attack
 
 func enter_patrol_mode():
-	pass
+	if mode.current_state!=patrol:
+		mode.current_state=patrol
 
 func get_knockback(direction, force,damage):
 	health-=damage

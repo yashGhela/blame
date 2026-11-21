@@ -399,6 +399,21 @@ metadata/_custom_type_script = "uid://b67xj6wef2lop"
 script = ExtResource("13_xcwkt")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
+[node name="PatrolStateMachine" type="Node" parent="." unique_id=2144568350]
+script = ExtResource("2_olgdf")
+
+[node name="FollowPath" type="Node" parent="PatrolStateMachine" unique_id=734909557]
+script = ExtResource("13_xcwkt")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Investigate" type="Node" parent="PatrolStateMachine" unique_id=896812890]
+script = ExtResource("13_xcwkt")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Talk" type="Node" parent="PatrolStateMachine" unique_id=2092380817]
+script = ExtResource("13_xcwkt")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="AttackStateMachine/Pince" method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="PatrolVision" to="PatrolContext" method="_on_patrol_vision_body_entered"]

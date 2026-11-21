@@ -26,11 +26,11 @@ func physics_update(_delta:float):
 	
 	
 	if distance > 7.0:
-		Transitioned.emit(self, "Idle")
+		transition_to("Idle")
 		return
 	
 	if distance<3.0:
-		Transitioned.emit(self,"Pince")
+		transition_to("Pince")
 		enemy.mv=Vector3.ZERO
 		return
 		

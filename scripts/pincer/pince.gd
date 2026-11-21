@@ -38,6 +38,6 @@ func physics_update(_delta:float):
 			
 			hit()
 		elif playerdist<7.0 and playerdist>3.0:
-			Transitioned.emit(self,"Chase")
+			transition_to("Chase")
 		elif playerdist>7.0:
-			Transitioned.emit(self,"Idle")
+			transition_to("Idle")
