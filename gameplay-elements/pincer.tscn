@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://0f7m3dpej8hg" path="res://scripts/pincer/stun.gd" id="10_1bibk"]
 [ext_resource type="Script" uid="uid://di3olxt6teslb" path="res://scripts/patrol_context.gd" id="12_mrxr7"]
 [ext_resource type="ArrayMesh" uid="uid://dsdt14xna8xu8" path="res://assets/objs/circlemesh.obj" id="12_xcwkt"]
+[ext_resource type="Script" uid="uid://b67xj6wef2lop" path="res://scripts/state.gd" id="13_xcwkt"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6yjpq"]
 
@@ -323,25 +324,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10127461, 0)
 shape = SubResource("CylinderShape3D_mrxr7")
 disabled = true
 
-[node name="StateMachine" type="Node" parent="." unique_id=882864398 node_paths=PackedStringArray("initial_state")]
+[node name="AttackStateMachine" type="Node" parent="." unique_id=882864398 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_olgdf")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=1467590520 node_paths=PackedStringArray("enemy")]
+[node name="Idle" type="Node" parent="AttackStateMachine" unique_id=1467590520 node_paths=PackedStringArray("enemy")]
 script = ExtResource("3_yirjq")
 enemy = NodePath("../..")
 
-[node name="Pince" type="Node" parent="StateMachine" unique_id=1924428502 node_paths=PackedStringArray("enemy")]
+[node name="Pince" type="Node" parent="AttackStateMachine" unique_id=1924428502 node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_j2d5f")
 enemy = NodePath("../..")
 
-[node name="Chase" type="Node" parent="StateMachine" unique_id=163687252 node_paths=PackedStringArray("enemy")]
+[node name="Chase" type="Node" parent="AttackStateMachine" unique_id=163687252 node_paths=PackedStringArray("enemy")]
 script = ExtResource("9_hruex")
 enemy = NodePath("../..")
 move_speed = 4.0
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
-[node name="Stun" type="Node" parent="StateMachine" unique_id=1770414590 node_paths=PackedStringArray("enemy")]
+[node name="Stun" type="Node" parent="AttackStateMachine" unique_id=1770414590 node_paths=PackedStringArray("enemy")]
 script = ExtResource("10_1bibk")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
@@ -386,6 +387,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3338287, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.238413)
 shape = SubResource("BoxShape3D_mrxr7")
 
+[node name="Mode" type="Node" parent="." unique_id=1437467854 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_olgdf")
+initial_state = NodePath("Patrol")
+
+[node name="Patrol" type="Node" parent="Mode" unique_id=229747675]
+script = ExtResource("13_xcwkt")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Attack" type="Node" parent="Mode" unique_id=2025711418]
+script = ExtResource("13_xcwkt")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Pince" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="AttackStateMachine/Pince" method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="PatrolVision" to="PatrolContext" method="_on_patrol_vision_body_entered"]
