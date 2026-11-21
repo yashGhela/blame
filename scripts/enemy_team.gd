@@ -14,7 +14,12 @@ func dealert_all():
 
 func _ready() -> void:
 	Signalbus.alertTeam.connect(on_alerted)
+	Signalbus.dealertteam.connect(on_dealerted)
 
 func on_alerted(caller):
 	if caller in get_children():
 		alert_all()
+
+func on_dealerted(caller):
+	if caller in get_children():
+		dealert_all()
