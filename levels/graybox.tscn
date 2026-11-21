@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://hdtdcvfqal1f" path="res://gameplay-elements/battery.tscn" id="12_rvvv2"]
 [ext_resource type="PackedScene" uid="uid://c6xmcc5jut7oa" path="res://gameplay-elements/modelfiles/railing.tscn" id="13_3lb85"]
 [ext_resource type="PackedScene" uid="uid://bfe56gkiwmo8g" path="res://gameplay-elements/charger.tscn" id="14_d52os"]
+[ext_resource type="PackedScene" uid="uid://bqp1t5oxvej21" path="res://gameplay-elements/enemy_team.tscn" id="15_ff7h8"]
 [ext_resource type="ArrayMesh" uid="uid://cir7rx5sbowwg" path="res://addons/kaykit_prototype_bits/Assets/obj/Cube_Prototype_Small.obj" id="15_u0hem"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80ttd"]
@@ -964,16 +965,18 @@ mesh = ExtResource("5_4vge4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.912704, 1.0372181, -22.071724)
 mesh = ExtResource("15_u0hem")
 
-[node name="Path3D" type="Path3D" parent="." unique_id=1117146022]
+[node name="EnemyTeam" parent="." unique_id=940537512 instance=ExtResource("15_ff7h8")]
+
+[node name="Path3D" type="Path3D" parent="EnemyTeam" unique_id=1117146022]
 curve = SubResource("Curve3D_u0hem")
 
-[node name="PathStart" type="Node3D" parent="Path3D" unique_id=1099812217]
+[node name="PathStart" type="Node3D" parent="EnemyTeam/Path3D" unique_id=1099812217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.077, 0.3, -32.301)
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=429072525]
+[node name="PathFollow3D" type="PathFollow3D" parent="EnemyTeam/Path3D" unique_id=429072525]
 transform = Transform3D(-0.9999987, -2.7806565e-10, -1.4456089e-05, 0, 0.9999992, -1.9235149e-05, 1.4456092e-05, -1.9235164e-05, -0.9999985, -74.07714, 0.2998166, -32.300797)
 
-[node name="pincer7" parent="Path3D/PathFollow3D" unique_id=1966355649 node_paths=PackedStringArray("pathStart", "path", "pathFollow") instance=ExtResource("7_fybl5")]
+[node name="pincer7" parent="EnemyTeam/Path3D/PathFollow3D" unique_id=1966355649 node_paths=PackedStringArray("pathStart", "path", "pathFollow") instance=ExtResource("7_fybl5")]
 transform = Transform3D(-1.0000013, 0, 1.445613e-05, -2.7806607e-10, 1.0000007, -1.9235193e-05, -1.4456133e-05, -1.9235207e-05, -1.0000014, -2.4555588, 1.7001376, -2.345644)
 pathStart = NodePath("../../PathStart")
 path = NodePath("../..")

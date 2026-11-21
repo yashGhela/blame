@@ -1,22 +1,35 @@
 extends Node
 
+var enemies:Array = []
+#this system lets me nest all enemies regardless of where they aare and if they use a path as children of the team
+
+func _ready() -> void:
+	collect_enemies(self)
+	Signalbus.alertTeam.connect(on_alerted)
+	Signalbus.dealertteam.connect(on_dealerted)
+
+func collect_enemies(node:Node):
+	for child in node.get_children():
+
+		if child.is_in_group("Enemy"):
+			enemies.append(child)
+
+		collect_enemies(child)
 
 func alert_all():
 	print("alerting all")
-	for c in get_children():
-		if c.is_in_group("Enemy"):
-			c.enter_attack_mode();
+	for e in enemies:
+		if is_instance_valid(e):
+			e.enter_attack_mode()
+
 
 
 func dealert_all():
 	print("dealerting all")
-	for c in get_children():
-		if c.is_in_group("Enemy"):
-			c.enter_patrol_mode();
+	for e in enemies:
+		if is_instance_valid(e):
+			e.enter_patrol_mode()
 
-func _ready() -> void:
-	Signalbus.alertTeam.connect(on_alerted)
-	Signalbus.dealertteam.connect(on_dealerted)
 
 func on_alerted(caller):
 	if caller in get_children():
