@@ -7,6 +7,7 @@ var health:=75
 var mv:=Vector3.ZERO
 var timeshit= 0
 
+@onready var nav_agent: NavigationAgent3D = $navagent
 
 var inv_loc
 #location of investigation incident
@@ -31,6 +32,12 @@ var inv_loc
 @export var path:Path3D
 @export var pathFollow:PathFollow3D
 #so these are all the elements u need of a path that'll then pass down to patrol pathing logic
+
+
+
+func update_target_location(target_location):
+	nav_agent.target_position=target_location
+
 
 
 func _ready() -> void:

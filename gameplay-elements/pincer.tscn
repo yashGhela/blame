@@ -445,6 +445,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3338287, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.238413)
 shape = SubResource("BoxShape3D_mrxr7")
 
+[node name="navagent" type="NavigationAgent3D" parent="." unique_id=707755379]
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="AttackStateMachine/Pince" method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="PatrolVision" to="PatrolContext" method="_on_patrol_vision_body_entered"]
