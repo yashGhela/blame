@@ -388,8 +388,9 @@ metadata/_custom_type_script = "uid://b67xj6wef2lop"
 script = ExtResource("13_xcwkt")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
-[node name="ReturnToPathStart" type="Node" parent="PatrolStateMachine" unique_id=1535741949]
+[node name="ReturnToPathStart" type="Node" parent="PatrolStateMachine" unique_id=1535741949 node_paths=PackedStringArray("this")]
 script = ExtResource("17_54efx")
+this = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="Scan" type="Node" parent="PatrolStateMachine" unique_id=50082920 node_paths=PackedStringArray("this")]

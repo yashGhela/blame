@@ -991,5 +991,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.077, 0.3, -32.301)
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=429072525]
 transform = Transform3D(-0.9999987, -2.7806565e-10, -1.4456089e-05, 0, 0.9999992, -1.9235149e-05, 1.4456092e-05, -1.9235164e-05, -0.9999985, -74.07714, 0.2998166, -32.300797)
 
-[node name="pincer7" parent="Path3D/PathFollow3D" unique_id=1794219864 instance=ExtResource("7_fybl5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.01593, 2.069442, -30.596964)
+[node name="pincer7" parent="Path3D/PathFollow3D" unique_id=1966355649 instance=ExtResource("7_fybl5")]
+transform = Transform3D(-1.0000013, 0, 1.445613e-05, -2.7806607e-10, 1.0000007, -1.9235193e-05, -1.4456133e-05, -1.9235207e-05, -1.0000014, -2.4555588, 1.7001376, -2.345644)
