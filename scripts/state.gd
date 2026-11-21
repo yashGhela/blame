@@ -12,10 +12,10 @@ func enter():
 func exit():
 	pass
 
-func update(_delta:float):
+func update(delta:float):
 	pass
 
-func physics_update(_delta:float):
+func physics_update(delta:float):
 	pass	
 
 

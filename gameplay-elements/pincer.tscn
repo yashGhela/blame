@@ -16,6 +16,10 @@
 [ext_resource type="Script" uid="uid://b67xj6wef2lop" path="res://scripts/state.gd" id="13_xcwkt"]
 [ext_resource type="Script" uid="uid://cgu5jlc1ecdxk" path="res://scripts/patrolmode.gd" id="14_krae7"]
 [ext_resource type="Script" uid="uid://im51siwonre1" path="res://scripts/attackmode.gd" id="15_05pps"]
+[ext_resource type="Script" uid="uid://b44mgfwiue1ou" path="res://scripts/guard_states/follow_path.gd" id="15_xxjrw"]
+[ext_resource type="Script" uid="uid://b472ucafebgem" path="res://scripts/guard_states/investigate.gd" id="16_iojk4"]
+[ext_resource type="Script" uid="uid://cm6ufki8ioy6k" path="res://scripts/guard_states/return_to_path_start.gd" id="17_54efx"]
+[ext_resource type="Script" uid="uid://d0131botgkser" path="res://scripts/guard_states/scan.gd" id="18_i65qo"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6yjpq"]
 
@@ -309,8 +313,9 @@ shader_parameter/Speed = Vector2(0, -1.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mrxr7"]
 size = Vector3(1, 1, 3.5625)
 
-[node name="pincer" type="CharacterBody3D" unique_id=2139333681 groups=["Enemy", "Pincer"]]
+[node name="pincer" type="CharacterBody3D" unique_id=2139333681 node_paths=PackedStringArray("state_label") groups=["Enemy", "Pincer"]]
 script = ExtResource("1_f6ek2")
+state_label = NodePath("SubViewport/stateLabel")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1902865765 groups=["Pincer"]]
 mesh = SubResource("CapsuleMesh_6yjpq")
@@ -326,6 +331,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82271826, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10127461, 0)
 shape = SubResource("CylinderShape3D_mrxr7")
 disabled = true
+
+[node name="Mode" type="Node" parent="." unique_id=1437467854 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("13_otvkn")
+initial_state = NodePath("Patrol")
+
+[node name="Patrol" type="Node" parent="Mode" unique_id=229747675]
+script = ExtResource("14_krae7")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Attack" type="Node" parent="Mode" unique_id=2025711418]
+script = ExtResource("15_05pps")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="AttackStateMachine" type="Node" parent="." unique_id=882864398 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_olgdf")
@@ -350,6 +367,34 @@ script = ExtResource("10_1bibk")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
+[node name="BackOff" type="Node" parent="AttackStateMachine" unique_id=1650833375]
+script = ExtResource("13_xcwkt")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="PatrolStateMachine" type="Node" parent="." unique_id=2144568350]
+script = ExtResource("2_olgdf")
+
+[node name="FollowPath" type="Node" parent="PatrolStateMachine" unique_id=734909557 node_paths=PackedStringArray("this")]
+script = ExtResource("15_xxjrw")
+this = NodePath("../..")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Investigate" type="Node" parent="PatrolStateMachine" unique_id=896812890]
+script = ExtResource("16_iojk4")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Talk" type="Node" parent="PatrolStateMachine" unique_id=2092380817]
+script = ExtResource("13_xcwkt")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="ReturnToPathStart" type="Node" parent="PatrolStateMachine" unique_id=1535741949]
+script = ExtResource("17_54efx")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Scan" type="Node" parent="PatrolStateMachine" unique_id=50082920]
+script = ExtResource("18_i65qo")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
 [node name="areamesh" type="MeshInstance3D" parent="." unique_id=435207918]
 transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0, -0.9101093, 0)
 visible = false
@@ -363,7 +408,14 @@ transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 1.2536323, 0)
 texture = SubResource("ViewportTexture_yus1n")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=671996750]
-size = Vector2i(180, 20)
+size = Vector2i(180, 102)
+
+[node name="stateLabel" type="Label" parent="SubViewport" unique_id=775516844]
+offset_top = 59.0
+offset_right = 117.0
+offset_bottom = 101.0
+theme_override_font_sizes/font_size = 30
+text = "NoState"
 
 [node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=1026630566]
 offset_right = 183.0
@@ -380,8 +432,9 @@ visible = false
 material_override = SubResource("ShaderMaterial_s7w56")
 mesh = ExtResource("12_xcwkt")
 
-[node name="PatrolContext" type="Node" parent="." unique_id=1832791724]
+[node name="PatrolContext" type="Node" parent="." unique_id=1832791724 node_paths=PackedStringArray("parent")]
 script = ExtResource("12_mrxr7")
+parent = NodePath("..")
 
 [node name="PatrolVision" type="Area3D" parent="." unique_id=1392635132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3338287, 0)
@@ -389,33 +442,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3338287, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PatrolVision" unique_id=57664967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.238413)
 shape = SubResource("BoxShape3D_mrxr7")
-
-[node name="Mode" type="Node" parent="." unique_id=1437467854 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("13_otvkn")
-initial_state = NodePath("Patrol")
-
-[node name="Patrol" type="Node" parent="Mode" unique_id=229747675]
-script = ExtResource("14_krae7")
-metadata/_custom_type_script = "uid://b67xj6wef2lop"
-
-[node name="Attack" type="Node" parent="Mode" unique_id=2025711418]
-script = ExtResource("15_05pps")
-metadata/_custom_type_script = "uid://b67xj6wef2lop"
-
-[node name="PatrolStateMachine" type="Node" parent="." unique_id=2144568350]
-script = ExtResource("2_olgdf")
-
-[node name="FollowPath" type="Node" parent="PatrolStateMachine" unique_id=734909557]
-script = ExtResource("13_xcwkt")
-metadata/_custom_type_script = "uid://b67xj6wef2lop"
-
-[node name="Investigate" type="Node" parent="PatrolStateMachine" unique_id=896812890]
-script = ExtResource("13_xcwkt")
-metadata/_custom_type_script = "uid://b67xj6wef2lop"
-
-[node name="Talk" type="Node" parent="PatrolStateMachine" unique_id=2092380817]
-script = ExtResource("13_xcwkt")
-metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="AttackStateMachine/Pince" method="_on_animation_player_animation_finished"]

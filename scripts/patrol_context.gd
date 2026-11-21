@@ -4,7 +4,7 @@ extends Node
 var states = ["PLAYER_ALERT", "AREA_ALERT","GUARDING_NO_ALERT"]
 @export var context_level = states[0];
 
-var parent = get_parent()
+@export var parent:CharacterBody3D
 
 
 func _on_patrol_vision_body_entered(body: Node3D) -> void:

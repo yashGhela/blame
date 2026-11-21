@@ -72,6 +72,17 @@ points = PackedVector3Array(1.899765, 4, 1.899765, 2, 3.899765, 1.899765, 1.8997
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b1vc1"]
 points = PackedVector3Array(1.899765, 4, 1.899765, 2, 3.899765, 1.899765, 1.899765, 4, -1.9001566, -1.9001566, 4, 1.899765, 1.899765, 3.899765, 2, 2, 3.899765, -1.9001566, 2, 0.09984338, 1.899765, 1.899765, 3.899765, -2, -1.9001566, 4, -1.9001566, -2, 3.899765, 1.899765, -1.9001566, 3.899765, 2, 1.899765, 0.09984338, 2, 2, 0.09984338, -1.9001566, 1.899765, 0, 1.899765, 1.899765, 0.09984338, -2, -1.9001566, 3.899765, -2, -2, 3.899765, -1.9001566, -2, 0.09984338, 1.899765, -1.9001566, 0.09984338, 2, 1.899765, 0, -1.9001566, -1.9001566, 0, 1.899765, -1.9001566, 0.09984338, -2, -2, 0.09984338, -1.9001566, -1.9001566, 0, -1.9001566)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y04a3"]
+points = PackedVector3Array(-2, 0, -2, -2, 0, 2, -2, 0.39996085, -2, 2, 0, -2, -2, 0.39996085, 2, 2, 0, 2, -1.9001566, 0.5, -1.9001566, 2, 0.39996085, -2, -1.9001566, 0.5, 1.899765, 2, 0.39996085, 2, 1.899765, 0.5, -1.9001566, 1.899765, 0.5, 1.899765)
+
+[sub_resource type="Curve3D" id="Curve3D_u0hem"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -74.07714, 0.2998166, -32.300797, 0, 0, 0, 0, 0, 0, -74.077, 0.3, -22.766),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [node name="graybox" type="Node3D" unique_id=779419355]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1259652102]
@@ -953,3 +964,32 @@ mesh = ExtResource("5_4vge4")
 [node name="CubePrototypeLargeB10" type="MeshInstance3D" parent="." unique_id=1198216524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.919436, 30.476763, 78.68913)
 mesh = ExtResource("6_705in")
+
+[node name="Floor15" type="MeshInstance3D" parent="." unique_id=1136541336]
+transform = Transform3D(5.054418, 0, 0, 0, 1, 0, 0, 0, 4.5343504, -75.55353, 0.49999905, -27.445406)
+mesh = ExtResource("4_q1tdv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor15" unique_id=493176815]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor15/StaticBody3D" unique_id=1590668397]
+shape = SubResource("ConvexPolygonShape3D_y04a3")
+
+[node name="CubePrototypeLargeA21" type="MeshInstance3D" parent="." unique_id=998671969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.1748, 0.91972446, -30.902023)
+mesh = ExtResource("5_4vge4")
+
+[node name="CubePrototypeSmall6" type="MeshInstance3D" parent="." unique_id=272886114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.912704, 1.0372181, -22.071724)
+mesh = ExtResource("15_u0hem")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1117146022]
+curve = SubResource("Curve3D_u0hem")
+
+[node name="PathStart" type="Node3D" parent="Path3D" unique_id=1099812217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.077, 0.3, -32.301)
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=429072525]
+transform = Transform3D(-0.9999987, -2.7806565e-10, -1.4456089e-05, 0, 0.9999992, -1.9235149e-05, 1.4456092e-05, -1.9235164e-05, -0.9999985, -74.07714, 0.2998166, -32.300797)
+
+[node name="pincer7" parent="Path3D/PathFollow3D" unique_id=1794219864 instance=ExtResource("7_fybl5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.01593, 2.069442, -30.596964)
