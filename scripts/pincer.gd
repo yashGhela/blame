@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var kv:Vector3 = Vector3.ZERO
-@export var kd = 25.0
+@export var kd = 12.0
 var health:=75
 @onready var progress_bar: ProgressBar = $SubViewport/ProgressBar
 var mv:=Vector3.ZERO
@@ -105,10 +105,10 @@ func enter_patrol_mode():
 
 func get_knockback(direction, force,damage):
 	health-=damage
-	kv =  direction.normalized() * force
+	kv =  direction.normalized() * (force * 0.4)
 	#ap.play("flash")
-	await get_tree().create_timer(0.5).timeout
-	kv = Vector3.ZERO
+	#await get_tree().create_timer(0.5).timeout
+	#kv = Vector3.ZERO
 	
 func set_stun():
 	attack_state_machine.current_state = stun
