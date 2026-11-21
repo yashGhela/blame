@@ -12,7 +12,10 @@
 [ext_resource type="Script" uid="uid://0f7m3dpej8hg" path="res://scripts/pincer/stun.gd" id="10_1bibk"]
 [ext_resource type="Script" uid="uid://di3olxt6teslb" path="res://scripts/patrol_context.gd" id="12_mrxr7"]
 [ext_resource type="ArrayMesh" uid="uid://dsdt14xna8xu8" path="res://assets/objs/circlemesh.obj" id="12_xcwkt"]
+[ext_resource type="Script" uid="uid://caaqxcmdob72w" path="res://scripts/mode_state_machine.gd" id="13_otvkn"]
 [ext_resource type="Script" uid="uid://b67xj6wef2lop" path="res://scripts/state.gd" id="13_xcwkt"]
+[ext_resource type="Script" uid="uid://cgu5jlc1ecdxk" path="res://scripts/patrolmode.gd" id="14_krae7"]
+[ext_resource type="Script" uid="uid://im51siwonre1" path="res://scripts/attackmode.gd" id="15_05pps"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6yjpq"]
 
@@ -388,15 +391,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.238413)
 shape = SubResource("BoxShape3D_mrxr7")
 
 [node name="Mode" type="Node" parent="." unique_id=1437467854 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_olgdf")
+script = ExtResource("13_otvkn")
 initial_state = NodePath("Patrol")
 
 [node name="Patrol" type="Node" parent="Mode" unique_id=229747675]
-script = ExtResource("13_xcwkt")
+script = ExtResource("14_krae7")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="Attack" type="Node" parent="Mode" unique_id=2025711418]
-script = ExtResource("13_xcwkt")
+script = ExtResource("15_05pps")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="PatrolStateMachine" type="Node" parent="." unique_id=2144568350]

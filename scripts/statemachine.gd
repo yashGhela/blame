@@ -17,6 +17,7 @@ func _ready() -> void:
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()]=child
+			child.state_machine=self #every state knows which state machine it belongs to 
 			child.Transitioned.connect(on_child_transitioned)
 	if initial_state:
 		current_state=initial_state
