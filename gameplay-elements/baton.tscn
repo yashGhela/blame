@@ -162,6 +162,9 @@ bg_color = Color(0.20885223, 0.21486989, 0.24036837, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25bhr"]
 bg_color = Color(0.71084154, 0.2374247, 0.23473942, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mglrk"]
+size = Vector3(1, 1, 3.5625)
+
 [node name="Baton" type="CharacterBody3D" unique_id=723997313 groups=["Enemy", "Roamer"]]
 script = ExtResource("1_erxl1")
 
@@ -221,8 +224,13 @@ script = ExtResource("10_j8vx4")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1728999800]
-
 [node name="Timer" type="Timer" parent="." unique_id=2128350028]
+
+[node name="PatrolVision" type="Area3D" parent="." unique_id=1530099175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3338287, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PatrolVision" unique_id=712330415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.238413)
+shape = SubResource("BoxShape3D_mglrk")
 
 [connection signal="body_entered" from="MeshInstance3D/MeshInstance3D/StaticBody3D" to="." method="_on_static_body_3d_body_entered"]
