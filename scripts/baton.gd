@@ -45,6 +45,7 @@ var inv_loc
 @export var pathStart:Node3D
 @export var path:Path3D
 @export var pathFollow:PathFollow3D
+@onready var patrol_context: Node = $PatrolContext
 
 func _ready() -> void:
 	progress_bar.value = health
@@ -126,6 +127,11 @@ func enter_patrol_mode():
 func set_patrol_mode():
 	if mode.current_state!=patrol:
 		mode.current_state=patrol
+
+
+func update_patrol_context():
+	patrol_context.set_player_aware()
+	
 
 func get_knockback(direction, force,damage):
 	health-=damage

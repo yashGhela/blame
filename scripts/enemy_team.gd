@@ -29,6 +29,7 @@ func dealert_all():
 	for e in enemies:
 		if is_instance_valid(e):
 			e.set_patrol_mode()
+			e.update_patrol_context()
 
 
 func on_alerted(caller):

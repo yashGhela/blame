@@ -18,4 +18,5 @@ func _on_patrol_vision_body_entered(body: Node3D) -> void:
 		parent.enter_attack_mode()
 		
 
-		
+func set_player_aware():
+	context_level=states[0]

@@ -509,12 +509,15 @@ shape = SubResource("ConvexPolygonShape3D_b1vc1")
 
 [node name="Baton" parent="." unique_id=723997313 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.097534, 18.251957, 13.022586)
+kd = null
 
 [node name="Baton2" parent="." unique_id=764613591 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.097534, 18.251957, 17.029999)
+kd = null
 
 [node name="Baton3" parent="." unique_id=311467601 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.90838, 18.251957, 17.029999)
+kd = null
 
 [node name="Striker" parent="." unique_id=1843178445 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.603306, 17.665085, 23.838228)
@@ -858,12 +861,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.51199, 5.499676, -5.97849
 
 [node name="Baton4" parent="." unique_id=615577201 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.855761, 31.476763, 90.60849)
+kd = null
 
 [node name="Baton5" parent="." unique_id=37544619 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.305275, 31.476763, 84.83715)
+kd = null
 
 [node name="Baton6" parent="." unique_id=256383204 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.709597, 31.476763, 81.89366)
+kd = null
 
 [node name="Charger3" parent="." unique_id=1026571181 instance=ExtResource("14_d52os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.370932, 31.465836, 86.67511)
@@ -900,12 +906,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.860222, 31.476765, 129.25
 
 [node name="Baton7" parent="." unique_id=1475160438 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7354965, 31.476763, 127.29176)
+kd = null
 
 [node name="Baton8" parent="." unique_id=2064905931 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.880863, 31.476763, 118.64015)
+kd = null
 
 [node name="Baton9" parent="." unique_id=1823028420 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.093666, 31.476763, 117.04274)
+kd = null
 
 [node name="CubePrototypeLargeA16" type="MeshInstance3D" parent="." unique_id=1505019807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.83012, 30.476763, 130.1763)
@@ -977,6 +986,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.040306, 1.1458347, -25.44
 
 [node name="Baton10" parent="EnemyTeam" unique_id=879126372 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.56693, 1.9999981, -22.37223)
+kd = null
 
 [node name="BatonStart" type="Node3D" parent="EnemyTeam" unique_id=1650086395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.674095, 1.1422234, -22.538065)

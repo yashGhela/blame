@@ -12,6 +12,7 @@ var timeshit= 0
 var inv_loc
 #location of investigation incident
 
+@onready var patrol_context: Node = $PatrolContext
 
 
 @onready var stun: Node = $StateMachine/Stun
@@ -102,6 +103,10 @@ func set_attack_mode():
 func enter_patrol_mode():
 	set_patrol_mode()
 	Signalbus.dealertteam.emit(self)
+
+func update_patrol_context():
+	patrol_context.set_player_aware()
+	
 
 
 func set_patrol_mode():
