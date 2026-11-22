@@ -22,9 +22,9 @@ func physics_update(_delta:float):
 	
 	# Get the first point on the path curve
 	#var start_point = this.path.curve.get_point_position(0)
-	var global_start_point = this.pathStart
+	var global_start_point = this.pathStart.global_position
 	
-	print("return point: ", global_start_point)
+	
 	this.nav_agent.target_position = global_start_point
 	
 	var dist_to_loc = this.global_position.distance_to(global_start_point)
