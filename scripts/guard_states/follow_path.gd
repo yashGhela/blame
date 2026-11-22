@@ -19,3 +19,4 @@ func update(delta:float):
 			direction=1.0
 		
 		this.pathFollow.progress+=3.0*delta*direction
+	
