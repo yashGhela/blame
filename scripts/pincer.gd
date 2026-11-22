@@ -42,7 +42,7 @@ func update_target_location(target_location):
 
 
 func _ready() -> void:
-	enter_patrol_mode()
+	set_patrol_mode()
 	print("Initial mode: ", mode.current_state.name)
 
 func _process(delta: float) -> void:
@@ -97,6 +97,7 @@ func enter_attack_mode():
 	Signalbus.alertTeam.emit(self)
 
 func set_attack_mode():
+	mv=Vector3.ZERO
 	if mode.current_state!=attack:
 		mode.current_state=attack
 
@@ -110,6 +111,7 @@ func update_patrol_context():
 
 
 func set_patrol_mode():
+	mv=Vector3.ZERO
 	if mode.current_state!=patrol:
 		mode.current_state=patrol
 

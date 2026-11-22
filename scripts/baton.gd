@@ -116,6 +116,7 @@ func enter_attack_mode():
 	Signalbus.alertTeam.emit(self)
 
 func set_attack_mode():
+	mv=Vector3.ZERO
 	if mode.current_state!=attack:
 		mode.current_state=attack
 
@@ -125,6 +126,7 @@ func enter_patrol_mode():
 
 
 func set_patrol_mode():
+	mv=Vector3.ZERO
 	if mode.current_state!=patrol:
 		mode.current_state=patrol
 
