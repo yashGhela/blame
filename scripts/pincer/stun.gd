@@ -21,4 +21,5 @@ func wait():
 	elif dist>=7.0:
 		transition_to("Idle")
 	elif dist>20.0:
-		transition_mode("Patrol")
+		enemy.enter_patrol_mode()
+		return

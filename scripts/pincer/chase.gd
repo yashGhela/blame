@@ -35,7 +35,8 @@ func physics_update(_delta:float):
 		return
 	
 	if distance>20.0:
-		transition_mode("Patrol")
+		enemy.enter_patrol_mode()
+		return
 		
 	enemy.mv =direction*move_speed
 	

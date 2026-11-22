@@ -28,4 +28,5 @@ func physics_update(_delta:float):
 	elif playerdist<7.0:
 		transition_to("Chase")
 	elif playerdist>20.0:
-		transition_mode("Patrol")
+		enemy.enter_patrol_mode()
+		return
