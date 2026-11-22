@@ -36,6 +36,8 @@ func physics_update(_delta:float):
 	
 	if distance>20.0:
 		transition_mode("Patrol")
+		enemy.mv=Vector3.ZERO
+		return
 
 		
 	enemy.mv =direction*5.0
