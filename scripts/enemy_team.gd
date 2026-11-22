@@ -20,7 +20,7 @@ func alert_all():
 	print("alerting all")
 	for e in enemies:
 		if is_instance_valid(e):
-			e.enter_attack_mode()
+			e.set_attack_mode()
 
 
 
@@ -28,7 +28,7 @@ func dealert_all():
 	print("dealerting all")
 	for e in enemies:
 		if is_instance_valid(e):
-			e.enter_patrol_mode()
+			e.set_patrol_mode()
 
 
 func on_alerted(caller):

@@ -6,6 +6,10 @@ var is_moving_to_start=false
 
 func enter():
 	print("Returning to path start")
+	
+	if this.pathStart == null:
+		print("No path Start assigned")
+		return
 	is_moving_to_start=true
 	
 #this function uses more restricted nav agent movement to return to the start of the path
@@ -17,8 +21,8 @@ func physics_update(_delta:float):
 		return
 	
 	# Get the first point on the path curve
-	var start_point = this.path.curve.get_point_position(0)
-	var global_start_point = this.path.global_transform * start_point
+	#var start_point = this.path.curve.get_point_position(0)
+	var global_start_point = this.pathStart
 	
 	print("return point: ", global_start_point)
 	this.nav_agent.target_position = global_start_point

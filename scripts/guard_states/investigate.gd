@@ -12,7 +12,7 @@ func physics_update(delta:float):
 	var disttoloc= this.global_position.distance_to(location)
 	
 	if disttoloc<=2.0:
-		this.velocity=Vector3.ZERO
+		this.mv = Vector3.ZERO
 		transition_to("Scan")
 		return
 	

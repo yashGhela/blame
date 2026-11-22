@@ -92,16 +92,21 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 #these functions are for the team monitor to force a change to all the enemies attached
 func enter_attack_mode():
-	print("ENTER_ATTACK_MODE FUNCTION CALLED")
-	if mode.current_state!=attack:
-		mode.current_state=attack
+	set_attack_mode()
 	Signalbus.alertTeam.emit(self)
 
+func set_attack_mode():
+	if mode.current_state!=attack:
+		mode.current_state=attack
+
 func enter_patrol_mode():
-	print("ENTER PATROL MODE CALLED")
+	set_patrol_mode()
+	Signalbus.dealertteam.emit(self)
+
+
+func set_patrol_mode():
 	if mode.current_state!=patrol:
 		mode.current_state=patrol
-	Signalbus.dealertteam.emit(self)
 
 func get_knockback(direction, force,damage):
 	health-=damage
