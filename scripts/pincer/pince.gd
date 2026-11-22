@@ -37,11 +37,9 @@ func physics_update(_delta:float):
 			wait_done=false
 			
 			hit()
-		
-		transition_to("BackOff")
-		#elif playerdist<7.0 and playerdist>3.0:
-			#transition_to("Chase")
-		#elif playerdist>7.0:
-			#transition_to("Idle")
-		#elif playerdist>20.0:
-			#transition_mode("Patrol")
+		elif playerdist<7.0 and playerdist>3.0:
+			transition_to("Chase")
+		elif playerdist>7.0:
+			transition_to("Idle")
+		elif playerdist>20.0:
+			transition_mode("Patrol")
