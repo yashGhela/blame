@@ -15,6 +15,11 @@ func update(delta: float):
 
 	if !this.path or !this.pathFollow:
 		return
+	
+	var dist_to_start = this.global_position.distance_to(this.pathStart)
+	
+	if dist_to_start>0.5:
+		transition_to("ReturnToPathStart")
 
 	if this.path.curve.get_baked_length() <= 0:
 		return
