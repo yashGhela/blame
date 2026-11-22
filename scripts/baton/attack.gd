@@ -37,9 +37,9 @@ func physics_update(_delta:float):
 			has_attacked=false
 			wait_done=false
 		elif dist>3.0 and dist<7.0:
-			Transitioned.emit(self,"Chase")
+			transition_to("Chase")
 		elif dist>=7.0:
-			Transitioned.emit(self,"Idle")
+			transition_to("Idle")
 
 
 func hit():

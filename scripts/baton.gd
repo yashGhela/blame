@@ -18,9 +18,33 @@ var player
 var kv: Vector3 = Vector3.ZERO
 var mv: Vector3 = Vector3.ZERO
 
-var is_knocked = false
 var is_attacking = false
 
+
+
+@onready var nav_agent: NavigationAgent3D = $navagent
+
+var inv_loc
+#location of investigation incident
+
+
+
+@onready var patrol_state_machine: Node = $PatrolStateMachine
+@onready var attack_state_machine: Node = $AttackStateMachine
+
+@onready var investigate: Node = $PatrolStateMachine/Investigate
+
+@onready var attack: State = $Mode/Attack
+@onready var patrol: State = $Mode/Patrol
+@onready var mode: Node = $Mode
+
+@export var state_label: Label
+
+
+#pathing logic 
+@export var pathStart:Node3D
+@export var path:Path3D
+@export var pathFollow:PathFollow3D
 
 func _ready() -> void:
 	progress_bar.value = health
@@ -60,21 +84,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func get_knockback(direction, force, damage):
-	health -= damage
-
-	kv = direction * force
-
-	ap.play("flash")
-
-	is_knocked = true
-
-	timeshit+=1
-
-	await get_tree().create_timer(0.2).timeout
-
-	is_knocked = false
-	kv = Vector3.ZERO
+func investigate_trigger(loc):
+	print("Investigation time")
+	inv_loc=loc
+	if mode.current_state==patrol:
+		patrol_state_machine.current_state = investigate
+	
 
 
 func _on_hitzone_body_entered(body: Node3D) -> void:
@@ -94,5 +109,34 @@ func _on_static_body_3d_body_entered(body: Node3D) -> void:
 		player.health-=10
 		
 		
+#these functions are for the team monitor to force a change to all the enemies attached
+func enter_attack_mode():
+	set_attack_mode()
+	Signalbus.alertTeam.emit(self)
+
+func set_attack_mode():
+	if mode.current_state!=attack:
+		mode.current_state=attack
+
+func enter_patrol_mode():
+	set_patrol_mode()
+	Signalbus.dealertteam.emit(self)
+
+
+func set_patrol_mode():
+	if mode.current_state!=patrol:
+		mode.current_state=patrol
+
+func get_knockback(direction, force,damage):
+	health-=damage
+	kv =  direction.normalized() * (force * 0.4)
+	ap.play("flash")
+	if mode.current_state!=attack:
+		enter_attack_mode()
+		set_stun()
+	#ap.play("flash")
+	#await get_tree().create_timer(0.5).timeout
+	#kv = Vector3.ZERO
+	
 func set_stun():
-	state_machine.current_state = stun
+	attack_state_machine.current_state = stun

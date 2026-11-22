@@ -27,11 +27,11 @@ func physics_update(_delta:float):
 	
 	
 	if distance > 7.0:
-		Transitioned.emit(self, "Idle")
+		transition_to("Idle")
 		return
 	
 	if distance<1.5:
-		Transitioned.emit(self,"Attack")
+		transition_to("Attack")
 		return
 		
 	enemy.mv =direction*5.0

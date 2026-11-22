@@ -10,6 +10,15 @@
 [ext_resource type="Script" uid="uid://brocd75xslbww" path="res://scripts/baton/chase.gd" id="8_mglrk"]
 [ext_resource type="Script" uid="uid://djrar07ronud6" path="res://scripts/baton/attack.gd" id="9_mglrk"]
 [ext_resource type="Script" uid="uid://fsg3qerj1jjk" path="res://scripts/stun.gd" id="10_j8vx4"]
+[ext_resource type="Script" uid="uid://caaqxcmdob72w" path="res://scripts/mode_state_machine.gd" id="11_gc8u0"]
+[ext_resource type="Script" uid="uid://cgu5jlc1ecdxk" path="res://scripts/patrolmode.gd" id="12_6n80h"]
+[ext_resource type="Script" uid="uid://im51siwonre1" path="res://scripts/attackmode.gd" id="13_fdvau"]
+[ext_resource type="Script" uid="uid://b44mgfwiue1ou" path="res://scripts/guard_states/follow_path.gd" id="14_dgghr"]
+[ext_resource type="Script" uid="uid://b472ucafebgem" path="res://scripts/guard_states/investigate.gd" id="15_nujd6"]
+[ext_resource type="Script" uid="uid://b67xj6wef2lop" path="res://scripts/state.gd" id="16_5mgbm"]
+[ext_resource type="Script" uid="uid://cm6ufki8ioy6k" path="res://scripts/guard_states/return_to_path_start.gd" id="17_35rq3"]
+[ext_resource type="Script" uid="uid://d0131botgkser" path="res://scripts/guard_states/scan.gd" id="18_qpjny"]
+[ext_resource type="Script" uid="uid://di3olxt6teslb" path="res://scripts/patrol_context.gd" id="19_6n80h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_csglw"]
 render_priority = 0
@@ -193,7 +202,7 @@ transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 1.1932182, 0)
 texture = SubResource("ViewportTexture_kjh3y")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1737096586]
-size = Vector2i(180, 20)
+size = Vector2i(180, 99)
 
 [node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=2112610491]
 offset_right = 183.0
@@ -203,23 +212,30 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_25bhr")
 rounded = true
 show_percentage = false
 
-[node name="StateMachine" type="Node" parent="." unique_id=1794563664 node_paths=PackedStringArray("initial_state")]
+[node name="stateLabel" type="Label" parent="SubViewport" unique_id=425815404]
+offset_top = 59.0
+offset_right = 117.0
+offset_bottom = 101.0
+theme_override_font_sizes/font_size = 30
+text = "NoState"
+
+[node name="AttackStateMachine" type="Node" parent="." unique_id=1794563664 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_cxlqj")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=1675788882 node_paths=PackedStringArray("enemy")]
+[node name="Idle" type="Node" parent="AttackStateMachine" unique_id=1675788882 node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_6kj7b")
 enemy = NodePath("../..")
 
-[node name="Chase" type="Node" parent="StateMachine" unique_id=1468216925 node_paths=PackedStringArray("enemy")]
+[node name="Chase" type="Node" parent="AttackStateMachine" unique_id=1468216925 node_paths=PackedStringArray("enemy")]
 script = ExtResource("8_mglrk")
 enemy = NodePath("../..")
 
-[node name="Attack" type="Node" parent="StateMachine" unique_id=139587114 node_paths=PackedStringArray("enemy")]
+[node name="Attack" type="Node" parent="AttackStateMachine" unique_id=139587114 node_paths=PackedStringArray("enemy")]
 script = ExtResource("9_mglrk")
 enemy = NodePath("../..")
 
-[node name="Stun" type="Node" parent="StateMachine" unique_id=68336411 node_paths=PackedStringArray("enemy")]
+[node name="Stun" type="Node" parent="AttackStateMachine" unique_id=68336411 node_paths=PackedStringArray("enemy")]
 script = ExtResource("10_j8vx4")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
@@ -232,5 +248,51 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3338287, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PatrolVision" unique_id=712330415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.238413)
 shape = SubResource("BoxShape3D_mglrk")
+
+[node name="Mode" type="Node" parent="." unique_id=1518320015 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("11_gc8u0")
+initial_state = NodePath("Patrol")
+
+[node name="Patrol" type="Node" parent="Mode" unique_id=1055992176]
+script = ExtResource("12_6n80h")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Attack" type="Node" parent="Mode" unique_id=1359001294]
+script = ExtResource("13_fdvau")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="PatrolStateMachine" type="Node" parent="." unique_id=810341974 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_cxlqj")
+initial_state = NodePath("FollowPath")
+
+[node name="FollowPath" type="Node" parent="PatrolStateMachine" unique_id=225157613 node_paths=PackedStringArray("this")]
+script = ExtResource("14_dgghr")
+this = NodePath("../..")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Investigate" type="Node" parent="PatrolStateMachine" unique_id=1764943365 node_paths=PackedStringArray("this")]
+script = ExtResource("15_nujd6")
+this = NodePath("../..")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Talk" type="Node" parent="PatrolStateMachine" unique_id=92623574]
+script = ExtResource("16_5mgbm")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="ReturnToPathStart" type="Node" parent="PatrolStateMachine" unique_id=1015247204 node_paths=PackedStringArray("this")]
+script = ExtResource("17_35rq3")
+this = NodePath("../..")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Scan" type="Node" parent="PatrolStateMachine" unique_id=1534212736 node_paths=PackedStringArray("this")]
+script = ExtResource("18_qpjny")
+this = NodePath("../..")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="PatrolContext" type="Node" parent="." unique_id=1379511784 node_paths=PackedStringArray("parent")]
+script = ExtResource("19_6n80h")
+parent = NodePath("")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1584728281]
 
 [connection signal="body_entered" from="MeshInstance3D/MeshInstance3D/StaticBody3D" to="." method="_on_static_body_3d_body_entered"]
