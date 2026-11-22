@@ -27,3 +27,5 @@ func physics_update(_delta:float):
 		transition_to("Pince")
 	elif playerdist<7.0:
 		transition_to("Chase")
+	elif playerdist>20.0:
+		transition_mode("Patrol")

@@ -33,6 +33,9 @@ func physics_update(_delta:float):
 		transition_to("Pince")
 		enemy.mv=Vector3.ZERO
 		return
+	
+	if distance>20.0:
+		transition_mode("Patrol")
 		
 	enemy.mv =direction*move_speed
 	
