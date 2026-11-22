@@ -40,6 +40,9 @@ func physics_update(_delta:float):
 			transition_to("Chase")
 		elif dist>=7.0:
 			transition_to("Idle")
+		elif dist>20.0:
+			transition_mode("Patrol")
+
 
 
 func hit():

@@ -975,10 +975,16 @@ pathStart = NodePath("../pincer2Start")
 [node name="pincer2Start" type="Node3D" parent="EnemyTeam" unique_id=525728824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.040306, 1.1458347, -25.443869)
 
+[node name="Baton10" parent="EnemyTeam" unique_id=879126372 instance=ExtResource("8_fx7vd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.56693, 1.9999981, -22.37223)
+
+[node name="BatonStart" type="Node3D" parent="EnemyTeam" unique_id=1650086395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.674095, 1.1422234, -22.538065)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1595734884]
 navigation_mesh = SubResource("NavigationMesh_ff7h8")
 
-[node name="Floor15" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1136541336]
+[node name="Floor15" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1136541336 groups=["Floor"]]
 transform = Transform3D(5.054418, 0, 0, 0, 1, 0, 0, 0, 4.5343504, -75.55353, 0.49999905, -27.445406)
 mesh = ExtResource("4_q1tdv")
 

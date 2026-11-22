@@ -14,7 +14,6 @@
 [ext_resource type="ArrayMesh" uid="uid://dsdt14xna8xu8" path="res://assets/objs/circlemesh.obj" id="12_xcwkt"]
 [ext_resource type="Script" uid="uid://caaqxcmdob72w" path="res://scripts/mode_state_machine.gd" id="13_otvkn"]
 [ext_resource type="Script" uid="uid://b67xj6wef2lop" path="res://scripts/state.gd" id="13_xcwkt"]
-[ext_resource type="Script" uid="uid://cqfr2jqxk5lx2" path="res://scripts/pincer/back_off.gd" id="14_iojk4"]
 [ext_resource type="Script" uid="uid://cgu5jlc1ecdxk" path="res://scripts/patrolmode.gd" id="14_krae7"]
 [ext_resource type="Script" uid="uid://im51siwonre1" path="res://scripts/attackmode.gd" id="15_05pps"]
 [ext_resource type="Script" uid="uid://b44mgfwiue1ou" path="res://scripts/guard_states/follow_path.gd" id="15_xxjrw"]
@@ -366,10 +365,6 @@ metadata/_custom_type_script = "uid://b67xj6wef2lop"
 [node name="Stun" type="Node" parent="AttackStateMachine" unique_id=1770414590 node_paths=PackedStringArray("enemy")]
 script = ExtResource("10_1bibk")
 enemy = NodePath("../..")
-metadata/_custom_type_script = "uid://b67xj6wef2lop"
-
-[node name="BackOff" type="Node" parent="AttackStateMachine" unique_id=1650833375]
-script = ExtResource("14_iojk4")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="PatrolStateMachine" type="Node" parent="." unique_id=2144568350 node_paths=PackedStringArray("initial_state")]

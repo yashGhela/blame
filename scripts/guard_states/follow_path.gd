@@ -8,7 +8,7 @@ var direction:=1.0
 
 
 func enter():
-	print("Pincer following his path to patrol")
+	print(" following  path to patrol")
 	
 
 func update(delta: float):

@@ -52,7 +52,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	player = get_tree().get_first_node_in_group("Player")
-
+	state_label.text= mode.current_state.name
 	progress_bar.value = health
 
 	if health <= 0:

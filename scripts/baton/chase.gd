@@ -33,6 +33,10 @@ func physics_update(_delta:float):
 	if distance<1.5:
 		transition_to("Attack")
 		return
+	
+	if distance>20.0:
+		transition_mode("Patrol")
+
 		
 	enemy.mv =direction*5.0
 	

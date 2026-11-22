@@ -174,8 +174,9 @@ bg_color = Color(0.71084154, 0.2374247, 0.23473942, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mglrk"]
 size = Vector3(1, 1, 3.5625)
 
-[node name="Baton" type="CharacterBody3D" unique_id=723997313 groups=["Enemy", "Roamer"]]
+[node name="Baton" type="CharacterBody3D" unique_id=723997313 node_paths=PackedStringArray("state_label") groups=["Enemy", "Roamer"]]
 script = ExtResource("1_erxl1")
+state_label = NodePath("SubViewport/stateLabel")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=400187661]
 mesh = SubResource("CapsuleMesh_oh6i2")
