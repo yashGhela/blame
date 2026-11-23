@@ -10,6 +10,8 @@ func _ready() -> void:
 
 func collect_enemies(node:Node):
 	for child in node.get_children():
+		print("Checking: ", child.name)
+
 
 		if child.is_in_group("Enemy"):
 			enemies.append(child)
@@ -33,9 +35,9 @@ func dealert_all():
 
 
 func on_alerted(caller):
-	if caller in get_children():
+	if caller in enemies:
 		alert_all()
 
 func on_dealerted(caller):
-	if caller in get_children():
+	if caller in enemies:
 		dealert_all()
