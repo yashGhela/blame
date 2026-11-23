@@ -292,7 +292,7 @@ metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
 [node name="PatrolContext" type="Node" parent="." unique_id=1379511784 node_paths=PackedStringArray("parent")]
 script = ExtResource("19_6n80h")
-parent = NodePath("")
+parent = NodePath("..")
 
 [node name="navagent" type="NavigationAgent3D" parent="." unique_id=1584728281]
 
