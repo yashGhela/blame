@@ -12,7 +12,7 @@ var health = 100
 @export var kd = 25.0
 var timeshit= 0
 @onready var state_machine: Node = $StateMachine
-@onready var stun: Node = $StateMachine/Stun
+@onready var stun: Node = $AttackStateMachine/Stun
 
 var player
 var kv: Vector3 = Vector3.ZERO

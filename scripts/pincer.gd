@@ -15,7 +15,7 @@ var inv_loc
 @onready var patrol_context: Node = $PatrolContext
 
 
-@onready var stun: Node = $StateMachine/Stun
+@onready var stun: Node =$AttackStateMachine/Stun
 @onready var patrol_state_machine: Node = $PatrolStateMachine
 @onready var attack_state_machine: Node = $AttackStateMachine
 

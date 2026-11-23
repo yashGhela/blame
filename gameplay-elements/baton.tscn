@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bttyrcrumr5ys" path="res://scripts/baton/idle.gd" id="7_6kj7b"]
 [ext_resource type="Script" uid="uid://brocd75xslbww" path="res://scripts/baton/chase.gd" id="8_mglrk"]
 [ext_resource type="Script" uid="uid://djrar07ronud6" path="res://scripts/baton/attack.gd" id="9_mglrk"]
-[ext_resource type="Script" uid="uid://fsg3qerj1jjk" path="res://scripts/stun.gd" id="10_j8vx4"]
+[ext_resource type="Script" uid="uid://hsy1ibpi10k1" path="res://scripts/baton/stun.gd" id="10_6n80h"]
 [ext_resource type="Script" uid="uid://caaqxcmdob72w" path="res://scripts/mode_state_machine.gd" id="11_gc8u0"]
 [ext_resource type="Script" uid="uid://cgu5jlc1ecdxk" path="res://scripts/patrolmode.gd" id="12_6n80h"]
 [ext_resource type="Script" uid="uid://im51siwonre1" path="res://scripts/attackmode.gd" id="13_fdvau"]
@@ -246,7 +246,7 @@ script = ExtResource("9_mglrk")
 enemy = NodePath("../..")
 
 [node name="Stun" type="Node" parent="AttackStateMachine" unique_id=68336411 node_paths=PackedStringArray("enemy")]
-script = ExtResource("10_j8vx4")
+script = ExtResource("10_6n80h")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
