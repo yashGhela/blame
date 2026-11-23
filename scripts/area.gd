@@ -16,6 +16,7 @@ func on_disruption(location):
 	print(location)
 	#print location
 	var enemytoinvestigate:CharacterBody3D = get_closest_enemy(location)
+	print(enemytoinvestigate)
 	enemytoinvestigate.investigate_trigger(location)
 
 #sends location to closest enemy 

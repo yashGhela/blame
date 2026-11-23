@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://duovbmaj350ig"]
 
 [ext_resource type="Texture2D" uid="uid://c12rgicks8vt4" path="res://addons/proto-csgs/textures/dark/texture_08.png" id="1_cp67o"]
+[ext_resource type="Script" uid="uid://dpbwxxtv8qk5e" path="res://scripts/area.gd" id="1_hdle5"]
 [ext_resource type="PackedScene" uid="uid://jnvqihnyne4h" path="res://gameplay-elements/playerthirdpers.tscn" id="2_7v2gh"]
 [ext_resource type="ArrayMesh" uid="uid://52e8800xsmdj" path="res://addons/kaykit_prototype_bits/Assets/obj/Primitive_Slope.obj" id="3_gr74w"]
 [ext_resource type="ArrayMesh" uid="uid://d1ricunymovui" path="res://addons/kaykit_prototype_bits/Assets/obj/Floor.obj" id="4_q1tdv"]
@@ -14,8 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://hdtdcvfqal1f" path="res://gameplay-elements/battery.tscn" id="12_rvvv2"]
 [ext_resource type="PackedScene" uid="uid://c6xmcc5jut7oa" path="res://gameplay-elements/modelfiles/railing.tscn" id="13_3lb85"]
 [ext_resource type="PackedScene" uid="uid://bfe56gkiwmo8g" path="res://gameplay-elements/charger.tscn" id="14_d52os"]
+[ext_resource type="PackedScene" uid="uid://bomt67huji13r" path="res://gameplay-elements/dist_object.tscn" id="15_dg0o1"]
 [ext_resource type="PackedScene" uid="uid://bqp1t5oxvej21" path="res://gameplay-elements/enemy_team.tscn" id="15_ff7h8"]
 [ext_resource type="ArrayMesh" uid="uid://cir7rx5sbowwg" path="res://addons/kaykit_prototype_bits/Assets/obj/Cube_Prototype_Small.obj" id="15_u0hem"]
+[ext_resource type="Texture2D" uid="uid://bbprxlsi1wtim" path="res://addons/proto-csgs/textures/red/texture_03.png" id="16_knidj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80ttd"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -73,6 +76,14 @@ points = PackedVector3Array(1.899765, 4, 1.899765, 2, 3.899765, 1.899765, 1.8997
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b1vc1"]
 points = PackedVector3Array(1.899765, 4, 1.899765, 2, 3.899765, 1.899765, 1.899765, 4, -1.9001566, -1.9001566, 4, 1.899765, 1.899765, 3.899765, 2, 2, 3.899765, -1.9001566, 2, 0.09984338, 1.899765, 1.899765, 3.899765, -2, -1.9001566, 4, -1.9001566, -2, 3.899765, 1.899765, -1.9001566, 3.899765, 2, 1.899765, 0.09984338, 2, 2, 0.09984338, -1.9001566, 1.899765, 0, 1.899765, 1.899765, 0.09984338, -2, -1.9001566, 3.899765, -2, -2, 3.899765, -1.9001566, -2, 0.09984338, 1.899765, -1.9001566, 0.09984338, 2, 1.899765, 0, -1.9001566, -1.9001566, 0, 1.899765, -1.9001566, 0.09984338, -2, -2, 0.09984338, -1.9001566, -1.9001566, 0, -1.9001566)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_knidj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdle5"]
+albedo_texture = ExtResource("16_knidj")
+
+[sub_resource type="BoxMesh" id="BoxMesh_y04a3"]
+material = SubResource("StandardMaterial3D_hdle5")
+
 [sub_resource type="Curve3D" id="Curve3D_u0hem"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -74.07714, 0.2998166, -32.300797, 0, 0, 0, 0, 0, 0, -74.077, 0.3, -22.766),
@@ -88,6 +99,7 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Arr
 points = PackedVector3Array(-2, 0, -2, -2, 0, 2, -2, 0.39996085, -2, 2, 0, -2, -2, 0.39996085, 2, 2, 0, 2, -1.9001566, 0.5, -1.9001566, 2, 0.39996085, -2, -1.9001566, 0.5, 1.899765, 2, 0.39996085, 2, 1.899765, 0.5, -1.9001566, 1.899765, 0.5, 1.899765)
 
 [node name="graybox" type="Node3D" unique_id=779419355]
+script = ExtResource("1_hdle5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1259652102]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -950,6 +962,17 @@ mesh = ExtResource("5_4vge4")
 [node name="CubePrototypeLargeB10" type="MeshInstance3D" parent="." unique_id=1198216524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.919436, 30.476763, 78.68913)
 mesh = ExtResource("6_705in")
+
+[node name="DistObject" parent="." unique_id=219182607 instance=ExtResource("15_dg0o1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.868744, 0.5, -13.940242)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DistObject" unique_id=48317951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4875418, 0)
+shape = SubResource("BoxShape3D_knidj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DistObject" unique_id=1974684364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46215665, 0)
+mesh = SubResource("BoxMesh_y04a3")
 
 [node name="EnemyTeam" parent="." unique_id=940537512 instance=ExtResource("15_ff7h8")]
 

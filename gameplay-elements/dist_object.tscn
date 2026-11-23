@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bomt67huji13r"]
+
+[ext_resource type="Script" uid="uid://dby35cmjvpy5u" path="res://scripts/dist_object.gd" id="1_3casi"]
+
+[node name="DistObject" type="Area3D" unique_id=219182607]
+script = ExtResource("1_3casi")
