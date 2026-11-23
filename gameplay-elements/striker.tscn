@@ -11,15 +11,18 @@
 [ext_resource type="Script" uid="uid://cq68vig007axp" path="res://scripts/striker/distance.gd" id="7_j3lue"]
 [ext_resource type="Texture2D" uid="uid://cxkahe6u325xi" path="res://gameplay-elements/shaders/colorgradient.tres" id="8_xdig5"]
 [ext_resource type="Texture2D" uid="uid://dmfydmdgl0paw" path="res://gameplay-elements/shaders/fresnelgradient.tres" id="9_8dcc2"]
+[ext_resource type="Script" uid="uid://caaqxcmdob72w" path="res://scripts/mode_state_machine.gd" id="12_1rksl"]
+[ext_resource type="Script" uid="uid://cgu5jlc1ecdxk" path="res://scripts/patrolmode.gd" id="13_pgr5o"]
+[ext_resource type="Script" uid="uid://im51siwonre1" path="res://scripts/attackmode.gd" id="14_c60x8"]
+[ext_resource type="Script" uid="uid://b44mgfwiue1ou" path="res://scripts/guard_states/follow_path.gd" id="15_6df15"]
+[ext_resource type="Script" uid="uid://b472ucafebgem" path="res://scripts/guard_states/investigate.gd" id="16_ldghe"]
+[ext_resource type="Script" uid="uid://b67xj6wef2lop" path="res://scripts/state.gd" id="17_rgvcg"]
+[ext_resource type="Script" uid="uid://cm6ufki8ioy6k" path="res://scripts/guard_states/return_to_path_start.gd" id="18_bsgry"]
+[ext_resource type="Script" uid="uid://d0131botgkser" path="res://scripts/guard_states/scan.gd" id="19_l2752"]
+[ext_resource type="Script" uid="uid://di3olxt6teslb" path="res://scripts/patrol_context.gd" id="20_3qgpx"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4bfoy"]
 viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6y0ib"]
-bg_color = Color(0.20885223, 0.21486989, 0.24036837, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdig5"]
-bg_color = Color(0.71084154, 0.2374247, 0.23473942, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tgp48"]
 
@@ -40,29 +43,38 @@ shader_parameter/fresnel_gradient = ExtResource("9_8dcc2")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j3lue"]
 points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mxrod"]
+size = Vector3(1, 1, 3.5625)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rksl"]
+bg_color = Color(0.20885223, 0.21486989, 0.24036837, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgr5o"]
+bg_color = Color(0.71084154, 0.2374247, 0.23473942, 1)
+
 [node name="Striker" type="CharacterBody3D" unique_id=1843178445 groups=["Enemy", "Striker"]]
 script = ExtResource("1_pa4mp")
 
-[node name="StateMachine" type="Node" parent="." unique_id=1914487620 node_paths=PackedStringArray("initial_state")]
+[node name="AttackStateMachine" type="Node" parent="." unique_id=1914487620 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_skrac")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=1739255672 node_paths=PackedStringArray("enemy")]
+[node name="Idle" type="Node" parent="AttackStateMachine" unique_id=1739255672 node_paths=PackedStringArray("enemy")]
 script = ExtResource("2_fphcr")
 enemy = NodePath("../..")
 
-[node name="Shoot" type="Node" parent="StateMachine" unique_id=1280357666 node_paths=PackedStringArray("enemy")]
+[node name="Shoot" type="Node" parent="AttackStateMachine" unique_id=1280357666 node_paths=PackedStringArray("enemy")]
 script = ExtResource("3_fphcr")
 enemy = NodePath("../..")
 bullet = ExtResource("4_1f3hm")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
-[node name="Stun" type="Node" parent="StateMachine" unique_id=1585772465 node_paths=PackedStringArray("enemy")]
+[node name="Stun" type="Node" parent="AttackStateMachine" unique_id=1585772465 node_paths=PackedStringArray("enemy")]
 script = ExtResource("6_gonhq")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
 
-[node name="Distance" type="Node" parent="StateMachine" unique_id=2100746044 node_paths=PackedStringArray("enemy")]
+[node name="Distance" type="Node" parent="AttackStateMachine" unique_id=2100746044 node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_j3lue")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b67xj6wef2lop"
@@ -71,20 +83,90 @@ metadata/_custom_type_script = "uid://b67xj6wef2lop"
 transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 1.2185241, 0)
 texture = SubResource("ViewportTexture_4bfoy")
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=411150456]
-size = Vector2i(180, 20)
-
-[node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=1687336552]
-offset_right = 183.0
-offset_bottom = 27.0
-theme_override_styles/background = SubResource("StyleBoxFlat_6y0ib")
-theme_override_styles/fill = SubResource("StyleBoxFlat_xdig5")
-rounded = true
-show_percentage = false
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1105930420 groups=["Enemy", "Pincer"]]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1105930420]
 mesh = SubResource("CapsuleMesh_tgp48")
 surface_material_override/0 = SubResource("ShaderMaterial_gonhq")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1703968444]
 shape = SubResource("ConvexPolygonShape3D_j3lue")
+
+[node name="Mode" type="Node" parent="." unique_id=2120797530 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("12_1rksl")
+initial_state = NodePath("Patrol")
+
+[node name="Patrol" type="Node" parent="Mode" unique_id=1313372851]
+script = ExtResource("13_pgr5o")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Attack" type="Node" parent="Mode" unique_id=908922154]
+script = ExtResource("14_c60x8")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="PatrolStateMachine" type="Node" parent="." unique_id=1808947109 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_skrac")
+initial_state = NodePath("FollowPath")
+
+[node name="FollowPath" type="Node" parent="PatrolStateMachine" unique_id=1114800013 node_paths=PackedStringArray("this")]
+script = ExtResource("15_6df15")
+this = NodePath("../..")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Investigate" type="Node" parent="PatrolStateMachine" unique_id=117648360 node_paths=PackedStringArray("this")]
+script = ExtResource("16_ldghe")
+this = NodePath("../..")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Talk" type="Node" parent="PatrolStateMachine" unique_id=1963530518]
+script = ExtResource("17_rgvcg")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="ReturnToPathStart" type="Node" parent="PatrolStateMachine" unique_id=221740827 node_paths=PackedStringArray("this")]
+script = ExtResource("18_bsgry")
+this = NodePath("../..")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="Scan" type="Node" parent="PatrolStateMachine" unique_id=1322623268 node_paths=PackedStringArray("this")]
+script = ExtResource("19_l2752")
+this = NodePath("../..")
+metadata/_custom_type_script = "uid://b67xj6wef2lop"
+
+[node name="PatrolContext" type="Node" parent="." unique_id=1102122842 node_paths=PackedStringArray("parent")]
+script = ExtResource("20_3qgpx")
+parent = NodePath("..")
+
+[node name="PatrolVision" type="Area3D" parent="." unique_id=2126123507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3338287, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PatrolVision" unique_id=1085713711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.238413)
+shape = SubResource("BoxShape3D_mxrod")
+
+[node name="navagent" type="NavigationAgent3D" parent="." unique_id=1431349653]
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=278530438]
+size = Vector2i(180, 102)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=1097507010]
+offset_right = 183.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_1rksl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pgr5o")
+max_value = 75.0
+rounded = true
+show_percentage = false
+
+[node name="stateLabel" type="Label" parent="SubViewport" unique_id=1075500611]
+offset_left = -2.0
+offset_top = 30.0
+offset_right = 115.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 30
+text = "NoState"
+
+[node name="subStateLabel" type="Label" parent="SubViewport" unique_id=714060077]
+offset_left = 2.0
+offset_top = 69.0
+offset_right = 112.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 26
+text = "subState"
