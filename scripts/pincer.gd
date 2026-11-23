@@ -25,8 +25,10 @@ var inv_loc
 @onready var patrol: State = $Mode/Patrol
 @onready var mode: Node = $Mode
 
-@export var state_label: Label
 
+@onready var state_label: Label = $SubViewport/stateLabel
+
+@onready var sub_state_label: Label = $SubViewport/subStateLabel
 
 #pathing logic 
 @export var pathStart:Node3D
@@ -49,6 +51,11 @@ func _process(delta: float) -> void:
 	progress_bar.value=health
 	state_label.text= mode.current_state.name
 	
+	if mode.current_state==patrol:
+		sub_state_label.text = patrol_state_machine.current_state.name
+	else:
+		if attack_state_machine.current_state != null:
+			sub_state_label.text = attack_state_machine.current_state.name
 
 	if health<=0:
 		queue_free()

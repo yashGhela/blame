@@ -313,9 +313,8 @@ shader_parameter/Speed = Vector2(0, -1.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mrxr7"]
 size = Vector3(1, 1, 3.5625)
 
-[node name="pincer" type="CharacterBody3D" unique_id=2139333681 node_paths=PackedStringArray("state_label") groups=["Enemy", "Pincer"]]
+[node name="pincer" type="CharacterBody3D" unique_id=2139333681 groups=["Enemy", "Pincer"]]
 script = ExtResource("1_f6ek2")
-state_label = NodePath("SubViewport/stateLabel")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1902865765 groups=["Pincer"]]
 mesh = SubResource("CapsuleMesh_6yjpq")
@@ -410,13 +409,6 @@ texture = SubResource("ViewportTexture_yus1n")
 [node name="SubViewport" type="SubViewport" parent="." unique_id=671996750]
 size = Vector2i(180, 102)
 
-[node name="stateLabel" type="Label" parent="SubViewport" unique_id=775516844]
-offset_top = 59.0
-offset_right = 117.0
-offset_bottom = 101.0
-theme_override_font_sizes/font_size = 30
-text = "NoState"
-
 [node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=1026630566]
 offset_right = 183.0
 offset_bottom = 27.0
@@ -425,6 +417,22 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_3be0w")
 max_value = 75.0
 rounded = true
 show_percentage = false
+
+[node name="stateLabel" type="Label" parent="SubViewport" unique_id=1386939557]
+offset_left = -2.0
+offset_top = 30.0
+offset_right = 115.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 30
+text = "NoState"
+
+[node name="subStateLabel" type="Label" parent="SubViewport" unique_id=318688628]
+offset_left = 2.0
+offset_top = 69.0
+offset_right = 112.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 26
+text = "subState"
 
 [node name="floorslameffect" type="MeshInstance3D" parent="." unique_id=274418148]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -0.925, 0)

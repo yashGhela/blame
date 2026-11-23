@@ -30,6 +30,7 @@ var inv_loc
 
 
 @onready var patrol_state_machine: Node = $PatrolStateMachine
+
 @onready var attack_state_machine: Node = $AttackStateMachine
 
 @onready var investigate: Node = $PatrolStateMachine/Investigate
@@ -39,6 +40,7 @@ var inv_loc
 @onready var mode: Node = $Mode
 
 @export var state_label: Label
+@onready var sub_state_label: Label = $SubViewport/subStateLabel
 
 
 #pathing logic 
@@ -54,6 +56,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	state_label.text= mode.current_state.name
+	if mode.current_state==patrol:
+		sub_state_label.text = patrol_state_machine.current_state.name
+	else:
+		if attack_state_machine.current_state != null:
+			sub_state_label.text = attack_state_machine.current_state.name
 	progress_bar.value = health
 
 	if health <= 0:

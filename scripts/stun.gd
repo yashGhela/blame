@@ -10,7 +10,7 @@ func enter():
 	
 
 func wait():
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	
 	var dist = enemy.global_position.distance_to(player.global_position)
 	
