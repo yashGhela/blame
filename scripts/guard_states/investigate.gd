@@ -18,7 +18,7 @@ func physics_update(delta:float):
 	
 	var dir = this.global_position.direction_to(location)
 	
-	this.mv =dir*5.0
+	this.mv =dir*3.0
 	
 	var look_target=  Vector3(location.x, this.global_position.y, location.z)
 	if this.global_position.distance_to(look_target)>0.1:
