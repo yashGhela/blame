@@ -20,3 +20,9 @@ func _on_patrol_vision_body_entered(body: Node3D) -> void:
 
 func set_player_aware():
 	context_level=states[0]
+
+func set_area_aware():
+	context_level=states[1]
+
+func set_patrol_aware():
+	context_level= states[2]

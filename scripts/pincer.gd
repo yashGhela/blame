@@ -113,10 +113,15 @@ func enter_patrol_mode():
 	set_patrol_mode()
 	Signalbus.dealertteam.emit(self)
 
-func update_patrol_context():
+func set_player_context():
 	patrol_context.set_player_aware()
-	
 
+func set_area_context():
+	patrol_context.set_area_aware()
+	
+func set_patrol_context():
+	patrol_context.set_patrol_aware()
+	
 
 func set_patrol_mode():
 	mv=Vector3.ZERO

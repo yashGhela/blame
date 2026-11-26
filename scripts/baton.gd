@@ -138,8 +138,14 @@ func set_patrol_mode():
 		mode.current_state=patrol
 
 
-func update_patrol_context():
+func set_player_context():
 	patrol_context.set_player_aware()
+
+func set_area_context():
+	patrol_context.set_area_aware()
+	
+func set_patrol_context():
+	patrol_context.set_patrol_aware()
 	
 
 func get_knockback(direction, force,damage):
