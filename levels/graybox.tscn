@@ -9,6 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://3gp6i8fa88ye" path="res://addons/kaykit_prototype_bits/Assets/obj/Cube_Prototype_Large_B.obj" id="6_705in"]
 [ext_resource type="PackedScene" uid="uid://dqaq2e4ndjg72" path="res://gameplay-elements/pincer.tscn" id="7_fybl5"]
 [ext_resource type="PackedScene" uid="uid://ddgmqofrqjq3u" path="res://gameplay-elements/baton.tscn" id="8_fx7vd"]
+[ext_resource type="Script" uid="uid://do05uvu7wxso2" path="res://scripts/enemy_team.gd" id="8_y04a3"]
 [ext_resource type="PackedScene" uid="uid://d4n1saad2w120" path="res://gameplay-elements/striker.tscn" id="9_fx7vd"]
 [ext_resource type="PackedScene" uid="uid://wd8ivhy2ed1" path="res://gameplay-elements/door.tscn" id="10_nie3d"]
 [ext_resource type="PackedScene" uid="uid://dcrjfth2dc3mh" path="res://gameplay-elements/monitor.tscn" id="11_b1vc1"]
@@ -519,31 +520,36 @@ mesh = ExtResource("6_705in")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeB3/StaticBody3D" unique_id=2048035454]
 shape = SubResource("ConvexPolygonShape3D_b1vc1")
 
-[node name="Baton" parent="." unique_id=723997313 instance=ExtResource("8_fx7vd")]
+[node name="Team2" type="Node" parent="." unique_id=625737230]
+script = ExtResource("8_y04a3")
+
+[node name="Baton" parent="Team2" unique_id=723997313 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.097534, 18.251957, 13.022586)
 
-[node name="Baton2" parent="." unique_id=764613591 instance=ExtResource("8_fx7vd")]
+[node name="Baton2" parent="Team2" unique_id=764613591 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.097534, 18.251957, 17.029999)
 
-[node name="Baton3" parent="." unique_id=311467601 instance=ExtResource("8_fx7vd")]
+[node name="Baton3" parent="Team2" unique_id=311467601 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.90838, 18.251957, 17.029999)
 
-[node name="Striker" parent="." unique_id=1843178445 instance=ExtResource("9_fx7vd")]
+[node name="Striker" parent="Team2" unique_id=1843178445 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.603306, 17.665085, 23.838228)
 
-[node name="Striker2" parent="." unique_id=2145319030 instance=ExtResource("9_fx7vd")]
+[node name="Striker2" parent="Team2" unique_id=2145319030 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.877995, 17.665085, 26.063194)
 
-[node name="Striker3" parent="." unique_id=570517135 instance=ExtResource("9_fx7vd")]
+[node name="Team3" parent="." unique_id=940537512 instance=ExtResource("15_ff7h8")]
+
+[node name="Striker3" parent="Team3" unique_id=570517135 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.77578, 31.316738, 44.157623)
 
-[node name="Striker4" parent="." unique_id=1695350058 instance=ExtResource("9_fx7vd")]
+[node name="Striker4" parent="Team3" unique_id=1695350058 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.14489, 31.316738, 38.872868)
 
-[node name="Striker5" parent="." unique_id=533237699 instance=ExtResource("9_fx7vd")]
+[node name="Striker5" parent="Team3" unique_id=533237699 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.79673, 31.316738, 59.01015)
 
-[node name="Striker6" parent="." unique_id=1209458046 instance=ExtResource("9_fx7vd")]
+[node name="Striker6" parent="Team3" unique_id=1209458046 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.17063, 31.316738, 58.179756)
 
 [node name="Monitor" parent="." unique_id=1779124990 node_paths=PackedStringArray("door") instance=ExtResource("11_b1vc1")]
@@ -572,7 +578,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2055454, -4.680561, -10.995
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.388235, -4.680561, 9.570435)
 
 [node name="Door" parent="Monitor" unique_id=2130594673 instance=ExtResource("10_nie3d")]
-transform = Transform3D(-2.5505597e-07, 0, -5.835, 0, 5.835, 0, 5.835, 0, -2.5505597e-07, 13.91184, -5.669634, -2.1682472)
+transform = Transform3D(-2.5505597e-07, 0, -5.8350005, 0, 5.8349996, 0, 5.8350005, 0, -2.5505597e-07, 13.0659895, -6.1606007, -1.4526138)
 
 [node name="railing" parent="." unique_id=454326787 instance=ExtResource("13_3lb85")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.315964, 17.205082, 9.256039)
@@ -868,56 +874,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.874023, 5.4996767, -8.127
 [node name="Charger2" parent="." unique_id=49790195 instance=ExtResource("14_d52os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.51199, 5.499676, -5.9784927)
 
-[node name="Baton4" parent="." unique_id=615577201 instance=ExtResource("8_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.855761, 31.476763, 90.60849)
-
-[node name="Baton5" parent="." unique_id=37544619 instance=ExtResource("8_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.305275, 31.476763, 84.83715)
-
-[node name="Baton6" parent="." unique_id=256383204 instance=ExtResource("8_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.709597, 31.476763, 81.89366)
-
 [node name="Charger3" parent="." unique_id=1026571181 instance=ExtResource("14_d52os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.370932, 31.465836, 86.67511)
 
 [node name="Charger4" parent="." unique_id=883366706 instance=ExtResource("14_d52os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.16942, 31.465836, 91.62531)
 
-[node name="Striker7" parent="." unique_id=710114845 instance=ExtResource("9_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.64164, 31.476763, 85.97186)
-
-[node name="Striker8" parent="." unique_id=1466150109 instance=ExtResource("9_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.530592, 31.476763, 77.23135)
-
-[node name="Striker9" parent="." unique_id=517787151 instance=ExtResource("9_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.563713, 31.476763, 117.93428)
-
-[node name="Striker10" parent="." unique_id=645011772 instance=ExtResource("9_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.153091, 31.476763, 119.07179)
-
-[node name="Striker11" parent="." unique_id=553950661 instance=ExtResource("9_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.075464, 31.476763, 131.41109)
-
-[node name="Striker12" parent="." unique_id=309488577 instance=ExtResource("9_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.047262, 31.476763, 122.74656)
-
-[node name="Striker13" parent="." unique_id=450301416 instance=ExtResource("9_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.13781, 31.476763, 123.602264)
-
 [node name="Striker14" parent="." unique_id=1255578694 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.990604, 31.476763, 112.75875)
-
-[node name="Striker15" parent="." unique_id=751691169 instance=ExtResource("9_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.860222, 31.476765, 129.25302)
-
-[node name="Baton7" parent="." unique_id=1475160438 instance=ExtResource("8_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7354965, 31.476763, 127.29176)
-
-[node name="Baton8" parent="." unique_id=2064905931 instance=ExtResource("8_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.880863, 31.476763, 118.64015)
-
-[node name="Baton9" parent="." unique_id=1823028420 instance=ExtResource("8_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.093666, 31.476763, 117.04274)
 
 [node name="CubePrototypeLargeA16" type="MeshInstance3D" parent="." unique_id=1505019807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.83012, 30.476763, 130.1763)
@@ -974,7 +938,7 @@ shape = SubResource("BoxShape3D_knidj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46215665, 0)
 mesh = SubResource("BoxMesh_y04a3")
 
-[node name="EnemyTeam" parent="." unique_id=940537512 instance=ExtResource("15_ff7h8")]
+[node name="EnemyTeam" parent="." unique_id=1693086865 instance=ExtResource("15_ff7h8")]
 
 [node name="Path3D" type="Path3D" parent="EnemyTeam" unique_id=1117146022]
 curve = SubResource("Curve3D_u0hem")

@@ -1,6 +1,8 @@
 extends Node3D
 @onready var primitive_wall: MeshInstance3D = $PrimitiveWall
 
+func _ready() -> void:
+	primitive_wall.global_position.y=1.0
 
 func open():
 	var tween = create_tween()
