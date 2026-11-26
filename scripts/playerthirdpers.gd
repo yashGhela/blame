@@ -205,7 +205,7 @@ func _physics_process(delta: float) -> void:
 			
 	if Input.is_action_just_pressed("floorslam"):
 		if not is_on_floor():
-			floorslam()
+			airsnap()
 	
 	if Input.is_action_just_pressed("fire"):
 		fire()
@@ -538,7 +538,8 @@ func airsnap():
 		SNAP_DURATION
 	)
 	is_attacking = true
-	play_action("larsv1animations/snap")
+	play_action("larsv1animations/floorslam")
+	basicanims.play("floorslam")
 
 	await tween.finished
 
