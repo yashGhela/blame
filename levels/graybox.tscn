@@ -351,48 +351,6 @@ shape = SubResource("ConvexPolygonShape3D_3lb85")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA13/StaticBody3D" unique_id=448084205]
 shape = SubResource("ConvexPolygonShape3D_3lb85")
 
-[node name="Floor13" type="MeshInstance3D" parent="." unique_id=605400837]
-transform = Transform3D(5.8032904, 0, 0, 0, 1, 0, 0, 0, 6.5205297, 17.15734, 29.976763, 123.19719)
-mesh = ExtResource("4_q1tdv")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor13" unique_id=1082284590 groups=["Floor"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor13/StaticBody3D" unique_id=396435915]
-shape = SubResource("ConvexPolygonShape3D_fx7vd")
-
-[node name="CubePrototypeLargeA14" type="MeshInstance3D" parent="." unique_id=1450545685]
-transform = Transform3D(-2.767237e-07, 0, -4.8893046, 0, 7.3165736, 0, 6.330701, 0, -2.137183e-07, 18.263077, 0.5, 123.429634)
-mesh = ExtResource("5_4vge4")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeA14" unique_id=1363626072]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeA14/StaticBody3D" unique_id=655202176]
-shape = SubResource("ConvexPolygonShape3D_3lb85")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA14/StaticBody3D" unique_id=681446756]
-shape = SubResource("ConvexPolygonShape3D_3lb85")
-
-[node name="Floor14" type="MeshInstance3D" parent="." unique_id=253491979]
-transform = Transform3D(5.8032904, 0, 0, 0, 1, 0, 0, 0, 6.5205297, -17.444818, 29.976763, 123.19719)
-mesh = ExtResource("4_q1tdv")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor14" unique_id=1484269045 groups=["Floor"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor14/StaticBody3D" unique_id=1742159113]
-shape = SubResource("ConvexPolygonShape3D_fx7vd")
-
-[node name="CubePrototypeLargeA15" type="MeshInstance3D" parent="." unique_id=1078495067]
-transform = Transform3D(-2.767237e-07, 0, -4.8893046, 0, 7.3165736, 0, 6.330701, 0, -2.137183e-07, -16.33908, 0.5, 123.429634)
-mesh = ExtResource("5_4vge4")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CubePrototypeLargeA15" unique_id=125256506]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CubePrototypeLargeA15/StaticBody3D" unique_id=1149636113]
-shape = SubResource("ConvexPolygonShape3D_3lb85")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CubePrototypeLargeA15/StaticBody3D" unique_id=1709683029]
-shape = SubResource("ConvexPolygonShape3D_3lb85")
-
 [node name="CubePrototypeLargeA8" type="MeshInstance3D" parent="." unique_id=1055113869]
 transform = Transform3D(2.2938466, 0, 0, 0, 7.3165736, 0, 0, 0, 11.381807, -72.58232, 0.5, 53.93303)
 mesh = ExtResource("5_4vge4")
@@ -522,6 +480,7 @@ shape = SubResource("ConvexPolygonShape3D_b1vc1")
 
 [node name="Team2" type="Node" parent="." unique_id=625737230]
 script = ExtResource("8_y04a3")
+contextLevel = "Area"
 
 [node name="Baton" parent="Team2" unique_id=723997313 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.097534, 18.251957, 13.022586)
@@ -539,6 +498,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.603306, 17.665085, 23.838
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.877995, 17.665085, 26.063194)
 
 [node name="Team3" parent="." unique_id=940537512 instance=ExtResource("15_ff7h8")]
+contextLevel = "Player"
 
 [node name="Striker3" parent="Team3" unique_id=570517135 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.77578, 31.316738, 44.157623)
@@ -874,59 +834,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.874023, 5.4996767, -8.127
 [node name="Charger2" parent="." unique_id=49790195 instance=ExtResource("14_d52os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.51199, 5.499676, -5.9784927)
 
-[node name="Charger3" parent="." unique_id=1026571181 instance=ExtResource("14_d52os")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.709346, 31.465836, 88.36218)
-
-[node name="Charger4" parent="." unique_id=883366706 instance=ExtResource("14_d52os")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.16942, 31.465836, 91.62531)
-
-[node name="Striker14" parent="." unique_id=1255578694 instance=ExtResource("9_fx7vd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.990604, 31.476763, 112.75875)
-
-[node name="CubePrototypeLargeA16" type="MeshInstance3D" parent="." unique_id=1505019807]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.83012, 30.476763, 130.1763)
-mesh = ExtResource("5_4vge4")
-
-[node name="CubePrototypeLargeA17" type="MeshInstance3D" parent="." unique_id=1462416431]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.116125, 30.476765, 120.773346)
-mesh = ExtResource("5_4vge4")
-
-[node name="CubePrototypeLargeA18" type="MeshInstance3D" parent="." unique_id=493950620]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.718815, 30.476763, 133.8725)
-mesh = ExtResource("5_4vge4")
-
-[node name="CubePrototypeSmall" type="MeshInstance3D" parent="." unique_id=551883403]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.36552, 30.476763, 127.19019)
-mesh = ExtResource("15_u0hem")
-
-[node name="CubePrototypeLargeA19" type="MeshInstance3D" parent="." unique_id=2018744733]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.768951, 30.476765, 127.54668)
-mesh = ExtResource("5_4vge4")
-
-[node name="CubePrototypeSmall2" type="MeshInstance3D" parent="." unique_id=2070931134]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.668869, 30.476763, 114.37509)
-mesh = ExtResource("15_u0hem")
-
-[node name="CubePrototypeSmall3" type="MeshInstance3D" parent="." unique_id=1445076977]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.628286, 30.476763, 117.436676)
-mesh = ExtResource("15_u0hem")
-
-[node name="CubePrototypeSmall4" type="MeshInstance3D" parent="." unique_id=1315085637]
-transform = Transform3D(1, 0, 0, 0, 1.9294274, 0, 0, 0, 5.2601337, 21.607191, 30.476763, 88.5273)
-mesh = ExtResource("15_u0hem")
-
-[node name="CubePrototypeSmall5" type="MeshInstance3D" parent="." unique_id=2087734583]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.143826, 30.476763, 93.37352)
-mesh = ExtResource("15_u0hem")
-
-[node name="CubePrototypeLargeA20" type="MeshInstance3D" parent="." unique_id=1336922421]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.9563708, 10.689535, 30.476763, 83.04479)
-mesh = ExtResource("5_4vge4")
-
-[node name="CubePrototypeLargeB10" type="MeshInstance3D" parent="." unique_id=1198216524]
-transform = Transform3D(2.037528, 0, 0, 0, 1, 0, 0, 0, 1, 22.584934, 30.476763, 78.68913)
-mesh = ExtResource("6_705in")
-
 [node name="DistObject" parent="." unique_id=219182607 instance=ExtResource("15_dg0o1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.868744, 0.5, -13.940242)
 
@@ -938,37 +845,38 @@ shape = SubResource("BoxShape3D_knidj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46215665, 0)
 mesh = SubResource("BoxMesh_y04a3")
 
-[node name="EnemyTeam" parent="." unique_id=1693086865 instance=ExtResource("15_ff7h8")]
+[node name="Team1" parent="." unique_id=1693086865 instance=ExtResource("15_ff7h8")]
+contextLevel = "Patrol"
 
-[node name="Path3D" type="Path3D" parent="EnemyTeam" unique_id=1117146022]
+[node name="Path3D" type="Path3D" parent="Team1" unique_id=1117146022]
 curve = SubResource("Curve3D_u0hem")
 
-[node name="PathStart" type="Node3D" parent="EnemyTeam/Path3D" unique_id=1099812217]
+[node name="PathStart" type="Node3D" parent="Team1/Path3D" unique_id=1099812217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.077, 0.3, -32.301)
 
-[node name="PathFollow3D" type="PathFollow3D" parent="EnemyTeam/Path3D" unique_id=429072525]
+[node name="PathFollow3D" type="PathFollow3D" parent="Team1/Path3D" unique_id=429072525]
 transform = Transform3D(-0.9999987, -2.7806565e-10, -1.4456089e-05, 0, 0.9999992, -1.9235149e-05, 1.4456092e-05, -1.9235164e-05, -0.9999985, -74.07714, 0.2998166, -32.300797)
 
-[node name="pincer7" parent="EnemyTeam/Path3D/PathFollow3D" unique_id=1966355649 node_paths=PackedStringArray("pathStart", "path", "pathFollow") instance=ExtResource("7_fybl5")]
+[node name="pincer7" parent="Team1/Path3D/PathFollow3D" unique_id=1966355649 node_paths=PackedStringArray("pathStart", "path", "pathFollow") instance=ExtResource("7_fybl5")]
 transform = Transform3D(-1.0000013, 0, 1.445613e-05, -2.7806607e-10, 1.0000007, -1.9235193e-05, -1.4456133e-05, -1.9235207e-05, -1.0000014, -2.4555588, 1.7001376, -2.345644)
 pathStart = NodePath("../../PathStart")
 path = NodePath("../..")
 pathFollow = NodePath("..")
 
-[node name="pincer" parent="EnemyTeam" unique_id=2139333681 node_paths=PackedStringArray("pathStart") instance=ExtResource("7_fybl5")]
+[node name="pincer" parent="Team1" unique_id=2139333681 node_paths=PackedStringArray("pathStart") instance=ExtResource("7_fybl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.982056, 1.9753392, -25.426107)
 pathStart = NodePath("../pincer2Start")
 
-[node name="pincer2Start" type="Node3D" parent="EnemyTeam" unique_id=525728824]
+[node name="pincer2Start" type="Node3D" parent="Team1" unique_id=525728824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.040306, 1.1458347, -25.443869)
 
-[node name="Baton10" parent="EnemyTeam" unique_id=879126372 instance=ExtResource("8_fx7vd")]
+[node name="Baton10" parent="Team1" unique_id=879126372 instance=ExtResource("8_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.56693, 1.9999981, -22.37223)
 
-[node name="BatonStart" type="Node3D" parent="EnemyTeam" unique_id=1650086395]
+[node name="BatonStart" type="Node3D" parent="Team1" unique_id=1650086395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.674095, 1.1422234, -22.538065)
 
-[node name="Striker" parent="EnemyTeam" unique_id=1226916100 instance=ExtResource("9_fx7vd")]
+[node name="Striker" parent="Team1" unique_id=1226916100 instance=ExtResource("9_fx7vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.453125, 1.999999, -26.612026)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1595734884]
