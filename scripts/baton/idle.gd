@@ -16,7 +16,7 @@ func enter():
 func physics_update(_delta:float):
 	enemy.mv=Vector3.ZERO
 	var playerdist = enemy.global_position.distance_to(player.global_position)
-	if playerdist<7.0:
+	if playerdist<10.0:
 		transition_to("Chase")
 	elif playerdist>20.0:
 		enemy.enter_patrol_mode()

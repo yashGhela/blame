@@ -38,7 +38,7 @@ func physics_update(_delta:float):
 			wait_done=false
 		elif dist>3.0 and dist<7.0:
 			transition_to("Chase")
-		elif dist>=7.0:
+		elif dist>=10.0:
 			transition_to("Idle")
 		elif dist>20.0:
 			enemy.enter_patrol_mode()

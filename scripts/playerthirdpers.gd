@@ -219,8 +219,7 @@ func _physics_process(delta: float) -> void:
 func movement(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		velocity.x = velocity.x/2
-		velocity.z = velocity.z/2
+
 		
 	
 	var on_floor := is_on_floor()

@@ -875,7 +875,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.874023, 5.4996767, -8.127
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.51199, 5.499676, -5.9784927)
 
 [node name="Charger3" parent="." unique_id=1026571181 instance=ExtResource("14_d52os")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.370932, 31.465836, 86.67511)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.709346, 31.465836, 88.36218)
 
 [node name="Charger4" parent="." unique_id=883366706 instance=ExtResource("14_d52os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.16942, 31.465836, 91.62531)
@@ -912,7 +912,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.628286, 30.476763, 117.436
 mesh = ExtResource("15_u0hem")
 
 [node name="CubePrototypeSmall4" type="MeshInstance3D" parent="." unique_id=1315085637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.607191, 30.476763, 88.5273)
+transform = Transform3D(1, 0, 0, 0, 1.9294274, 0, 0, 0, 5.2601337, 21.607191, 30.476763, 88.5273)
 mesh = ExtResource("15_u0hem")
 
 [node name="CubePrototypeSmall5" type="MeshInstance3D" parent="." unique_id=2087734583]
@@ -920,11 +920,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.143826, 30.476763, 93.37352
 mesh = ExtResource("15_u0hem")
 
 [node name="CubePrototypeLargeA20" type="MeshInstance3D" parent="." unique_id=1336922421]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.689535, 30.476763, 80.9225)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.9563708, 10.689535, 30.476763, 83.04479)
 mesh = ExtResource("5_4vge4")
 
 [node name="CubePrototypeLargeB10" type="MeshInstance3D" parent="." unique_id=1198216524]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.919436, 30.476763, 78.68913)
+transform = Transform3D(2.037528, 0, 0, 0, 1, 0, 0, 0, 1, 22.584934, 30.476763, 78.68913)
 mesh = ExtResource("6_705in")
 
 [node name="DistObject" parent="." unique_id=219182607 instance=ExtResource("15_dg0o1")]

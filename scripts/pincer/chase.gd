@@ -25,7 +25,7 @@ func physics_update(_delta:float):
 
 	
 	
-	if distance > 7.0:
+	if distance > 10.0:
 		transition_to("Idle")
 		return
 	

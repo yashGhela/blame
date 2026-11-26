@@ -16,9 +16,9 @@ func wait():
 	
 	
 	
-	if dist>3.0 and dist<7.0:
+	if dist>3.0 and dist<10.0:
 		transition_to("Chase")
-	elif dist>=7.0:
+	elif dist>=10.0:
 		transition_to("Idle")
 	elif dist>20.0:
 		enemy.enter_patrol_mode()
